@@ -19,20 +19,69 @@ Each component ships in **two dialects**:
 
 Point your AI coding agent at [`SKILL.md`](SKILL.md) and it can discover, fetch, and install components on its own.
 
-## Unslop Router — let the agent pick
+## Unslop Router — describe what you need, get the component installed
 
-Don't browse the catalog. Describe what you're building and the router finds the right component and installs it — the same idea as skill-finder tools, scoped to components with a point of view.
+Don't browse the catalog. Tell the router what you're building in plain words — it finds the best-matching component and installs it for you.
+
+### Setup
+
+You need **Python 3** (nothing else — no packages to install) and a clone of this repo:
+
+```bash
+git clone https://github.com/stbattula-research/unslop.git
+cd unslop
+chmod +x unslop   # one time: makes the script executable
+```
+
+### Find a component
 
 ```bash
 ./unslop find "pricing section for a coffee brand"
-# → Menu Pricing, with install commands for both stacks
-
-./unslop add hero --stack html --dest ./site   # copy files into your project
-./unslop add pricing --stack react --run       # run the shadcn install directly
-./unslop list                                  # all 10 components
 ```
 
-For AI coding agents there's a dedicated skill at [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md): it takes a natural-language request, scores it against the intent tags in `registry.json`, asks when two components are close, and installs the winner without restyling it into slop.
+The router scores your description against every component and prints the top matches with install commands for both stacks:
+
+```
+1. Menu Pricing  (pricing)
+   Pricing laid out like a bistro menu: serif prices, dotted leaders...
+   react: npx shadcn@latest add https://raw.githubusercontent.com/.../r/pricing.json
+   html:  curl -O https://raw.githubusercontent.com/.../components/html/pricing/pricing.html + pricing.css
+```
+
+Other useful forms:
+
+```bash
+./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
+./unslop list                                      # list all 10 components
+```
+
+### Install a component
+
+Pick a component by its short name (the part in parentheses, e.g. `pricing`, `hero`, `navbar`):
+
+**React + Tailwind project** — prints the shadcn install command; add `--run` to execute it right there:
+
+```bash
+./unslop add pricing --stack react          # prints the npx shadcn command
+./unslop add pricing --stack react --run     # runs it in your project directory
+```
+
+**Plain HTML/CSS** — pass `--dest` to copy the files straight into your project, or leave it out to get the `curl` commands:
+
+```bash
+./unslop add hero --stack html --dest ./site   # copies hero.html + hero.css into ./site/
+./unslop add hero --stack html                 # prints curl commands instead
+```
+
+After copying HTML/CSS files, link the stylesheet in your page:
+
+```html
+<link rel="stylesheet" href="hero.css">
+```
+
+### For AI coding agents
+
+Point your agent at [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md). It takes a natural-language request, scores it against the intent tags in `registry.json`, asks you when two components are close, and installs the winner — without restyling it into slop. (The general agent guide is [`SKILL.md`](SKILL.md).)
 
 ## Component catalog
 
