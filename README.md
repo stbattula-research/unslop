@@ -19,6 +19,21 @@ Each component ships in **two dialects**:
 
 Point your AI coding agent at [`SKILL.md`](SKILL.md) and it can discover, fetch, and install components on its own.
 
+## Unslop Router — let the agent pick
+
+Don't browse the catalog. Describe what you're building and the router finds the right component and installs it — the same idea as skill-finder tools, scoped to components with a point of view.
+
+```bash
+./unslop find "pricing section for a coffee brand"
+# → Menu Pricing, with install commands for both stacks
+
+./unslop add hero --stack html --dest ./site   # copy files into your project
+./unslop add pricing --stack react --run       # run the shadcn install directly
+./unslop list                                  # all 10 components
+```
+
+For AI coding agents there's a dedicated skill at [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md): it takes a natural-language request, scores it against the intent tags in `registry.json`, asks when two components are close, and installs the winner without restyling it into slop.
+
 ## Component catalog
 
 | # | Component | Character | React | HTML |

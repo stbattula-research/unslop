@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""unslop — find and install the right Unslop component for the job.
+
+Usage:
+    unslop list
+    unslop find "<what you're building>" [--top N]
+    unslop add <name> [--stack react|html] [--dest DIR] [--run]
+
+Zero dependencies. Works offline against the local registry.json.
+"""
+
+import json
+import re
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+REGISTRY = ROOT / "registry.json"
+RAW_BASE = "https://raw.githubusercontent.com/stbattula-research/unslop/main"
+
+STOPWORDS = {
+    "a", "an", "the", "and", "or", "of", "for", "to", "in", "on", "with",
+    "i", "we", "you", "need", "want", "like", "make", "build", "create",
+    "add", "my", "our", "that", "this", "it", "is", "are", "be", "as",
+    "at", "by", "from", "section", "page", "site", "website",
+}
+
+
+def tokens(text):
+    return [t for t in re.findall(r"[a-z0-9]+", text.lower()) if t not in STOPWORDS]
+
+
+def load_registry():
+    with open(REGISTRY) as f:
+        return json.load(f)["items"]
+
+
+def score(query, item):
+    """Weighted intent match. Higher is better."""
+    qtoks = tokens(query)
+    qstr = " ".join(qtoks)
+    intents = item.get("intents", [])
+    usecases = item.get("useCases", [])
+    notfor = item.get("notFor", [])
+    desc_toks = tokens(item.get("title", "") + " " + item.get("description", ""))
+
+    def hits(phrase_list):
+        n = 0
+        for phrase in phrase_list:
+            ptoks = tokens(phrase)
+            # exact phrase contained in the query: strong signal
+            if phrase.lower() in query.lower() and len(ptoks) > 1:
+                n += 2
+            for pt in ptoks:
+                for qt in qtoks:
+                    if qt == pt or (len(qt) > 3 and len(pt) > 3 and (qt in pt or pt in qt)):
+                        n += 1
+                        break
+        return n
+
+    s = 3 * hits(intents) + 2 * hits(usecases) + 1 * hits([ " ".join(desc_toks) ])
+    s -= 5 * hits(notfor)
+    return s
+
+
+def find_matches(query, top=3):
+    items = load_registry()
+    ranked = sorted(items, key=lambda it: score(query, it), reverse=True)
+    return [(it, score(query, it)) for it in ranked[:top]]
+
+
+def install_react(item, run=False):
+    cmd = ["npx", "shadcn@latest", "add", item["url"]]
+    if run:
+        print("$ " + " ".join(cmd))
+        subprocess.run(cmd, check=False)
+    else:
+        print("Run this in your React + Tailwind project:")
+        print("  " + " ".join(cmd))
+        print("Tip: pass --run to execute it directly.")
+
+
+def install_html(item, dest=None):
+    name = item["name"]
+    if dest:
+        d = Path(dest)
+        d.mkdir(parents=True, exist_ok=True)
+        for ext in ("html", "css"):
+            src = ROOT / "components" / "html" / name / f"{name}.{ext}"
+            if src.exists():
+                shutil.copy(src, d / f"{name}.{ext}")
+                print(f"copied {src.name} -> {d}/")
+            else:
+                print(f"warning: {src} not found in local checkout")
+        print("Link the stylesheet in your page: "
+              f'<link rel="stylesheet" href="{name}.css">')
+    else:
+        print("Grab the files (no build step needed):")
+        print(f"  curl -O {RAW_BASE}/components/html/{name}/{name}.html")
+        print(f"  curl -O {RAW_BASE}/components/html/{name}/{name}.css")
+        print("Tip: pass --dest DIR to copy them from this checkout instead.")
+
+
+def cmd_list():
+    for it in load_registry():
+        print(f"{it['name']:14} {it['title']:28} {it['description']}")
+
+
+def cmd_find(args):
+    if not args:
+        sys.exit("usage: unslop find \"<what you're building>\" [--top N]")
+    query = args[0]
+    top = 3
+    if "--top" in args:
+        top = int(args[args.index("--top") + 1])
+    matches = find_matches(query, top=top)
+    if not matches or matches[0][1] <= 0:
+        print("No confident match. Try describing the section "
+              "(hero, pricing, navbar, faq, footer, ...).")
+        return
+    print(f'Best matches for "{query}":\n')
+    for i, (it, s) in enumerate(matches, 1):
+        print(f"{i}. {it['title']}  ({it['name']})  [score {s}]")
+        print(f"   {it['description']}")
+        print(f"   react: npx shadcn@latest add {it['url']}")
+        print(f"   html:  curl -O {RAW_BASE}/components/html/{it['name']}/{it['name']}.html "
+              f"+ {it['name']}.css\n")
+
+
+def cmd_add(args):
+    if not args:
+        sys.exit("usage: unslop add <name> [--stack react|html] [--dest DIR] [--run]")
+    name = args[0]
+    items = {it["name"]: it for it in load_registry()}
+    if name not in items:
+        close = [n for n in items if name in n or n in name]
+        hint = f" Did you mean: {', '.join(close)}?" if close else ""
+        sys.exit(f"unknown component '{name}'.{hint} Run `unslop list` to see all.")
+    item = items[name]
+    stack = "react"
+    if "--stack" in args:
+        stack = args[args.index("--stack") + 1]
+        if stack not in ("react", "html"):
+            sys.exit("--stack must be react or html")
+    print(f"Installing {item['title']} ({stack})...\n")
+    if stack == "react":
+        install_react(item, run="--run" in args)
+    else:
+        dest = args[args.index("--dest") + 1] if "--dest" in args else None
+        install_html(item, dest=dest)
+
+
+def main():
+    if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
+        print(__doc__.strip())
+        return
+    cmd, rest = sys.argv[1], sys.argv[2:]
+    if cmd == "list":
+        cmd_list()
+    elif cmd == "find":
+        cmd_find(rest)
+    elif cmd == "add":
+        cmd_add(rest)
+    else:
+        sys.exit(f"unknown command '{cmd}'. Try: list, find, add")
+
+
+if __name__ == "__main__":
+    main()

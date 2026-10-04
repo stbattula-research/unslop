@@ -6,7 +6,9 @@ Repo: `https://github.com/stbattula-research/unslop` (raw: `https://raw.githubus
 
 ## 1. Discover components
 
-Fetch the registry index and read it:
+**Fastest path:** use the `unslop-router` skill (`skills/unslop-router/SKILL.md`) — describe what you're building in plain words and it picks and installs the right component. From a local checkout you can also run `./unslop find "<need>"` directly.
+
+Manual path — fetch the registry index and read it:
 
 ```
 https://raw.githubusercontent.com/stbattula-research/unslop/main/registry.json
