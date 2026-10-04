@@ -1,0 +1,139 @@
+/* Unslop — Letter Contact Form. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #faf7f0;
+  --muted: #57534e;
+  --accent: #b45309;
+  --card: rgba(255, 255, 255, 0.6);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.15);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.letter__inner { max-width: 44rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.letter__heading {
+  margin: 0 0 2.5rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.letter__form {
+  background: var(--card);
+  border: 2px solid rgba(28, 25, 23, 0.2);
+  box-shadow: 8px 8px 0 0 rgba(28, 25, 23, 0.08);
+  padding: 2rem;
+}
+@media (min-width: 40rem) { .letter__form { padding: 3rem; } }
+
+.letter__salutation {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.5rem;
+}
+
+.letter__fields { margin-top: 2rem; display: grid; gap: 2rem; }
+
+.field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field input,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(28, 25, 23, 0.3);
+  padding-bottom: 0.5rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: inherit;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: #a8a29e; }
+.field input:focus,
+.field textarea:focus { outline: none; border-bottom-color: var(--accent); }
+
+.letter__foot {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.letter__signoff {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+.letter__submit {
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 0 var(--accent);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.letter__submit:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 0 var(--accent); }
+
+.letter__sent {
+  border: 2px solid var(--ink);
+  background: #fef3c7;
+  padding: 2.5rem;
+  text-align: center;
+}
+.letter__sent-title { margin: 0; font-family: 'Fraunces', Georgia, serif; font-style: italic; font-size: 1.5rem; }
+.letter__sent-sub {
+  margin: 0.75rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #1c1917; --ink: #e7e5e4; --muted: #a8a29e; --card: rgba(41, 37, 36, 0.6); }
+  .letter__form { border-color: rgba(231, 229, 228, 0.2); }
+  .field input, .field textarea { border-bottom-color: rgba(231, 229, 228, 0.3); }
+  .letter__submit { box-shadow: 4px 4px 0 0 var(--accent); }
+  .letter__sent { background: #292524; border-color: #e7e5e4; }
+}

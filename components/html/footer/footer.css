@@ -1,0 +1,105 @@
+/* Unslop — Colophon Footer. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #fafaf9;
+  --fg: #d6d3d1;
+  --muted: #a8a29e;
+  --rule: rgba(250, 250, 249, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.15);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.colophon {
+  margin-top: auto;
+  background: var(--ink);
+  color: var(--fg);
+}
+.colophon__inner { max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem; }
+
+.colophon__top { display: grid; gap: 3rem; }
+@media (min-width: 48rem) { .colophon__top { grid-template-columns: 1.4fr 2fr; } }
+
+.colophon__wordmark {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 1.875rem;
+  letter-spacing: -0.02em;
+  color: #fafaf9;
+}
+.colophon__tagline {
+  margin: 0.75rem 0 0;
+  max-width: 18rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.colophon__nav { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+@media (min-width: 40rem) { .colophon__nav { grid-template-columns: repeat(3, 1fr); } }
+.colophon__nav h3 {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.colophon__nav ul { list-style: none; margin: 1rem 0 0; padding: 0; }
+.colophon__nav li + li { margin-top: 0.65rem; }
+.colophon__nav a {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.875rem;
+  text-underline-offset: 4px;
+}
+.colophon__nav a:hover { color: #fafaf9; text-decoration: underline; }
+
+.colophon__bottom { margin-top: 3.5rem; border-top: 1px solid var(--rule); padding-top: 2rem; }
+.colophon__credit {
+  margin: 0;
+  max-width: 48rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 2;
+  color: var(--muted);
+}
+.colophon__finis {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}

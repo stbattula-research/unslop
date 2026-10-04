@@ -1,0 +1,98 @@
+/* Unslop — Footnotes FAQ. Self-contained; no build step, no JS (native <details>). */
+
+:root {
+  --ink: #1c1917;
+  --paper: #faf7f0;
+  --muted: #57534e;
+  --rule: rgba(28, 25, 23, 0.2);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.footnotes__inner { max-width: 48rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.footnotes__heading {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+.footnotes__standfirst {
+  margin: 1rem 0 2.5rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.footnotes__list { border-top: 2px solid var(--ink); }
+
+.footnote { border-bottom: 1px solid var(--rule); }
+.footnote__q {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+.footnote__q::-webkit-details-marker { display: none; }
+.footnote__num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.footnote__text {
+  flex: 1;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+.footnote__mark {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: transform 200ms ease;
+}
+.footnote[open] .footnote__mark { transform: rotate(45deg); }
+
+.footnote__a {
+  margin: 0;
+  padding: 0 0 1.5rem 3.25rem;
+  max-width: 40rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.footnote__a code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  background: rgba(28, 25, 23, 0.06);
+  padding: 0.15rem 0.35rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #1c1917; --ink: #e7e5e4; --muted: #a8a29e; --rule: rgba(231, 229, 228, 0.2); }
+  .footnote__a code { background: rgba(231, 229, 228, 0.08); }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq",
+  "type": "registry:ui",
+  "title": "Footnotes FAQ",
+  "description": "An FAQ accordion styled like scholarly footnotes: numbered, ruled, and serif.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/react/faq/Faq.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\n/**\n * The Footnotes \u2014 an FAQ styled like scholarly footnotes.\n * Numbered entries, hairline rules, serif questions. Uses system font stacks only.\n */\n\nexport interface FaqItem {\n  question: string;\n  answer: string;\n}\n\nexport interface FaqProps {\n  heading?: string;\n  standfirst?: string;\n  items: FaqItem[];\n  className?: string;\n}\n\nexport function Faq({ heading, standfirst, items, className }: FaqProps) {\n  const [open, setOpen] = React.useState<number | null>(0);\n\n  return (\n    <section className={cn(\"w-full bg-[#faf7f0] text-stone-950 dark:bg-stone-950 dark:text-stone-50\", className)}>\n      <div className=\"mx-auto max-w-3xl px-6 py-20 md:py-24\">\n        {(heading || standfirst) && (\n          <div className=\"mb-10\">\n            {heading && (\n              <h2 className=\"font-serif text-4xl font-black tracking-tight md:text-5xl\">\n                {heading}\n              </h2>\n            )}\n            {standfirst && (\n              <p className=\"mt-4 font-serif text-lg italic text-stone-600 dark:text-stone-400\">\n                {standfirst}\n              </p>\n            )}\n          </div>\n        )}\n\n        <div className=\"border-t-2 border-stone-950 dark:border-stone-50\">\n          {items.map((item, i) => {\n            const isOpen = open === i;\n            return (\n              <div\n                key={item.question}\n                className=\"border-b border-stone-950/20 dark:border-stone-50/20\"\n              >\n                <button\n                  type=\"button\"\n                  onClick={() => setOpen(isOpen ? null : i)}\n                  aria-expanded={isOpen}\n                  className=\"flex w-full cursor-pointer items-baseline gap-5 py-6 text-left\"\n                >\n                  <span className=\"font-mono text-sm text-stone-500 dark:text-stone-400\">\n                    {(i + 1).toString().padStart(2, \"0\")}\n                  </span>\n                  <span className=\"flex-1 font-serif text-xl font-bold tracking-tight\">\n                    {item.question}\n                  </span>\n                  <span\n                    aria-hidden=\"true\"\n                    className={cn(\n                      \"font-mono text-xl leading-none transition-transform duration-200\",\n                      isOpen && \"rotate-45\"\n                    )}\n                  >\n                    +\n                  </span>\n                </button>\n                <div\n                  className={cn(\n                    \"grid transition-all duration-200 ease-out\",\n                    isOpen ? \"grid-rows-[1fr] pb-6 opacity-100\" : \"grid-rows-[0fr] opacity-0\"\n                  )}\n                >\n                  <div className=\"overflow-hidden\">\n                    <p className=\"pl-10 pr-4 text-[15px] leading-relaxed text-stone-600 dark:text-stone-400\">\n                      {item.answer}\n                    </p>\n                  </div>\n                </div>\n              </div>\n            );\n          })}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "components/react/lib/utils.ts",
+      "content": "/**\n * Tiny classNames joiner \u2014 no dependencies.\n * Unslop components use Tailwind utilities only.\n */\nexport function cn(\n  ...inputs: Array<string | false | null | undefined>\n): string {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

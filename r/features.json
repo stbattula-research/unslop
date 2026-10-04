@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "features",
+  "type": "registry:ui",
+  "title": "Ledger Features",
+  "description": "Features as a numbered archival ledger with hairline dividers and mono index numbers.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/react/features/Features.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\n/**\n * The Ledger \u2014 features as an archival index.\n * Numbered rows with hairline dividers and mono index numbers,\n * like a field guide or a library catalog. Uses system font stacks only.\n */\n\nexport interface FeatureItem {\n  title: string;\n  description: string;\n  tag?: string;\n}\n\nexport interface FeaturesProps {\n  heading?: string;\n  standfirst?: string;\n  items: FeatureItem[];\n  className?: string;\n}\n\nfunction pad(n: number) {\n  return n.toString().padStart(2, \"0\");\n}\n\nexport function Features({ heading, standfirst, items, className }: FeaturesProps) {\n  return (\n    <section\n      className={cn(\n        \"w-full bg-stone-100 text-stone-950 dark:bg-stone-900 dark:text-stone-50\",\n        className\n      )}\n    >\n      <div className=\"mx-auto max-w-6xl px-6 py-20 md:py-24\">\n        {(heading || standfirst) && (\n          <div className=\"mb-12 max-w-2xl\">\n            {heading && (\n              <h2 className=\"font-serif text-4xl font-black tracking-tight md:text-5xl\">\n                {heading}\n              </h2>\n            )}\n            {standfirst && (\n              <p className=\"mt-4 font-serif text-lg italic text-stone-600 dark:text-stone-400\">\n                {standfirst}\n              </p>\n            )}\n          </div>\n        )}\n\n        <ol className=\"divide-y divide-stone-950/15 border-y border-stone-950/15 dark:divide-stone-50/15 dark:border-stone-50/15\">\n          {items.map((item, i) => (\n            <li\n              key={item.title}\n              className=\"group grid gap-3 py-7 transition-colors sm:grid-cols-[72px_1fr_2fr] sm:items-baseline sm:gap-8\"\n            >\n              <span className=\"font-mono text-sm text-stone-500 dark:text-stone-400\">\n                {pad(i + 1)}\n              </span>\n              <h3 className=\"font-serif text-2xl font-bold tracking-tight\">\n                {item.title}\n                {item.tag && (\n                  <span className=\"ml-3 inline-block -translate-y-1 border border-stone-950/40 px-2 py-0.5 align-middle font-mono text-[10px] font-normal uppercase tracking-[0.18em] text-stone-600 dark:border-stone-50/40 dark:text-stone-400\">\n                    {item.tag}\n                  </span>\n                )}\n              </h3>\n              <p className=\"max-w-xl text-[15px] leading-relaxed text-stone-600 dark:text-stone-400\">\n                {item.description}\n              </p>\n            </li>\n          ))}\n        </ol>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "components/react/lib/utils.ts",
+      "content": "/**\n * Tiny classNames joiner \u2014 no dependencies.\n * Unslop components use Tailwind utilities only.\n */\nexport function cn(\n  ...inputs: Array<string | false | null | undefined>\n): string {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

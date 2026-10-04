@@ -1,0 +1,105 @@
+/* Unslop — Ledger Features. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #f5f5f4;
+  --muted: #57534e;
+  --rule: rgba(28, 25, 23, 0.15);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.ledger__inner { max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.ledger__heading {
+  margin: 0;
+  max-width: 20ch;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+.ledger__standfirst {
+  margin: 1rem 0 3rem;
+  max-width: 36rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.ledger__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.ledger__list > * + * { border-top: 1px solid var(--rule); }
+
+.ledger__row {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.75rem 0;
+}
+@media (min-width: 40rem) {
+  .ledger__row { grid-template-columns: 72px 1fr 2fr; gap: 2rem; align-items: baseline; }
+}
+
+.ledger__index {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.ledger__title {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+.ledger__tag {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.75rem;
+  transform: translateY(-2px);
+  border: 1px solid rgba(28, 25, 23, 0.4);
+  padding: 0.15rem 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ledger__desc {
+  margin: 0;
+  max-width: 38rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #292524; --ink: #e7e5e4; --muted: #a8a29e; --rule: rgba(231, 229, 228, 0.15); }
+  .ledger__tag { border-color: rgba(231, 229, 228, 0.4); }
+}

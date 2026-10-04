@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonials",
+  "type": "registry:ui",
+  "title": "Margin Notes Testimonials",
+  "description": "Testimonials as literary pull-quotes with marginalia-style attribution. No star ratings.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/react/testimonials/Testimonials.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\n/**\n * The Margin Notes \u2014 testimonials as literary pull-quotes.\n * Oversized serif type with a giant quotation mark and book-blurb\n * attribution. No star ratings, no avatar circles. Uses system font stacks only.\n */\n\nexport interface Testimonial {\n  quote: string;\n  name: string;\n  role?: string;\n  marginNote?: string;\n}\n\nexport interface TestimonialsProps {\n  heading?: string;\n  items: Testimonial[];\n  className?: string;\n}\n\nexport function Testimonials({ heading, items, className }: TestimonialsProps) {\n  return (\n    <section className={cn(\"w-full bg-white text-stone-950 dark:bg-stone-950 dark:text-stone-50\", className)}>\n      <div className=\"mx-auto max-w-6xl px-6 py-20 md:py-24\">\n        {heading && (\n          <h2 className=\"mb-14 font-serif text-4xl font-black tracking-tight md:text-5xl\">\n            {heading}\n          </h2>\n        )}\n\n        <div className=\"grid gap-12 md:grid-cols-3 md:gap-8\">\n          {items.map((t) => (\n            <figure key={t.name} className=\"relative border-t-2 border-stone-950 pt-8 dark:border-stone-50\">\n              <span\n                aria-hidden=\"true\"\n                className=\"absolute -top-7 left-0 select-none font-serif text-7xl font-black leading-none text-amber-600\"\n              >\n                &ldquo;\n              </span>\n              <blockquote className=\"font-serif text-xl italic leading-relaxed\">\n                {t.quote}\n              </blockquote>\n              <figcaption className=\"mt-6\">\n                <p className=\"font-mono text-xs font-bold uppercase tracking-[0.2em]\">\n                  \u2014 {t.name}\n                </p>\n                {t.role && (\n                  <p className=\"mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-stone-500 dark:text-stone-400\">\n                    {t.role}\n                  </p>\n                )}\n                {t.marginNote && (\n                  <p className=\"mt-3 border-l-2 border-amber-600 pl-3 font-serif text-sm italic text-stone-600 dark:text-stone-400\">\n                    {t.marginNote}\n                  </p>\n                )}\n              </figcaption>\n            </figure>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "components/react/lib/utils.ts",
+      "content": "/**\n * Tiny classNames joiner \u2014 no dependencies.\n * Unslop components use Tailwind utilities only.\n */\nexport function cn(\n  ...inputs: Array<string | false | null | undefined>\n): string {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

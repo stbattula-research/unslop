@@ -1,0 +1,165 @@
+/* Unslop — Menu Pricing. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #faf7f0;
+  --muted: #57534e;
+  --accent: #b45309;
+  --rule: rgba(28, 25, 23, 0.25);
+  --stamp-bg: #fcd34d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.menu__inner { max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.menu__head { text-align: center; margin-bottom: 3.5rem; }
+.menu__heading {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+.menu__standfirst {
+  margin: 1rem auto 0;
+  max-width: 32rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+.menu__rule { display: flex; align-items: center; gap: 0.75rem; max-width: 20rem; margin: 1.5rem auto 0; }
+.menu__rule span { flex: 1; height: 1px; background: var(--rule); }
+.menu__rule em { font-style: normal; font-size: 0.75rem; letter-spacing: 0.3em; color: var(--muted); }
+
+.menu__grid { display: grid; gap: 2rem; }
+@media (min-width: 48rem) { .menu__grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+@media (min-width: 64rem) { .menu__grid { gap: 2.5rem; } }
+
+.tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--rule);
+  padding: 2rem;
+}
+.tier--featured {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: #f5f5f4;
+  box-shadow: 8px 8px 0 0 var(--accent);
+}
+.tier__stamp {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  background: var(--stamp-bg);
+  color: #1c1917;
+  border: 2px solid #1c1917;
+  padding: 0.25rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.tier__name {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.tier__price {
+  margin: 1.25rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: -0.02em;
+}
+.tier__price span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.tier--featured .tier__price span { color: #a8a29e; }
+.tier__blurb {
+  margin: 0.75rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.tier--featured .tier__blurb { color: #d6d3d1; }
+
+.tier__list { list-style: none; margin: 1.75rem 0 0; padding: 0; flex: 1; }
+.tier__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px dotted var(--rule);
+  font-size: 0.9375rem;
+}
+.tier__list li span { flex: 1; }
+.tier__list li i { font-style: normal; color: var(--accent); }
+.tier--featured .tier__list li i { color: var(--stamp-bg); }
+
+.tier__cta {
+  display: block;
+  margin-top: 2rem;
+  border: 2px solid var(--ink);
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+.tier__cta:hover { background: var(--ink); color: var(--paper); }
+.tier--featured .tier__cta { border-color: var(--stamp-bg); background: var(--stamp-bg); color: #1c1917; }
+.tier--featured .tier__cta:hover { background: #fde68a; color: #1c1917; }
+
+.menu__footnote {
+  margin: 3rem auto 0;
+  max-width: 36rem;
+  text-align: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #1c1917; --ink: #e7e5e4; --muted: #a8a29e; --rule: rgba(231, 229, 228, 0.25); }
+  .tier:not(.tier--featured) .tier__cta:hover { background: #e7e5e4; color: #1c1917; }
+}

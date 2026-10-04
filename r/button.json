@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button",
+  "type": "registry:ui",
+  "title": "Honest Button",
+  "description": "A workwear-inspired button with a hard offset shadow and uppercase grotesk label. No gradients, no glow.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/react/button/Button.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\n/**\n * The Honest Button \u2014 workwear-inspired.\n * Chunky ink border, hard offset shadow, uppercase grotesk label.\n * No gradients, no glow, no glass. Uses system font stacks only.\n */\n\ntype ButtonVariant = \"primary\" | \"secondary\" | \"ghost\";\ntype ButtonSize = \"sm\" | \"md\" | \"lg\";\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  variant?: ButtonVariant;\n  size?: ButtonSize;\n}\n\nconst variantClasses: Record<ButtonVariant, string> = {\n  primary:\n    \"bg-amber-300 text-stone-950 border-stone-950 hover:bg-amber-200 dark:bg-amber-300 dark:text-stone-950\",\n  secondary:\n    \"bg-stone-50 text-stone-950 border-stone-950 hover:bg-stone-100 dark:bg-stone-900 dark:text-stone-50 dark:border-stone-50 dark:hover:bg-stone-800\",\n  ghost:\n    \"bg-transparent text-stone-950 border-transparent hover:bg-stone-950/5 dark:text-stone-50 dark:hover:bg-stone-50/10\",\n};\n\nconst sizeClasses: Record<ButtonSize, string> = {\n  sm: \"px-3 py-1.5 text-xs\",\n  md: \"px-5 py-2.5 text-sm\",\n  lg: \"px-7 py-3.5 text-base\",\n};\n\nexport function Button({\n  variant = \"primary\",\n  size = \"md\",\n  className,\n  type = \"button\",\n  children,\n  ...props\n}: ButtonProps) {\n  return (\n    <button\n      type={type}\n      className={cn(\n        \"inline-flex cursor-pointer items-center justify-center gap-2 rounded-none border-2\",\n        \"font-mono font-bold uppercase tracking-[0.14em]\",\n        \"shadow-[4px_4px_0_0_#1c1917] transition-all duration-150\",\n        \"hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_#1c1917]\",\n        \"active:translate-x-[4px] active:translate-y-[4px] active:shadow-none\",\n        \"disabled:pointer-events-none disabled:opacity-50\",\n        \"dark:shadow-[4px_4px_0_0_#e7e5e4] dark:hover:shadow-[2px_2px_0_0_#e7e5e4]\",\n        variantClasses[variant],\n        sizeClasses[size],\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </button>\n  );\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "components/react/lib/utils.ts",
+      "content": "/**\n * Tiny classNames joiner \u2014 no dependencies.\n * Unslop components use Tailwind utilities only.\n */\nexport function cn(\n  ...inputs: Array<string | false | null | undefined>\n): string {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

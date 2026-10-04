@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer",
+  "type": "registry:ui",
+  "title": "Colophon Footer",
+  "description": "A footer set like a book colophon: small caps, credits, and hairline rules.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/react/footer/Footer.tsx",
+      "content": "import * as React from \"react\";\nimport { cn } from \"../lib/utils\";\n\n/**\n * The Colophon \u2014 a footer set like a book's colophon.\n * Small caps, credits, set-in-type details, hairline rules.\n * Uses system font stacks only.\n */\n\nexport interface FooterColumn {\n  heading: string;\n  links: { label: string; href: string }[];\n}\n\nexport interface FooterProps {\n  wordmark: string;\n  tagline?: string;\n  columns?: FooterColumn[];\n  colophon?: string;\n  className?: string;\n}\n\nexport function Footer({ wordmark, tagline, columns = [], colophon, className }: FooterProps) {\n  const year = new Date().getFullYear();\n\n  return (\n    <footer className={cn(\"w-full bg-stone-950 text-stone-300\", className)}>\n      <div className=\"mx-auto max-w-6xl px-6 py-16\">\n        <div className=\"grid gap-12 md:grid-cols-[1.4fr_2fr]\">\n          <div>\n            <p className=\"font-serif text-3xl font-black tracking-tight text-stone-50\">\n              {wordmark}\n            </p>\n            {tagline && (\n              <p className=\"mt-3 max-w-xs font-serif text-sm italic text-stone-400\">\n                {tagline}\n              </p>\n            )}\n          </div>\n\n          {columns.length > 0 && (\n            <nav className=\"grid grid-cols-2 gap-8 sm:grid-cols-3\" aria-label=\"Footer\">\n              {columns.map((col) => (\n                <div key={col.heading}>\n                  <h3 className=\"font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-stone-500\">\n                    {col.heading}\n                  </h3>\n                  <ul className=\"mt-4 space-y-2.5\">\n                    {col.links.map((l) => (\n                      <li key={l.label}>\n                        <a\n                          href={l.href}\n                          className=\"text-sm text-stone-300 underline-offset-4 hover:text-stone-50 hover:underline\"\n                        >\n                          {l.label}\n                        </a>\n                      </li>\n                    ))}\n                  </ul>\n                </div>\n              ))}\n            </nav>\n          )}\n        </div>\n\n        <div className=\"mt-14 border-t border-stone-50/15 pt-8\">\n          <p className=\"max-w-3xl font-mono text-[11px] uppercase leading-loose tracking-[0.18em] text-stone-500\">\n            {colophon ??\n              \"Colophon \u2014 Set in the system serif and grotesk. Printed on recycled pixels. No gradients were harmed in the making of this footer.\"}\n          </p>\n          <div className=\"mt-6 flex flex-wrap items-center justify-between gap-4\">\n            <p className=\"font-mono text-xs uppercase tracking-[0.18em] text-stone-500\">\n              \u00a9 {year} {wordmark}\n            </p>\n            <p className=\"font-mono text-xs uppercase tracking-[0.18em] text-stone-500\">\n              Finis coronat opus\n            </p>\n          </div>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
+      "type": "registry:ui"
+    },
+    {
+      "path": "components/react/lib/utils.ts",
+      "content": "/**\n * Tiny classNames joiner \u2014 no dependencies.\n * Unslop components use Tailwind utilities only.\n */\nexport function cn(\n  ...inputs: Array<string | false | null | undefined>\n): string {\n  return inputs.filter(Boolean).join(\" \");\n}\n",
+      "type": "registry:lib"
+    }
+  ]
+}

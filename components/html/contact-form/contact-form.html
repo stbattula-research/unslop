@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — Letter Contact Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="contact-form.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · contact-form</p>
+
+  <!-- The component -->
+  <section class="letter">
+    <div class="letter__inner">
+      <h2 class="letter__heading">Write to us.</h2>
+
+      <form class="letter__form" action="#" method="post" onsubmit="event.preventDefault(); this.outerHTML='<div class=\'letter__sent\'><p class=\'letter__sent-title\'>Sealed with wax and on its way.</p><p class=\'letter__sent-sub\'>We&rsquo;ll write back soon.</p></div>';">
+        <p class="letter__salutation">Dear us,</p>
+
+        <div class="letter__fields">
+          <div class="field">
+            <label for="letter-name">Your name</label>
+            <input id="letter-name" name="name" type="text" required placeholder="Jane Appleseed">
+          </div>
+          <div class="field">
+            <label for="letter-email">Where we may reply</label>
+            <input id="letter-email" name="email" type="email" required placeholder="jane@example.com">
+          </div>
+          <div class="field">
+            <label for="letter-message">The body of the letter</label>
+            <textarea id="letter-message" name="message" rows="5" required placeholder="It began on a Tuesday…"></textarea>
+          </div>
+        </div>
+
+        <div class="letter__foot">
+          <p class="letter__signoff">Yours,</p>
+          <button type="submit" class="letter__submit">Send the letter →</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

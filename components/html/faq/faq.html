@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — Footnotes FAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · faq</p>
+
+  <!-- The component -->
+  <section class="footnotes">
+    <div class="footnotes__inner">
+      <h2 class="footnotes__heading">Questions, annotated.</h2>
+      <p class="footnotes__standfirst">Everything people ask before they commit, answered in the margin.</p>
+
+      <div class="footnotes__list">
+        <details class="footnote" open>
+          <summary class="footnote__q">
+            <span class="footnote__num">01</span>
+            <span class="footnote__text">Do I need a build step for the HTML versions?</span>
+            <span class="footnote__mark" aria-hidden="true">+</span>
+          </summary>
+          <p class="footnote__a">No. Each component is a plain <code>.html</code> file and a <code>.css</code> file. Open it in a browser and it works — fonts load from Google Fonts, everything else is local.</p>
+        </details>
+        <details class="footnote">
+          <summary class="footnote__q">
+            <span class="footnote__num">02</span>
+            <span class="footnote__text">How do I install the React versions in my AI tool?</span>
+            <span class="footnote__mark" aria-hidden="true">+</span>
+          </summary>
+          <p class="footnote__a">Each component is a shadcn registry item. Run <code>npx shadcn@latest add https://raw.githubusercontent.com/stbattula-research/unslop/main/r/&lt;name&gt;.json</code> — or point your agent at SKILL.md and let it do the fetching.</p>
+        </details>
+        <details class="footnote">
+          <summary class="footnote__q">
+            <span class="footnote__num">03</span>
+            <span class="footnote__text">Can I restyle a component?</span>
+            <span class="footnote__mark" aria-hidden="true">+</span>
+          </summary>
+          <p class="footnote__a">Yes, but read DESIGN.md first. The one rule: restyle toward a stronger point of view, never toward the defaults — no purple gradients, no glassmorphism, no centered pill-badge heroes.</p>
+        </details>
+        <details class="footnote">
+          <summary class="footnote__q">
+            <span class="footnote__num">04</span>
+            <span class="footnote__text">What license is this under?</span>
+            <span class="footnote__mark" aria-hidden="true">+</span>
+          </summary>
+          <p class="footnote__a">MIT. Use it in commercial work, fork it, sell templates built on it. A star on the repo is appreciated but not required.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

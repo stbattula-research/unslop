@@ -1,0 +1,96 @@
+/* Unslop — Margin Notes Testimonials. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #ffffff;
+  --muted: #57534e;
+  --accent: #b45309;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.15);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.blurbs__inner { max-width: 72rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.blurbs__heading {
+  margin: 0 0 3.5rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+
+.blurbs__grid { display: grid; gap: 3rem; }
+@media (min-width: 48rem) { .blurbs__grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; } }
+
+.blurb {
+  position: relative;
+  margin: 0;
+  border-top: 2px solid var(--ink);
+  padding-top: 2rem;
+}
+.blurb__mark {
+  position: absolute;
+  top: -1.75rem;
+  left: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--accent);
+  user-select: none;
+}
+.blurb__quote {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+.blurb__name {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.blurb__role {
+  margin: 0.25rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.blurb__margin {
+  margin: 0.75rem 0 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--accent);
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #1c1917; --ink: #e7e5e4; --muted: #a8a29e; }
+}
