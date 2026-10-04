@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — Masthead Navbar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · navbar</p>
+
+  <!-- The component -->
+  <header class="masthead">
+    <div class="masthead__inner">
+      <div class="masthead__dateline">
+        <span>Est. MMXXVI · Printed on recycled pixels</span>
+        <span class="hide-mobile">Vol. I — No. 1</span>
+      </div>
+      <div class="masthead__row">
+        <nav class="masthead__links" aria-label="Primary">
+          <a href="#">Essays</a><a href="#">Field notes</a><a href="#">Archive</a>
+        </nav>
+        <a href="/" class="masthead__wordmark">The Daily Build</a>
+        <div class="masthead__right">
+          <nav class="masthead__links" aria-label="Secondary">
+            <a href="#">About</a><a href="#">Contact</a>
+          </nav>
+          <a href="#" class="masthead__cta">Subscribe</a>
+        </div>
+      </div>
+      <nav class="masthead__mobile" aria-label="Mobile">
+        <a href="#">Essays</a><a href="#">Field notes</a><a href="#">Archive</a><a href="#">About</a><a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="demo">
+    <p>A print-editorial navbar: serif wordmark between thin rules, an issue-date line, a subscription box. Structured like a newspaper front page, not a SaaS bar.</p>
+  </main>
+</body>
+</html>

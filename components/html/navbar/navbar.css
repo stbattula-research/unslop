@@ -1,0 +1,117 @@
+/* Unslop — Masthead Navbar. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #fafaf9;
+  --muted: #78716c;
+  --rule: rgba(28, 25, 23, 0.2);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.masthead {
+  width: 100%;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+}
+.masthead__inner { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+
+.masthead__dateline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.masthead__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+}
+.masthead__links { display: flex; gap: 1.5rem; flex: 1; }
+.masthead__links a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.masthead__links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.masthead__wordmark {
+  flex: 1;
+  text-align: center;
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.masthead__right { flex: 1; display: flex; align-items: center; justify-content: flex-end; gap: 1rem; }
+.masthead__cta {
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.masthead__cta:hover { background: #44403c; }
+
+.masthead__mobile { display: none; }
+
+@media (max-width: 48rem) {
+  .masthead__links, .hide-mobile { display: none; }
+  .masthead__mobile {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .masthead__mobile a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .masthead__wordmark { font-size: 1.6rem; }
+}
+
+.demo { max-width: 48rem; margin: 0 auto; padding: 4rem 1.5rem; line-height: 1.6; color: var(--muted); }
+
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #1c1917; --ink: #e7e5e4; --muted: #a8a29e; --rule: rgba(231, 229, 228, 0.2); }
+}

@@ -1,0 +1,66 @@
+{
+  "name": "unslop",
+  "homepage": "https://github.com/stbattula-research/unslop",
+  "items": [
+    {
+      "name": "button",
+      "title": "Honest Button",
+      "description": "A workwear-inspired button with a hard offset shadow and uppercase grotesk label. No gradients, no glow.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/button.json"
+    },
+    {
+      "name": "navbar",
+      "title": "Masthead Navbar",
+      "description": "A print-editorial masthead navbar: serif wordmark between thin rules, with an issue-date line.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/navbar.json"
+    },
+    {
+      "name": "hero",
+      "title": "Manifesto Hero",
+      "description": "An asymmetric editorial hero with oversized serif display type on warm paper. Never centered.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/hero.json"
+    },
+    {
+      "name": "features",
+      "title": "Ledger Features",
+      "description": "Features as a numbered archival ledger with hairline dividers and mono index numbers.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/features.json"
+    },
+    {
+      "name": "pricing",
+      "title": "Menu Pricing",
+      "description": "Pricing laid out like a bistro menu: serif prices, dotted leaders, one featured chef's-pick tier.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/pricing.json"
+    },
+    {
+      "name": "testimonials",
+      "title": "Margin Notes Testimonials",
+      "description": "Testimonials as literary pull-quotes with marginalia-style attribution. No star ratings.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/testimonials.json"
+    },
+    {
+      "name": "faq",
+      "title": "Footnotes FAQ",
+      "description": "An FAQ accordion styled like scholarly footnotes: numbered, ruled, and serif.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/faq.json"
+    },
+    {
+      "name": "cta-banner",
+      "title": "Poster CTA",
+      "description": "A Swiss-poster call to action: flat red, oversized grotesk type, rubber-stamp badge.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/cta-banner.json"
+    },
+    {
+      "name": "footer",
+      "title": "Colophon Footer",
+      "description": "A footer set like a book colophon: small caps, credits, and hairline rules.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/footer.json"
+    },
+    {
+      "name": "contact-form",
+      "title": "Letter Contact Form",
+      "description": "A contact form written as a letter: salutation, ruled lines, and a sign-off submit.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/contact-form.json"
+    }
+  ]
+}
