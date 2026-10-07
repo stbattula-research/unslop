@@ -100,6 +100,18 @@ Point your agent at [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 
+## Plugins — pre-launch audit
+
+Components get you a site that doesn't *look* AI-made. The audit plugin makes sure it isn't *shipped* half-ready: missing meta descriptions, no favicon, broken links, `console.log` left in, an API key committed next to the hero image.
+
+```bash
+# audit a local build, or a deployed site
+./plugins/prelaunch-audit/audit ./dist
+./plugins/prelaunch-audit/audit https://example.com
+```
+
+22 checks, zero dependencies (Python 3 stdlib only), exits 1 on failure so it works as a CI gate. Ships with an [agent skill](plugins/prelaunch-audit/SKILL.md) — the agent runs the CLI, walks the [launch checklist](plugins/prelaunch-audit/checklists/core.md) and [security checklist](plugins/prelaunch-audit/checklists/security.md), fixes what it finds, and flags what needs a human. Details in [`plugins/prelaunch-audit/README.md`](plugins/prelaunch-audit/README.md).
+
 ## Install — React + Tailwind
 
 Each component is a [shadcn registry](https://ui.shadcn.com/docs/registry) item:

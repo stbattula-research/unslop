@@ -1,0 +1,932 @@
+#!/usr/bin/env python3
+"""audit — pre-launch website audit.
+
+Scans a local static site directory or a deployed URL against a pre-launch
+checklist: SEO/meta tags, social previews, favicon, robots/sitemap, links,
+images, forms, custom 404, leaked secrets, security headers, and page weight.
+
+Zero dependencies — stdlib only. Works offline for local directories.
+
+Usage:
+    audit <dir>                    audit a local static site directory
+    audit <url>                    audit a deployed site (http:// or https://)
+
+    audit <target> --format json   machine-readable output
+    audit <target> --only seo,links
+    audit <target> --skip perf
+    audit <target> --check-external   also HEAD external links (slow)
+    audit <target> --no-fail           always exit 0
+
+Exit code: 1 if any check failed, 0 otherwise (unless --no-fail).
+"""
+
+import argparse
+import html as htmlmod
+import json
+import os
+import re
+import sys
+import urllib.parse
+import urllib.request
+from collections import Counter
+from html.parser import HTMLParser
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+
+# ---------------------------------------------------------------------------
+# Findings model
+# ---------------------------------------------------------------------------
+
+
+def finding(check, severity, where, message, fix=""):
+    """A single audit finding. severity: fail | warn | info."""
+    return {
+        "check": check,
+        "severity": severity,
+        "where": where,
+        "message": message,
+        "fix": fix,
+    }
+
+
+# ---------------------------------------------------------------------------
+# HTML parsing (stdlib)
+# ---------------------------------------------------------------------------
+
+VOID = {"img", "link", "meta", "input", "br", "hr", "source", "wbr", "track",
+        "area", "base", "col", "embed", "param"}
+
+
+class PageScan(HTMLParser):
+    """Collects the facts the checks need from one HTML document."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.title = ""
+        self._in_title = False
+        self.metas = {}          # meta name/property -> content (first wins)
+        self.html_lang = None
+        self.anchor_hrefs = []   # (href, link text)
+        self.links = []          # link[rel] hrefs: {"rel":..., "href":...}
+        self.imgs = []           # {"src","alt","width","height"}
+        self.forms = []          # {"action","inputs":[{...}]}
+        self._form_stack = []
+        self.headings = []       # (level, text)
+        self.ids = set()
+        self.inline_scripts = [] # inline script bodies
+        self.script_srcs = []
+        self.inline_style_bytes = 0
+        self._capture = None     # ("title"|"script"|"style"|"heading", extra)
+        self._buf = []
+
+    # -- helpers -----------------------------------------------------------
+    def _flush(self):
+        text = "".join(self._buf)
+        kind, extra = self._capture
+        if kind == "title":
+            self.title += text
+        elif kind == "script":
+            self.inline_scripts.append(text)
+        elif kind == "style":
+            self.inline_style_bytes += len(text.encode("utf-8", "ignore"))
+        elif kind == "heading":
+            self.headings.append((extra, text.strip()))
+        self._capture = None
+        self._buf = []
+
+    # -- parser hooks ------------------------------------------------------
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "html" and a.get("lang"):
+            self.html_lang = a["lang"]
+        if tag == "title":
+            self._in_title = True
+            self._capture, self._buf = ("title", None), []
+        elif tag == "meta":
+            key = (a.get("name") or a.get("property") or "").lower()
+            if key and key not in self.metas:
+                self.metas[key] = a.get("content", "")
+        elif tag == "a" and a.get("href"):
+            self.anchor_hrefs.append((a["href"], ""))
+        elif tag == "link":
+            self.links.append({"rel": (a.get("rel") or "").lower(),
+                               "href": a.get("href", "")})
+        elif tag == "img":
+            self.imgs.append({"src": a.get("src", ""), "alt": a.get("alt"),
+                              "width": a.get("width"), "height": a.get("height")})
+        elif tag == "form":
+            self._form_stack.append({"action": a.get("action", ""),
+                                     "novalidate": "novalidate" in a,
+                                     "inputs": []})
+        elif tag in ("input", "textarea", "select", "button"):
+            rec = {"tag": tag, "type": a.get("type", "text"),
+                   "name": a.get("name", ""), "id": a.get("id", ""),
+                   "required": "required" in a,
+                   "aria-label": a.get("aria-label", ""),
+                   "placeholder": a.get("placeholder", "")}
+            if self._form_stack:
+                self._form_stack[-1]["inputs"].append(rec)
+        elif tag in ("h1", "h2", "h3", "h4", "h5", "h6"):
+            self._capture, self._buf = (("heading", int(tag[1])), [])
+        elif tag == "script":
+            if a.get("src"):
+                self.script_srcs.append(a["src"])
+            else:
+                self._capture, self._buf = (("script", None), [])
+        elif tag == "style":
+            self._capture, self._buf = (("style", None), [])
+        if "id" in a:
+            self.ids.add(a["id"])
+        if tag == "label" and a.get("for"):
+            self.ids.add("label-for:" + a["for"])
+
+    def handle_endtag(self, tag):
+        if tag == "title":
+            self._in_title = False
+        if tag == "form" and self._form_stack:
+            self.forms.append(self._form_stack.pop())
+        if self._capture and ((tag == "title") or
+                              (self._capture[0] == "script" and tag == "script") or
+                              (self._capture[0] == "style" and tag == "style") or
+                              (self._capture[0] == "heading" and tag == f"h{self._capture[1]}")):
+            self._flush()
+
+    def handle_data(self, data):
+        if self._capture:
+            self._buf.append(data)
+
+
+def scan_html(text):
+    """Parse HTML text, return a PageScan. Never raises on malformed input."""
+    p = PageScan()
+    try:
+        p.feed(text)
+        p.close()
+    except Exception:
+        pass
+    # any unterminated form still counts
+    p.forms.extend(p._form_stack)
+    p._form_stack = []
+    return p
+
+
+# ---------------------------------------------------------------------------
+# Target loading
+# ---------------------------------------------------------------------------
+
+SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".DS_Store"}
+TEXT_EXTS = {".html", ".htm", ".css", ".js", ".mjs", ".json", ".txt", ".xml",
+             ".env", ".md", ".ts", ".tsx", ".jsx", ".py", ".rb", ".php"}
+
+
+class Ctx:
+    """Everything the checks run against."""
+
+    def __init__(self, target):
+        self.target = target
+        self.mode = "url" if re.match(r"^https?://", target, re.I) else "dir"
+        self.pages = []        # PageInfo dicts: id, scan, bytes, text (dir) /
+                               #   url, status, headers, scan, bytes (url)
+        self.root = None       # dir mode: site root Path
+        self.base_url = None   # url mode
+        self.text_files = []   # dir mode: (relpath, text) of scannable text files
+        self._fetch_cache = {}  # url mode: url -> (status, headers, bytes)
+
+    # -- dir mode ----------------------------------------------------------
+    def load_dir(self):
+        root = Path(self.target).resolve()
+        if not root.is_dir():
+            raise SystemExit(f"audit: not a directory: {self.target}")
+        self.root = root
+        html_files = []
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+            for fn in filenames:
+                p = Path(dirpath) / fn
+                rel = p.relative_to(root).as_posix()
+                ext = p.suffix.lower()
+                if ext in (".html", ".htm"):
+                    html_files.append((rel, p))
+                if ext in TEXT_EXTS or fn == ".env" or fn.startswith(".env."):
+                    try:
+                        self.text_files.append((rel, p.read_text(
+                            encoding="utf-8", errors="ignore")))
+                    except OSError:
+                        pass
+        for rel, p in sorted(html_files):
+            try:
+                text = p.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            scan = scan_html(text)
+            self.pages.append({"id": rel, "scan": scan, "bytes": len(
+                text.encode("utf-8", "ignore")), "text": text, "path": p})
+        if not self.pages:
+            raise SystemExit(f"audit: no .html files found under {self.target}")
+
+    def resolve_local(self, page_rel, ref):
+        """Resolve an href/src from a dir-mode page to a root-relative path.
+
+        Returns the posix path if a file exists, else None.
+        """
+        ref = ref.split("#", 1)[0].split("?", 1)[0]
+        if not ref or ref.startswith(("mailto:", "tel:", "javascript:", "data:")):
+            return None
+        root = self.root
+        if ref.startswith("/"):
+            cand = root / ref.lstrip("/")
+        else:
+            cand = (root / page_rel).parent / ref
+        try:
+            cand = cand.resolve()
+            root_r = root.resolve()
+            if root_r not in cand.parents and cand != root_r:
+                return None  # escapes the site root
+        except OSError:
+            return None
+        rel = cand.relative_to(root_r).as_posix()
+        if (root_r / rel).is_file():
+            return rel
+        # extensionless routes: /about -> about.html ; /docs/ -> docs/index.html
+        for alt in (rel + ".html", rel.rstrip("/") + "/index.html"):
+            if (root_r / alt).is_file():
+                return alt
+        return None
+
+    # -- url mode ----------------------------------------------------------
+    def fetch(self, url, timeout=10, allow_redirects=True):
+        if url in self._fetch_cache:
+            return self._fetch_cache[url]
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "unslop-audit/1.0"})
+        try:
+            if not allow_redirects:
+                opener = urllib.request.build_opener(NoRedirect())
+                resp = opener.open(req, timeout=timeout)
+            else:
+                resp = urllib.request.urlopen(req, timeout=timeout)
+            status = getattr(resp, "status", 200)
+            headers = {k.lower(): v for k, v in resp.headers.items()}
+            body = resp.read(8 * 1024 * 1024)
+            final = resp.geturl()
+        except urllib.error.HTTPError as e:
+            status, headers, body, final = e.code, {}, b"", url
+        except Exception:
+            status, headers, body, final = None, {}, b"", url
+        out = (status, headers, body, final)
+        self._fetch_cache[url] = out
+        return out
+
+    def load_url(self, max_pages=25):
+        base = self.target if self.target.endswith("/") else self.target + "/"
+        self.base_url = base
+        origin = urllib.parse.urlparse(base).netloc.lower()
+        seen, queue = set(), [base]
+        while queue and len(self.pages) < max_pages:
+            url = queue.pop(0)
+            if url in seen:
+                continue
+            seen.add(url)
+            status, headers, body, final = self.fetch(url)
+            ctype = headers.get("content-type", "")
+            if status != 200 or "html" not in ctype:
+                continue
+            try:
+                text = body.decode("utf-8", errors="ignore")
+            except Exception:
+                text = ""
+            scan = scan_html(text)
+            self.pages.append({"id": final, "url": final, "scan": scan,
+                               "bytes": len(body), "headers": headers,
+                               "status": status, "text": text})
+            for href, _ in scan.anchor_hrefs:
+                absu = urllib.parse.urljoin(final, href)
+                parts = urllib.parse.urlparse(absu)
+                if parts.netloc.lower() != origin:
+                    continue
+                clean = urllib.parse.urlunparse(parts._replace(fragment=""))
+                if clean not in seen:
+                    queue.append(clean)
+
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Checks. Each takes (ctx, opts) -> [finding].
+# opts: argparse namespace (check_external, https probe flags, ...)
+# ---------------------------------------------------------------------------
+
+DESC_MIN, DESC_MAX = 50, 160
+IMG_WARN_BYTES = 512 * 1024
+PAGE_WARN_BYTES = 500 * 1024
+
+SECRET_PATTERNS = [
+    (r"sk-[A-Za-z0-9]{20,}", "possible OpenAI-style API key"),
+    (r"AKIA[0-9A-Z]{16}", "possible AWS access key ID"),
+    (r"ghp_[A-Za-z0-9]{36}", "possible GitHub personal access token"),
+    (r"github_pat_[A-Za-z0-9_]{20,}", "possible GitHub fine-grained token"),
+    (r"xox[baprs]-[A-Za-z0-9-]{10,}", "possible Slack token"),
+    (r"AIza[0-9A-Za-z_-]{35}", "possible Google API key"),
+    (r"-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----", "private key material"),
+    (r"(?i)(?:api[_-]?key|api[_-]?secret|client[_-]?secret|db[_-]?pass|passwd|password|secret[_-]?key)\s*[:=]\s*[\"'][^\"']{4,}[\"']",
+     "possible hardcoded credential"),
+]
+DEBUG_PATTERNS = [
+    (r"console\.(log|debug|warn|error|trace)\(", "console.* debug call"),
+    (r"(?<![\w$])debugger;?", "debugger statement"),
+]
+
+
+def _label(p):
+    return p["id"]
+
+
+# -- SEO -------------------------------------------------------------------
+
+def check_title(ctx, opts):
+    out, titles = [], Counter()
+    for p in ctx.pages:
+        titles[p["scan"].title.strip()] += 1
+        if not p["scan"].title.strip():
+            out.append(finding("seo.title", "fail", _label(p),
+                               "missing <title>",
+                               "add a unique, descriptive <title> (50-60 chars)"))
+    for title, n in titles.items():
+        if title and n > 1:
+            out.append(finding("seo.title", "warn", f"{n} pages",
+                               f'duplicate <title>: "{title[:60]}"',
+                               "give each page a unique title"))
+    return out
+
+
+def check_meta_description(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        d = p["scan"].metas.get("description", "").strip()
+        if not d:
+            out.append(finding("seo.meta-description", "fail", _label(p),
+                               "missing meta description",
+                               'add <meta name="description" content="..."> (~150 chars)'))
+        elif len(d) < DESC_MIN:
+            out.append(finding("seo.meta-description", "warn", _label(p),
+                               f"meta description too short ({len(d)} chars)",
+                               "aim for 120-155 characters"))
+        elif len(d) > DESC_MAX:
+            out.append(finding("seo.meta-description", "warn", _label(p),
+                               f"meta description too long ({len(d)} chars, truncates in SERPs)",
+                               "trim to ~155 characters"))
+    return out
+
+
+def check_lang(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        if not p["scan"].html_lang:
+            out.append(finding("seo.lang", "warn", _label(p),
+                               "missing lang attribute on <html>",
+                               'add lang="en" (or the page language) to <html>'))
+    return out
+
+
+def check_h1(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        h1s = [h for lvl, h in p["scan"].headings if lvl == 1]
+        if not h1s:
+            out.append(finding("seo.h1", "warn", _label(p),
+                               "no <h1> on page",
+                               "add exactly one <h1> describing the page"))
+        elif len(h1s) > 1:
+            out.append(finding("seo.h1", "warn", _label(p),
+                               f"{len(h1s)} <h1> elements",
+                               "keep a single <h1> per page"))
+    return out
+
+
+# -- Social previews --------------------------------------------------------
+
+def check_social(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        m = p["scan"].metas
+        for key in ("og:title", "og:description", "og:image"):
+            if not m.get(key, "").strip():
+                out.append(finding("social.og", "warn", _label(p),
+                                   f"missing <meta property=\"{key}\">",
+                                   "add Open Graph tags so link shares render a card"))
+                break
+        if not m.get("twitter:card", "").strip():
+            out.append(finding("social.twitter", "warn", _label(p),
+                               "missing <meta name=\"twitter:card\">",
+                               'add <meta name="twitter:card" content="summary_large_image">'))
+    return out
+
+
+# -- Favicon ----------------------------------------------------------------
+
+def check_favicon(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        icons = [l for l in p["scan"].links
+                 if "icon" in l["rel"] and l["href"]]
+        if not icons:
+            out.append(finding("branding.favicon", "warn", _label(p),
+                               "no favicon linked",
+                               'add <link rel="icon" href="/favicon.ico"> (or .svg/.png)'))
+            continue
+        if ctx.mode == "dir":
+            for ic in icons:
+                if ctx.resolve_local(p["id"], ic["href"]) is None:
+                    out.append(finding("branding.favicon", "fail", _label(p),
+                                       f"favicon file missing: {ic['href']}",
+                                       "ship the referenced favicon file"))
+    return out
+
+
+# -- Discoverability --------------------------------------------------------
+
+def check_robots_sitemap(ctx, opts):
+    out = []
+    if ctx.mode == "dir":
+        if not (ctx.root / "robots.txt").is_file():
+            out.append(finding("discover.robots", "warn", ctx.target,
+                               "robots.txt missing from site root",
+                               "add robots.txt (at minimum: User-agent: * / Disallow:)"))
+        if not (ctx.root / "sitemap.xml").is_file():
+            out.append(finding("discover.sitemap", "warn", ctx.target,
+                               "sitemap.xml missing from site root",
+                               "generate a sitemap.xml listing every page"))
+    else:
+        for name, cid in (("robots.txt", "discover.robots"),
+                          ("sitemap.xml", "discover.sitemap")):
+            status, _, _, _ = ctx.fetch(urllib.parse.urljoin(ctx.base_url, name))
+            if status != 200:
+                out.append(finding(cid, "warn", name,
+                                   f"{name} not reachable (HTTP {status})",
+                                   f"publish {name} at the site root"))
+    return out
+
+
+# -- Links ------------------------------------------------------------------
+
+def _is_external(ref):
+    return bool(re.match(r"^https?://", ref, re.I))
+
+
+def _probe_external(ctx, p, href, same_origin):
+    """HEAD/GET an external URL. Returns a finding or None."""
+    cid = "links.internal" if same_origin else "links.external"
+    clean = href.split("#", 1)[0]
+    status, _, _, _ = ctx.fetch(clean)
+    if status is None:
+        return finding(cid, "warn", _label(p),
+                       f"could not reach: {href} (network error)",
+                       "fix the URL or remove the link")
+    if status >= 400:
+        return finding(cid, "fail", _label(p),
+                       f"broken link: {href} (HTTP {status})",
+                       "fix the URL or remove the link")
+    return None
+
+
+def check_links(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        for href, _ in p["scan"].anchor_hrefs:
+            if not href or href.startswith(("#", "mailto:", "tel:",
+                                            "javascript:", "data:")):
+                if href.startswith("#") and len(href) > 1:
+                    frag = urllib.parse.unquote(href[1:])
+                    if frag not in p["scan"].ids:
+                        out.append(finding("links.anchor", "fail", _label(p),
+                                           f"dead anchor #{frag}",
+                                           "point the link at an existing id, or remove it"))
+                continue
+            if ctx.mode == "dir":
+                if _is_external(href):
+                    if opts.check_external:
+                        f = _probe_external(ctx, p, href, same_origin=False)
+                        if f:
+                            out.append(f)
+                    continue
+                if ctx.resolve_local(p["id"], href) is None:
+                    out.append(finding("links.internal", "fail", _label(p),
+                                       f"broken internal link: {href}",
+                                       "fix the href or add the target file"))
+            else:
+                absu = urllib.parse.urljoin(p["url"], href)
+                clean = urllib.parse.urlunparse(
+                    urllib.parse.urlparse(absu)._replace(fragment=""))
+                same_origin = (urllib.parse.urlparse(clean).netloc.lower()
+                               == urllib.parse.urlparse(ctx.base_url).netloc.lower())
+                if not same_origin and not opts.check_external:
+                    continue
+                f = _probe_external(ctx, p, href, same_origin)
+                if f:
+                    out.append(f)
+    return out
+
+
+# -- Images -----------------------------------------------------------------
+
+def check_images(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        for img in p["scan"].imgs:
+            src = img["src"]
+            if not src or src.startswith("data:"):
+                continue
+            if img["alt"] is None:
+                out.append(finding("images.alt", "warn", _label(p),
+                                   f'<img src="{src}"> has no alt attribute',
+                                   'add alt text, or alt="" for decorative images'))
+            if ctx.mode == "dir" and not _is_external(src):
+                rel = ctx.resolve_local(p["id"], src)
+                if rel is None:
+                    out.append(finding("images.missing", "fail", _label(p),
+                                       f"image file missing: {src}",
+                                       "ship the file or fix the src"))
+                    continue
+                size = (ctx.root / rel).stat().st_size
+                if size > IMG_WARN_BYTES:
+                    out.append(finding("images.size", "warn", _label(p),
+                                       f"{src} is {size // 1024} KB (over {IMG_WARN_BYTES // 1024} KB)",
+                                       "compress/resize — large images hurt load time"))
+            if not img["width"] or not img["height"]:
+                out.append(finding("images.dimensions", "warn", _label(p),
+                                   f'<img src="{src}"> missing width/height',
+                                   "set width+height to avoid layout shift"))
+    return out
+
+
+# -- Forms ------------------------------------------------------------------
+
+def check_forms(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        for form in p["scan"].forms:
+            for inp in form["inputs"]:
+                if inp["tag"] in ("button",) or inp["type"] in (
+                        "submit", "button", "reset", "hidden"):
+                    continue
+                labelled = (inp["aria-label"] or
+                            f"label-for:{inp['id']}" in p["scan"].ids)
+                if not labelled:
+                    out.append(finding("forms.labels", "warn", _label(p),
+                                       f'<{inp["tag"]} name="{inp["name"] or inp["type"]}"> has no label',
+                                       "associate a <label>, aria-label, or visible hint"))
+            needs = [i for i in form["inputs"]
+                     if i["tag"] in ("input", "textarea", "select")
+                     and i["type"] not in ("hidden", "submit", "button")]
+            if needs and not any(i["required"] for i in needs) and not form["novalidate"]:
+                out.append(finding("forms.validation", "warn", _label(p),
+                                   "form has no required fields or validation hints",
+                                   "mark mandatory fields required and validate server-side too"))
+    return out
+
+
+# -- Error pages ------------------------------------------------------------
+
+def check_404(ctx, opts):
+    out = []
+    if ctx.mode == "dir":
+        if not (ctx.root / "404.html").is_file():
+            out.append(finding("errors.custom-404", "warn", ctx.target,
+                               "no 404.html in site root",
+                               "add a branded 404 page that links back to the site"))
+    else:
+        probe = urllib.parse.urljoin(
+            ctx.base_url, "audit-probe-" + os.urandom(4).hex() + ".html")
+        status, _, body, _ = ctx.fetch(probe)
+        if status != 404:
+            out.append(finding("errors.custom-404", "warn", probe,
+                               f"missing URL returned HTTP {status} instead of 404",
+                               "serve a real 404 status with a helpful page"))
+        elif b"<title>" not in body[:4096].lower():
+            out.append(finding("errors.custom-404", "warn", probe,
+                               "404 response looks like a generic server page",
+                               "serve a branded 404 page"))
+    return out
+
+
+# -- Secrets & debug code (source scan, dir mode) ---------------------------
+
+def check_secrets(ctx, opts):
+    if ctx.mode != "dir":
+        return []
+    out = []
+    for rel, text in ctx.text_files:
+        if rel.startswith("tests/") or "fixture" in rel:
+            continue  # never flag our own test fixtures
+        for pat, label in SECRET_PATTERNS:
+            if re.search(pat, text):
+                out.append(finding("security.secrets", "fail", rel,
+                                   f"{label} — do not commit credentials",
+                                   "revoke it, move it to env vars, scrub git history"))
+                break
+        base = os.path.basename(rel)
+        if base == ".env" or base.startswith(".env."):
+            out.append(finding("security.secrets", "fail", rel,
+                               ".env file would ship with the site",
+                               "gitignore .env files; inject config at deploy time"))
+    return out
+
+
+def check_debug(ctx, opts):
+    out = []
+    for p in ctx.pages:
+        src = p["text"]
+        for pat, label in DEBUG_PATTERNS:
+            if re.search(pat, src):
+                out.append(finding("quality.debug-code", "warn", _label(p),
+                                   f"{label} left in shipped code",
+                                   "remove debug calls before launch"))
+                break
+    if ctx.mode == "dir":
+        for rel, text in ctx.text_files:
+            if not rel.endswith((".js", ".mjs", ".ts", ".tsx", ".jsx")):
+                continue
+            if rel.startswith("tests/") or "fixture" in rel:
+                continue
+            for pat, label in DEBUG_PATTERNS:
+                if re.search(pat, text):
+                    out.append(finding("quality.debug-code", "warn", rel,
+                                       f"{label} left in shipped code",
+                                       "remove debug calls before launch"))
+                    break
+    return out
+
+
+# -- Live security (url mode) -----------------------------------------------
+
+SECURITY_HEADERS = {
+    "content-security-policy": "add a Content-Security-Policy header",
+    "x-frame-options": "add X-Frame-Options (or frame-ancestors in CSP)",
+    "x-content-type-options": "add X-Content-Type-Options: nosniff",
+    "referrer-policy": "add a Referrer-Policy header",
+}
+
+
+def check_security_headers(ctx, opts):
+    if ctx.mode != "url" or not ctx.pages:
+        return []
+    out = []
+    headers = ctx.pages[0].get("headers", {})
+    is_https = urllib.parse.urlparse(ctx.base_url).scheme == "https"
+    for h, fix in SECURITY_HEADERS.items():
+        if h not in headers:
+            out.append(finding("security.headers", "warn", ctx.base_url,
+                               f"missing security header: {h}", fix))
+    if is_https and "strict-transport-security" not in headers:
+        out.append(finding("security.headers", "warn", ctx.base_url,
+                           "missing Strict-Transport-Security header",
+                           "send Strict-Transport-Security: max-age=31536000"))
+    return out
+
+
+def check_https_redirect(ctx, opts):
+    if ctx.mode != "url":
+        return []
+    parts = urllib.parse.urlparse(ctx.base_url)
+    if parts.scheme != "https":
+        return []
+    http_url = urllib.parse.urlunparse(parts._replace(scheme="http"))
+    status, headers, _, _ = ctx.fetch(http_url, allow_redirects=False)
+    loc = headers.get("location", "")
+    if status not in (301, 302, 303, 307, 308) or not loc.startswith("https://"):
+        return [finding("security.https", "fail", http_url,
+                        "http:// does not redirect to https://",
+                        "force HTTPS with a 301 redirect")]
+    return []
+
+
+# -- Performance ------------------------------------------------------------
+
+def check_perf(ctx, opts):
+    out = []
+    if ctx.mode != "dir":
+        return out
+    for p in ctx.pages:
+        scan = p["scan"]
+        total = p["bytes"] + scan.inline_style_bytes
+        for src in scan.script_srcs + [l["href"] for l in scan.links
+                                       if "stylesheet" in l["rel"]]:
+            if src and not _is_external(src):
+                rel = ctx.resolve_local(p["id"], src)
+                if rel:
+                    try:
+                        total += (ctx.root / rel).stat().st_size
+                    except OSError:
+                        pass
+        if total > PAGE_WARN_BYTES:
+            out.append(finding("perf.page-weight", "warn", _label(p),
+                               f"page pulls ~{total // 1024} KB (over {PAGE_WARN_BYTES // 1024} KB)",
+                               "compress images, drop unused CSS/JS, lazy-load below the fold"))
+    return out
+
+
+# -- Check registry ---------------------------------------------------------
+
+def _split_named(*pairs, fn):
+    """One runner row per check id sharing a single implementation.
+
+    The implementation tags each finding with its own check id; each row
+    keeps only the findings that belong to it. `pairs` are (id, title).
+    """
+    rows = []
+    for cid, title in pairs:
+        def row(ctx, opts, _fn=fn, _cid=cid):
+            return [f for f in _fn(ctx, opts) if f["check"] == _cid]
+        row.__name__ = "check_" + cid.replace(".", "_")
+        rows.append((cid, title, row))
+    return rows
+
+
+CHECKS = [
+    ("seo.title", "Page <title>", check_title),
+    ("seo.meta-description", "Meta description", check_meta_description),
+    ("seo.lang", "HTML lang attribute", check_lang),
+    ("seo.h1", "Single <h1>", check_h1),
+    ("social.og", "Open Graph tags", check_social),
+    ("branding.favicon", "Favicon", check_favicon),
+    ("discover.robots", "robots.txt / sitemap.xml", check_robots_sitemap),
+    *_split_named(("links.internal", "Internal links"),
+                  ("links.external", "External links"),
+                  ("links.anchor", "Anchor links"), fn=check_links),
+    *_split_named(("images.alt", "Image alt text"),
+                  ("images.missing", "Image files present"),
+                  ("images.size", "Image file sizes"),
+                  ("images.dimensions", "Image dimensions"), fn=check_images),
+    *_split_named(("forms.labels", "Form labels"),
+                  ("forms.validation", "Form validation"), fn=check_forms),
+    ("errors.custom-404", "Custom 404 page", check_404),
+    ("security.secrets", "Leaked secrets in source", check_secrets),
+    ("security.headers", "Security headers (live)", check_security_headers),
+    ("security.https", "HTTPS redirect (live)", check_https_redirect),
+    ("quality.debug-code", "Debug code left in", check_debug),
+    ("perf.page-weight", "Page weight", check_perf),
+]
+
+
+# ---------------------------------------------------------------------------
+# Runner
+# ---------------------------------------------------------------------------
+
+def run_audit(ctx, opts):
+    """Run the selected checks. Returns (check_results, findings)."""
+    only = {c.strip() for c in (opts.only or "").split(",") if c.strip()}
+    skip = {c.strip() for c in (opts.skip or "").split(",") if c.strip()}
+
+    def selected(cid):
+        cat = cid.split(".")[0]
+        if only and cid not in only and cat not in only:
+            return False
+        if cid in skip or cat in skip:
+            return False
+        return True
+
+    seen_fns, check_results, findings = set(), [], []
+    for cid, title, fn in CHECKS:
+        if id(fn) in seen_fns or not selected(cid):
+            continue
+        seen_fns.add(id(fn))
+        try:
+            items = fn(ctx, opts)
+        except Exception as e:  # a check must never kill the audit
+            items = [finding(cid, "warn", ctx.target,
+                             f"check crashed: {e}",
+                             "report this as a bug in the audit tool")]
+        findings.extend(items)
+        by_sev = Counter(i["severity"] for i in items)
+        status = ("failed" if by_sev["fail"] else
+                  "warnings" if by_sev["warn"] else "passed")
+        check_results.append({"check": cid, "title": title, "status": status,
+                              "findings": items})
+    return check_results, findings
+
+
+def summarize(findings):
+    fails = sum(1 for f in findings if f["severity"] == "fail")
+    warns = sum(1 for f in findings if f["severity"] == "warn")
+    return fails, warns
+
+
+# ---------------------------------------------------------------------------
+# Output formats
+# ---------------------------------------------------------------------------
+
+def render_text(ctx, check_results, findings):
+    lines = [f"audit: {ctx.target} "
+             f"({'url' if ctx.mode == 'url' else str(len(ctx.pages)) + ' pages'})",
+             "=" * 60]
+    for cr in check_results:
+        mark = {"failed": "FAIL", "warnings": "WARN",
+                "passed": "ok"}.get(cr["status"], "?")
+        lines.append(f"{mark:4} {cr['check']:28} {cr['title']}")
+        for f in cr["findings"]:
+            sev = f["severity"].upper()
+            lines.append(f"      [{sev}] {f['where']}")
+            lines.append(f"            {f['message']}")
+            if f["fix"]:
+                lines.append(f"            fix: {f['fix']}")
+    fails, warns = summarize(findings)
+    n_checks = len(check_results)
+    n_passed = sum(1 for c in check_results if c["status"] == "passed")
+    lines.append("=" * 60)
+    lines.append(f"{n_checks} checks: {n_passed} passed, "
+                 f"{fails} failed, {warns} warnings")
+    return "\n".join(lines)
+
+
+def render_json(ctx, check_results, findings):
+    fails, warns = summarize(findings)
+    return json.dumps({
+        "target": ctx.target,
+        "mode": ctx.mode,
+        "pages": len(ctx.pages),
+        "summary": {"checks": len(check_results), "failed": fails,
+                    "warnings": warns,
+                    "passed": sum(1 for c in check_results
+                                  if c["status"] == "passed")},
+        "findings": findings,
+    }, indent=2)
+
+
+def render_markdown(ctx, check_results, findings):
+    fails, warns = summarize(findings)
+    lines = [f"# Pre-launch audit: `{ctx.target}`", "",
+             f"{len(check_results)} checks · "
+             f"{sum(1 for c in check_results if c['status'] == 'passed')} passed · "
+             f"{fails} failed · {warns} warnings", ""]
+    for cr in check_results:
+        icon = {"failed": "❌", "warnings": "⚠️",
+                "passed": "✅"}.get(cr["status"], "❔")
+        lines.append(f"## {icon} {cr['check']} — {cr['title']}")
+        if not cr["findings"]:
+            lines.append("")
+            lines.append("All clear.")
+        for f in cr["findings"]:
+            lines.append("")
+            lines.append(f"- **{f['severity'].upper()}** `{f['where']}` — {f['message']}")
+            if f["fix"]:
+                lines.append(f"  - Fix: {f['fix']}")
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(
+        prog="audit",
+        description="Pre-launch website audit: SEO, social, links, images, "
+                    "forms, secrets, security headers, performance.")
+    ap.add_argument("target", help="local site directory or http(s):// URL")
+    ap.add_argument("--format", choices=["text", "json", "markdown"],
+                    default="text")
+    ap.add_argument("--only", metavar="CHECKS",
+                    help="comma-separated check ids or categories to run")
+    ap.add_argument("--skip", metavar="CHECKS",
+                    help="comma-separated check ids or categories to skip")
+    ap.add_argument("--check-external", action="store_true",
+                    help="also verify external links (slower)")
+    ap.add_argument("--no-fail", action="store_true",
+                    help="always exit 0, even with failures")
+    ap.add_argument("--max-pages", type=int, default=25,
+                    help="max pages to crawl in URL mode (default 25)")
+    args = ap.parse_args(argv)
+
+    ctx = Ctx(args.target)
+    try:
+        if ctx.mode == "dir":
+            ctx.load_dir()
+        else:
+            ctx.load_url(max_pages=args.max_pages)
+    except SystemExit as e:
+        print(e, file=sys.stderr)
+        return 2
+    if ctx.mode == "url" and not ctx.pages:
+        print(f"audit: could not fetch any HTML from {args.target}",
+              file=sys.stderr)
+        return 2
+
+    check_results, findings = run_audit(ctx, args)
+    if args.format == "json":
+        print(render_json(ctx, check_results, findings))
+    elif args.format == "markdown":
+        print(render_markdown(ctx, check_results, findings))
+    else:
+        print(render_text(ctx, check_results, findings))
+
+    fails, _ = summarize(findings)
+    return 0 if (args.no_fail or fails == 0) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

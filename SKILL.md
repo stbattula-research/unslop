@@ -54,3 +54,14 @@ These are non-negotiable. They are the entire point of the library:
 ## 5. When the user wants something not in the catalog
 
 Check `registry.json` first. If no component fits, say so plainly and offer to build in the Unslop style using `DESIGN.md` principles — do not silently substitute a generic AI-style component.
+
+## 6. Before launch — run the pre-launch audit
+
+When the site is built and the user is close to shipping, audit it with the `prelaunch-audit` plugin (`plugins/prelaunch-audit/`):
+
+```bash
+./plugins/prelaunch-audit/audit ./dist          # local build
+./plugins/prelaunch-audit/audit https://example.com   # deployed site
+```
+
+22 automated checks (SEO, social previews, links, images, forms, 404, leaked secrets, security headers, page weight), zero dependencies, exits 1 on failure. Then work the checklists in `plugins/prelaunch-audit/checklists/` — fix what you find, and report in two buckets: *fixed* vs *needs you*. The full agent workflow is in `plugins/prelaunch-audit/SKILL.md`.
