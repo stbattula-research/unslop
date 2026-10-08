@@ -65,3 +65,15 @@ When the site is built and the user is close to shipping, audit it with the `pre
 ```
 
 22 automated checks (SEO, social previews, links, images, forms, 404, leaked secrets, security headers, page weight), zero dependencies, exits 1 on failure. Then work the checklists in `plugins/prelaunch-audit/checklists/` — fix what you find, and report in two buckets: *fixed* vs *needs you*. The full agent workflow is in `plugins/prelaunch-audit/SKILL.md`.
+
+## 7. Design like you mean it — the design-intel skill
+
+Before making visual decisions, read `skills/design-intel/SKILL.md`. It's senior-designer judgment as executable rules: type scale discipline and pairing (one serif display, one grotesk body, one mono label — never more), spacing rhythm (one ladder, whitespace as the primary tool), ink/paper/one-accent color discipline, genre-picked layouts, and copy that sounds like a person. Run its 15-question self-critique review on your own output before shipping — one "no" means fix it before committing.
+
+## 8. Animate with restraint — the motion playbook
+
+`MOTION.md` is the animation guide: stillness is a design choice — animate one thing, on interaction, or animate nothing. Interaction-triggered motion only (never fade-up-on-scroll stagger), spring configs that land like a stamp instead of bouncing (`stiffness: 400+, damping: 30+`), `easeOutQuint` for tweens, duration budgets (hover 120–200ms, nothing over 500ms), `prefers-reduced-motion` handling, and the never-do-this list (typing effects, count-ups, parallax, magnetic buttons, scroll-jacking). Worked example in `components/react/motion/reveal-card/` (needs `framer-motion` — the only dependency Unslop examples ever take). Motion examples are guidance, not catalog components — they stay out of `registry.json`.
+
+## 9. Turn vague asks into build briefs — the prompt-shaper skill
+
+When the user's request is a handwave ("build me a landing page"), reach for `skills/prompt-shaper/SKILL.md` before writing code. It detects the target tool, extracts eight intent dimensions (task, inputs, outputs, constraints, context, audience, success criteria, stop conditions), asks at most 3 clarifying questions with defaults, matches `registry.json` for components (and says so when nothing fits), bakes DESIGN.md constraints into the brief, and emits a one-page brief template with an acceptance checklist, stop conditions, and anti-slop prohibitions. The CLI helps: `./unslop find "<vague ask>"` refuses to guess below the confidence floor and points at prompt-shaper instead.

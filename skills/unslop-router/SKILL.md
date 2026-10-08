@@ -22,6 +22,19 @@ Extract two things from the user's message:
 ./unslop find "<the user's need in their own words>" --top 3
 ```
 
+`find` also scores the skill index (`skills/index.json`) alongside components:
+
+- A confident component match prints install commands, plus related skills when any score > 0.
+- If the query looks like skill work ("critique my design", "which component should I use", "help me write a better brief"), `find` routes to skills first instead of guessing a component.
+- If the query is too vague for any component (below the confidence floor), `find` refuses to guess and points at the **prompt-shaper** skill (`skills/prompt-shaper/SKILL.md`) — sharpen the ask, then re-run.
+
+Dedicated skill search:
+
+```bash
+./unslop skill "critique my typography"   # search skills by intent
+./unslop skill --list                     # list all skills with their paths
+```
+
 **Otherwise**, fetch the registry and match against `title`, `description`, `intents`, and `useCases` (never `notFor`):
 
 ```

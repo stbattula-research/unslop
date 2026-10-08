@@ -4,6 +4,8 @@
 Usage:
     unslop list
     unslop find "<what you're building>" [--top N]
+    unslop skill "<what you need help with>" [--top N]
+    unslop skill --list
     unslop add <name> [--stack react|html] [--dest DIR] [--run]
 
 Zero dependencies. Works offline against the local registry.json.
@@ -18,7 +20,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 REGISTRY = ROOT / "registry.json"
+SKILLS = ROOT / "skills" / "index.json"
 RAW_BASE = "https://raw.githubusercontent.com/stbattula-research/unslop/main"
+
+# Below this component score, a query is too vague to route to a component.
+# The CLI suggests the prompt-shaper skill instead of guessing.
+CONFIDENCE_FLOOR = 3
+SHAPER_PATH = "skills/prompt-shaper/SKILL.md"
 
 STOPWORDS = {
     "a", "an", "the", "and", "or", "of", "for", "to", "in", "on", "with",
@@ -34,6 +42,11 @@ def tokens(text):
 
 def load_registry():
     with open(REGISTRY) as f:
+        return json.load(f)["items"]
+
+
+def load_skills():
+    with open(SKILLS) as f:
         return json.load(f)["items"]
 
 
@@ -69,6 +82,21 @@ def find_matches(query, top=3):
     items = load_registry()
     ranked = sorted(items, key=lambda it: score(query, it), reverse=True)
     return [(it, score(query, it)) for it in ranked[:top]]
+
+
+def find_skill_matches(query, top=3):
+    items = load_skills()
+    ranked = sorted(items, key=lambda it: score(query, it), reverse=True)
+    return [(it, score(query, it)) for it in ranked[:top]]
+
+
+def print_skill_matches(matches):
+    for i, (it, s) in enumerate(matches, 1):
+        if s <= 0:
+            continue
+        print(f"{i}. {it['title']}  ({it['name']})  [score {s}]")
+        print(f"   {it['description']}")
+        print(f"   skill: read {it['path']}\n")
 
 
 def install_react(item, run=False):
@@ -116,10 +144,34 @@ def cmd_find(args):
     if "--top" in args:
         top = int(args[args.index("--top") + 1])
     matches = find_matches(query, top=top)
-    if not matches or matches[0][1] <= 0:
-        print("No confident match. Try describing the section "
-              "(hero, pricing, navbar, faq, footer, ...).")
+    skills = find_skill_matches(query, top=2)
+    best = matches[0][1] if matches else 0
+    best_skill = skills[0][1] if skills else 0
+
+    # Skill-first routing: the query is asking for help/skill work, not a
+    # component. Route it to skills instead of guessing a component.
+    if best_skill >= CONFIDENCE_FLOOR and best_skill > best:
+        top_skill = skills[0][0]["name"]
+        if best < CONFIDENCE_FLOOR and top_skill == "prompt-shaper":
+            # Genuinely vague ask where the shaper is the fix — fall through
+            # to the prompt-shaper trigger below.
+            pass
+        else:
+            print(f'Best skill matches for "{query}":\n')
+            print_skill_matches(skills)
+            return
+
+    # Prompt-shaper trigger: too vague to route to a component confidently.
+    # Don't guess a component — point at the skill that sharpens the ask.
+    if best < CONFIDENCE_FLOOR:
+        print(f'"{query}" is too vague to match a component confidently.\n')
+        print("Sharpen it first with the prompt-shaper skill, then re-run find:")
+        print(f"  read {SHAPER_PATH}")
+        if skills and skills[0][1] > 0:
+            print("\nRelated skills:\n")
+            print_skill_matches(skills)
         return
+
     print(f'Best matches for "{query}":\n')
     for i, (it, s) in enumerate(matches, 1):
         print(f"{i}. {it['title']}  ({it['name']})  [score {s}]")
@@ -127,6 +179,30 @@ def cmd_find(args):
         print(f"   react: npx shadcn@latest add {it['url']}")
         print(f"   html:  curl -O {RAW_BASE}/components/html/{it['name']}/{it['name']}.html "
               f"+ {it['name']}.css\n")
+    if skills and skills[0][1] > 0:
+        print("Related skills:\n")
+        print_skill_matches(skills)
+
+
+def cmd_skill(args):
+    if not args:
+        sys.exit("usage: unslop skill \"<what you need help with>\" [--top N]\n"
+                 "       unslop skill --list")
+    if args[0] == "--list":
+        for it in load_skills():
+            print(f"{it['name']:14} {it['title']:22} {it['path']}")
+        return
+    query = args[0]
+    top = 3
+    if "--top" in args:
+        top = int(args[args.index("--top") + 1])
+    matches = find_skill_matches(query, top=top)
+    if not matches or matches[0][1] <= 0:
+        print("No skill matched. Try describing the help you need: "
+              "router, design critique, prompt, brief.")
+        return
+    print(f'Best skill matches for "{query}":\n')
+    print_skill_matches(matches)
 
 
 def cmd_add(args):
@@ -161,10 +237,12 @@ def main():
         cmd_list()
     elif cmd == "find":
         cmd_find(rest)
+    elif cmd == "skill":
+        cmd_skill(rest)
     elif cmd == "add":
         cmd_add(rest)
     else:
-        sys.exit(f"unknown command '{cmd}'. Try: list, find, add")
+        sys.exit(f"unknown command '{cmd}'. Try: list, find, skill, add")
 
 
 if __name__ == "__main__":

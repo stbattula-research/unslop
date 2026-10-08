@@ -53,7 +53,11 @@ Other useful forms:
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
 ./unslop list                                      # list all 10 components
+./unslop skill "critique my design"                # search the skill index
+./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
+
+Too-vague queries don't get a guess: `find` refuses below its confidence floor and points at the prompt-shaper skill to sharpen the ask first.
 
 ### Install a component
 
@@ -82,6 +86,21 @@ After copying HTML/CSS files, link the stylesheet in your page:
 ### For AI coding agents
 
 Point your agent at [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md). It takes a natural-language request, scores it against the intent tags in `registry.json`, asks you when two components are close, and installs the winner — without restyling it into slop. (The general agent guide is [`SKILL.md`](SKILL.md).)
+
+## The one-roof kit
+
+Unslop is one kit for AI-built websites that don't look AI-built — components, discovery, design judgment, brief-sharpening, motion, and launch checks:
+
+| Piece | What it does | Start here |
+|---|---|---|
+| **Components** | 10 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
+| **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
+| **Prompt Shaper** | Vague request in → sharp Unslop-aware build brief out (components matched, DESIGN.md baked in, stop conditions set) | [`skills/prompt-shaper/SKILL.md`](skills/prompt-shaper/SKILL.md) |
+| **Motion** | Animation playbook: animate one thing on interaction or nothing — spring configs, easing, duration budgets, the cliché list | [`MOTION.md`](MOTION.md) |
+| **Audit** | Pre-launch checks: 22 automated CLI checks + launch/security checklists | [`plugins/prelaunch-audit/`](plugins/prelaunch-audit/) |
+
+Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules, and pointers to every skill above.
 
 ## Component catalog
 
