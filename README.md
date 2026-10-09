@@ -95,6 +95,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 |---|---|---|
 | **Components** | 10 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
+| **MCP server** | `search_components` / `get_component` / `install_component` as native tool calls (stdio) — the registry made token-cheap, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
 | **Prompt Shaper** | Vague request in → sharp Unslop-aware build brief out (components matched, DESIGN.md baked in, stop conditions set) | [`skills/prompt-shaper/SKILL.md`](skills/prompt-shaper/SKILL.md) |
 | **Motion** | Animation playbook: animate one thing on interaction or nothing — spring configs, easing, duration budgets, the cliché list | [`MOTION.md`](MOTION.md) |

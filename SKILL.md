@@ -6,7 +6,7 @@ Repo: `https://github.com/stbattula-research/unslop` (raw: `https://raw.githubus
 
 ## 1. Discover components
 
-**Fastest path:** use the `unslop-router` skill (`skills/unslop-router/SKILL.md`) — describe what you're building in plain words and it picks and installs the right component. From a local checkout you can also run `./unslop find "<need>"` directly.
+**Fastest path:** use the `unslop-router` skill (`skills/unslop-router/SKILL.md`) — describe what you're building in plain words and it picks and installs the right component. From a local checkout you can also run `./unslop find "<need>"` directly. If your host exposes an MCP client, prefer the native route: [`servers/unslop-mcp/`](servers/unslop-mcp/) — `search_components`, `get_component`, `install_component` as tool calls, same scoring as the router, no registry files to read.
 
 Manual path — fetch the registry index and read it:
 
