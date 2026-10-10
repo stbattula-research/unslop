@@ -100,6 +100,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 | **Prompt Shaper** | Vague request in → sharp Unslop-aware build brief out (components matched, DESIGN.md baked in, stop conditions set) | [`skills/prompt-shaper/SKILL.md`](skills/prompt-shaper/SKILL.md) |
 | **Motion** | Animation playbook: animate one thing on interaction or nothing — spring configs, easing, duration budgets, the cliché list | [`MOTION.md`](MOTION.md) |
 | **Audit** | Pre-launch checks: 22 automated CLI checks + launch/security checklists | [`plugins/prelaunch-audit/`](plugins/prelaunch-audit/) |
+| **Community shelf** | Third-party design skills, vendored or linked with attribution: Anthropic's `frontend-design`, `ui-ux-pro-max` (7 skills), `web-design-guidelines`, plus linked `shadcn` and Garry Tan's `gstack` | [`skills/community/`](skills/community/) |
 
 Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules, and pointers to every skill above.
 

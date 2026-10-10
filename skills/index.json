@@ -1,1 +1,197 @@
-{"items":[{"description":"Describe what you're building in plain words; it scores intent tags and installs the best-matching component. Also routes vague queries to skills.","intents":["find a component","which component","what component should I use","pick a component","match my need","component for this","install a component","route my request"],"name":"unslop-router","notFor":["design critique","rewrite my prompt","prompt help"],"path":"skills/unslop-router/SKILL.md","title":"Unslop Router","useCases":["find components by intent","install components from the CLI","route build requests"]},{"description":"Senior-designer judgment as executable rules: typography scale and pairing, spacing rhythm, ink/paper/one-accent color discipline, genre-picked layouts, copy voice, plus a 15-question self-critique review pass.","intents":["design review","critique my design","typography","type scale","font pairing","spacing","whitespace","color palette","layout advice","design rules","senior designer","make it look better","design principles","anti-slop design"],"name":"design-intel","notFor":["install a component","write my prompt","pre-launch checklist"],"path":"skills/design-intel/SKILL.md","title":"Design Intel","useCases":["review a design before shipping","pick type scale and pairing","set color discipline","choose a layout genre","check for AI clichés"]},{"description":"Turns a vague request into a sharp Unslop-aware build brief: extracts intent dimensions, asks at most 3 clarifying questions, matches registry components, bakes in DESIGN.md constraints, emits a brief template with stop conditions.","intents":["sharpen my prompt","better prompt","write a better brief","vague request","help me write a brief","improve my prompt","prompt help","what should I ask","build brief","prompt framework"],"name":"prompt-shaper","notFor":["install a component","run the audit","design critique"],"path":"skills/prompt-shaper/SKILL.md","title":"Prompt Shaper","useCases":["turn vague asks into build briefs","clarify scope before building","audit a prompt for credit-killing patterns"]}],"name":"unslop-skills"}
+{
+  "items": [
+    {
+      "description": "Describe what you're building in plain words; it scores intent tags and installs the best-matching component. Also routes vague queries to skills.",
+      "intents": [
+        "find a component",
+        "which component",
+        "what component should I use",
+        "pick a component",
+        "match my need",
+        "component for this",
+        "install a component",
+        "route my request"
+      ],
+      "name": "unslop-router",
+      "notFor": [
+        "design critique",
+        "rewrite my prompt",
+        "prompt help"
+      ],
+      "path": "skills/unslop-router/SKILL.md",
+      "title": "Unslop Router",
+      "useCases": [
+        "find components by intent",
+        "install components from the CLI",
+        "route build requests"
+      ]
+    },
+    {
+      "description": "Senior-designer judgment as executable rules: typography scale and pairing, spacing rhythm, ink/paper/one-accent color discipline, genre-picked layouts, copy voice, plus a 15-question self-critique review pass.",
+      "intents": [
+        "design review",
+        "critique my design",
+        "typography",
+        "type scale",
+        "font pairing",
+        "spacing",
+        "whitespace",
+        "color palette",
+        "layout advice",
+        "design rules",
+        "senior designer",
+        "make it look better",
+        "design principles",
+        "anti-slop design"
+      ],
+      "name": "design-intel",
+      "notFor": [
+        "install a component",
+        "write my prompt",
+        "pre-launch checklist"
+      ],
+      "path": "skills/design-intel/SKILL.md",
+      "title": "Design Intel",
+      "useCases": [
+        "review a design before shipping",
+        "pick type scale and pairing",
+        "set color discipline",
+        "choose a layout genre",
+        "check for AI clich\u00e9s"
+      ]
+    },
+    {
+      "description": "Turns a vague request into a sharp Unslop-aware build brief: extracts intent dimensions, asks at most 3 clarifying questions, matches registry components, bakes in DESIGN.md constraints, emits a brief template with stop conditions.",
+      "intents": [
+        "sharpen my prompt",
+        "better prompt",
+        "write a better brief",
+        "vague request",
+        "help me write a brief",
+        "improve my prompt",
+        "prompt help",
+        "what should I ask",
+        "build brief",
+        "prompt framework"
+      ],
+      "name": "prompt-shaper",
+      "notFor": [
+        "install a component",
+        "run the audit",
+        "design critique"
+      ],
+      "path": "skills/prompt-shaper/SKILL.md",
+      "title": "Prompt Shaper",
+      "useCases": [
+        "turn vague asks into build briefs",
+        "clarify scope before building",
+        "audit a prompt for credit-killing patterns"
+      ]
+    },
+    {
+      "name": "community-frontend-design",
+      "title": "Frontend Design (community)",
+      "description": "Anthropic's official Claude Code skill for distinctive, intentional visual design: aesthetic direction, typography, choices that don't read as templated defaults. Third-party reference on the community shelf.",
+      "path": "skills/community/frontend-design/SKILL.md",
+      "intents": [
+        "frontend design skill",
+        "anthropic design skill",
+        "aesthetic direction",
+        "distinctive visual design",
+        "design skill",
+        "avoid templated design"
+      ],
+      "useCases": [
+        "get aesthetic direction guidance",
+        "typography and palette judgment",
+        "design skill reference"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-ui-ux-pro-max",
+      "title": "UI/UX Pro Max (community)",
+      "description": "Seven-skill UI/UX set (lead skill plus design, ui-styling, design-system, brand, banner-design, slides) by Next Level Builder. Third-party reference on the community shelf.",
+      "path": "skills/community/ui-ux-pro-max/ui-ux-pro-max/SKILL.md",
+      "intents": [
+        "ui ux pro max",
+        "ui ux skill",
+        "ux design skill",
+        "interface design guidance",
+        "ui styling skill",
+        "design system skill"
+      ],
+      "useCases": [
+        "UI/UX design guidance",
+        "design system reference",
+        "brand and banner design"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-web-design-guidelines",
+      "title": "Web Design Guidelines (community)",
+      "description": "Design-guideline commands (audit, composition, styling, forms, icons, chat) plus an audit skill. Third-party reference on the community shelf.",
+      "path": "skills/community/web-design-guidelines/SKILL.md",
+      "intents": [
+        "web design guidelines",
+        "design audit",
+        "design guidelines skill",
+        "composition rules",
+        "form design rules"
+      ],
+      "useCases": [
+        "audit a design against guidelines",
+        "composition and styling rules"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-shadcn",
+      "title": "shadcn (community, linked)",
+      "description": "Hot Designer's shadcn skill: CLI usage, customization, MCP, registry rules. Linked only (no upstream license); see skills/community/shadcn.md.",
+      "path": "skills/community/shadcn.md",
+      "intents": [
+        "shadcn skill",
+        "shadcn cli",
+        "shadcn customization",
+        "shadcn registry"
+      ],
+      "useCases": [
+        "shadcn CLI and customization reference"
+      ],
+      "notFor": [
+        "install a component"
+      ]
+    },
+    {
+      "name": "community-gstack",
+      "title": "gstack (community, linked)",
+      "description": "Garry Tan's 23-tool Claude Code software factory including a designer role that catches AI slop. Linked only; see skills/community/gstack.md.",
+      "path": "skills/community/gstack.md",
+      "intents": [
+        "gstack",
+        "garry tan setup",
+        "ai software factory",
+        "slop-catching designer agent"
+      ],
+      "useCases": [
+        "study the slop-catching designer role",
+        "full agent team setup reference"
+      ],
+      "notFor": [
+        "install a component"
+      ]
+    }
+  ],
+  "name": "unslop-skills"
+}

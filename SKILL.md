@@ -77,3 +77,7 @@ Before making visual decisions, read `skills/design-intel/SKILL.md`. It's senior
 ## 9. Turn vague asks into build briefs — the prompt-shaper skill
 
 When the user's request is a handwave ("build me a landing page"), reach for `skills/prompt-shaper/SKILL.md` before writing code. It detects the target tool, extracts eight intent dimensions (task, inputs, outputs, constraints, context, audience, success criteria, stop conditions), asks at most 3 clarifying questions with defaults, matches `registry.json` for components (and says so when nothing fits), bakes DESIGN.md constraints into the brief, and emits a one-page brief template with an acceptance checklist, stop conditions, and anti-slop prohibitions. The CLI helps: `./unslop find "<vague ask>"` refuses to guess below the confidence floor and points at prompt-shaper instead.
+
+## 10. The community shelf — third-party design skills
+
+`skills/community/` holds design skills from the wider community, vendored or linked with full attribution: Anthropic's `frontend-design`, Next Level Builder's `ui-ux-pro-max` (7 skills), `web-design-guidelines`, plus linked references for `shadcn` (Hot Designer) and Garry Tan's `gstack`. These are reference material, not Unslop's own work — Unslop's hand-built judgment stays in `skills/design-intel/`. They're indexed in `skills/index.json`, so `./unslop find` and the MCP server can route to them. Read the `ATTRIBUTION.md` in each folder before reusing.
