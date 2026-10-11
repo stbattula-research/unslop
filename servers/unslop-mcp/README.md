@@ -2,7 +2,7 @@
 
 An [MCP](https://modelcontextprotocol.io) server for the Unslop component library — so an agent calls **tools** instead of reading `registry.json` plus a dozen component files.
 
-Why: an agent consuming Unslop today reads `registry.json`, the `r/*.json` bundles, and the component sources — token-heavy before any work starts. Three tool calls replace all of that.
+Why: an agent consuming Unslop today reads `registry.json`, the `r/*.json` bundles, and the component sources — token-heavy before any work starts. Five tool calls replace all of that.
 
 ## Tools
 
@@ -11,6 +11,8 @@ Why: an agent consuming Unslop today reads `registry.json`, the `r/*.json` bundl
 | `search_components(query, top?)` | Natural-language request → ranked matches with scores, descriptions, install hints. Same intent scoring as `./unslop find`. |
 | `get_component(id, stack?)` | Full source of one component (`react` or `html` stack) — file paths + contents inline. |
 | `install_component(id, stack, target_dir)` | Writes the component's files into a project dir. React: the shadcn bundle paths; HTML: the `.html`/`.css` pair. |
+| `audit_site(target, only?, skip?, check_external?, max_pages?)` | Runs the pre-launch audit plugin against a local static-site dir or a deployed URL. Returns summary counts + every finding with its fix. Read-only. |
+| `shape_prompt(request, target_tool?, stack?)` | Vague build request → sharp Unslop-aware build brief: intent dimensions, the 9-pattern token-efficiency audit, max 3 clarifying questions with defaults, matched components, DESIGN.md anti-slop prohibitions, stop conditions. |
 
 `search_components("pricing section for a coffee brand")` returns `pricing` (Menu Pricing) first; `get_component("pricing", "react")` returns the shadcn bundle with `Button.tsx`-style sources inline.
 
@@ -53,4 +55,5 @@ claude mcp add unslop -- node /path/to/unslop/servers/unslop-mcp/src/server.js
 
 - Scoring is a direct port of the `./unslop find` router in the repo root, so MCP results rank identically to the CLI.
 - `install_component` refuses paths that escape `target_dir` and only accepts real registry names.
+- `audit_site` shells out to the stdlib-only Python audit CLI (`plugins/prelaunch-audit/audit`) and needs `python3` on PATH; `shape_prompt` is a deterministic port of `skills/prompt-shaper/SKILL.md` (no LLM call).
 - Requirements: Node ≥ 18, plus `npm install` once for `@modelcontextprotocol/sdk`.

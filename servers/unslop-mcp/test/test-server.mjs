@@ -85,10 +85,16 @@ test("setup: server starts and answers initialize", async () => {
   client.notify("notifications/initialized", {});
 });
 
-test("tools/list exposes the three tools", async () => {
+test("tools/list exposes the five tools", async () => {
   const res = await client.request("tools/list", {});
   const names = res.result.tools.map((t) => t.name).sort();
-  assert.deepEqual(names, ["get_component", "install_component", "search_components"]);
+  assert.deepEqual(names, [
+    "audit_site",
+    "get_component",
+    "install_component",
+    "search_components",
+    "shape_prompt",
+  ]);
 });
 
 test("search_components: 'pricing section for a coffee brand' -> pricing", async () => {
@@ -207,6 +213,98 @@ test("install_component: unknown id returns an error", async () => {
   });
   assert.equal(res.result.isError, true);
   fs.rmSync(tmp, { recursive: true });
+});
+
+
+test("audit_site: audits a local fixture dir, findings carry fixes", async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "unslop-mcp-audit-"));
+  fs.writeFileSync(
+    path.join(tmp, "index.html"),
+    "<html><head></head><body><h1>Hi</h1><img src=\"x.png\"><a href=\"/missing\">broken</a></body></html>"
+  );
+  const res = await client.request("tools/call", {
+    name: "audit_site",
+    arguments: { target: tmp },
+  });
+  const data = JSON.parse(textOf(res));
+  assert.equal(data.mode, "dir");
+  assert.ok(data.summary.checks > 0, "expected checks to run");
+  assert.ok(Array.isArray(data.findings));
+  assert.ok(data.findings.length > 0, "a title-less page must produce findings");
+  for (const f of data.findings) {
+    assert.ok(f.check && f.severity && "message" in f, `bad finding shape: ${JSON.stringify(f)}`);
+  }
+  assert.ok(
+    data.findings.some((f) => f.fix && f.fix.length > 0),
+    "expected at least one finding with a fix suggestion"
+  );
+  fs.rmSync(tmp, { recursive: true });
+});
+
+test("audit_site: missing target returns an error", async () => {
+  const res = await client.request("tools/call", {
+    name: "audit_site",
+    arguments: { target: path.join(os.tmpdir(), "unslop-mcp-nope-" + Date.now()) },
+  });
+  assert.equal(res.result.isError, true);
+  assert.ok(textOf(res).toLowerCase().includes("audit"), "error should mention the audit");
+});
+
+test("audit_site: only/skip filters are honored", async () => {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "unslop-mcp-audit-"));
+  fs.writeFileSync(path.join(tmp, "index.html"), "<html><head><title>T</title></head><body></body></html>");
+  const res = await client.request("tools/call", {
+    name: "audit_site",
+    arguments: { target: tmp, only: "seo" },
+  });
+  const data = JSON.parse(textOf(res));
+  assert.ok(data.summary.checks > 0);
+  assert.ok(
+    data.findings.every((f) => f.check === "seo" || String(f.check).startsWith("seo")),
+    `only=seo leaked other checks: ${[...new Set(data.findings.map((f) => f.check))]}`
+  );
+  fs.rmSync(tmp, { recursive: true });
+});
+
+test("shape_prompt: vague request yields brief + components + questions + audit hits", async () => {
+  const res = await client.request("tools/call", {
+    name: "shape_prompt",
+    arguments: { request: "build me a landing page" },
+  });
+  const data = JSON.parse(textOf(res));
+  assert.equal(data.target_tool, "ai-coding-agent");
+  assert.ok(data.brief.startsWith("# Build brief:"), "brief should use the template heading");
+  assert.ok(data.brief.includes("## Anti-slop prohibitions"), "brief must bake in DESIGN.md rules");
+  assert.ok(data.brief.includes("## Stop conditions"), "brief must carry stop conditions");
+  assert.ok(data.components.length > 0, "a landing page should match registry components");
+  assert.ok(data.components.every((c) => c.name && c.reason && c.react_install));
+  assert.ok(data.clarifying_questions.length >= 1 && data.clarifying_questions.length <= 3,
+    "at most 3 clarifying questions");
+  const patterns = data.credit_killers.map((k) => k.pattern);
+  for (const p of ["Stack ambiguity", "No audience", "Missing inputs", "No success criteria"]) {
+    assert.ok(patterns.includes(p), `expected credit-killer hit: ${p} (got: ${patterns})`);
+  }
+  assert.ok(data.credit_killers.every((k) => k.pattern && k.found && k.fix));
+  assert.ok(Object.values(data.intent_dimensions).every((v) => typeof v === "string"));
+});
+
+test("shape_prompt: nonsense request names no components, honestly", async () => {
+  const res = await client.request("tools/call", {
+    name: "shape_prompt",
+    arguments: { request: "zxqv blorptron flimflam" },
+  });
+  const data = JSON.parse(textOf(res));
+  assert.deepEqual(data.components, []);
+  assert.ok(data.components_note.includes("No registry component"), "must say so plainly");
+  assert.ok(data.brief.includes("# Build brief:"), "brief is still emitted");
+});
+
+test("shape_prompt: empty request returns an error", async () => {
+  const res = await client.request("tools/call", {
+    name: "shape_prompt",
+    arguments: { request: "   " },
+  });
+  assert.equal(res.result.isError, true);
 });
 
 test("teardown", () => {
