@@ -15,6 +15,9 @@ reach for it. Read the `ATTRIBUTION.md` in each folder before reusing.
 | `web-design-guidelines/` | [djd933/claude-design-plugins](https://github.com/djd933/claude-design-plugins/tree/main/plugins/web-design-guidelines) | djd933 | MIT |
 | `logo-design/` | [kaankiziltug/logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) | Kaan Kiziltug | MIT |
 | `annotated-illustrations/` | [helloianneo/ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations) | Ian (helloianneo) | MIT |
+| `emilkowalski-motion/` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Emil Kowalski | MIT |
+| `impeccable/` | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | Paul Bakaus | Apache-2.0 |
+| `taste/` | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) | Leonxlnx | MIT |
 
 ## Linked (not vendored)
 
@@ -37,3 +40,11 @@ the Week: Annotated Illustrations by Ian"); upstream verified as
 helloianneo/ian-xiaohei-illustrations (MIT, 12.5k stars). The ~13MB example
 illustrations are intentionally not vendored — see
 `annotated-illustrations/ATTRIBUTION.md`.
+
+`emilkowalski-motion/`, `impeccable/`, `taste/` added 2026-10-12 from an
+Instagram reel ("Agencies charge $10K for a website…": Emil Kowalski's motion
+skill + Impeccable + Taste). Upstreams verified: emilkowalski/skills (MIT,
+45k stars, vendored whole — 15 skills), pbakaus/impeccable (Apache-2.0, 80k
+stars; live-browser bundle omitted, see `impeccable/ATTRIBUTION.md`),
+Leonxlnx/taste-skill (MIT, 95k stars; main taste skill only, siblings upstream,
+see `taste/ATTRIBUTION.md`).
