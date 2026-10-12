@@ -14,6 +14,7 @@ reach for it. Read the `ATTRIBUTION.md` in each folder before reusing.
 | `ui-ux-pro-max/` | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) via [JaimeJunr/claude-code-frontend-skills](https://github.com/JaimeJunr/claude-code-frontend-skills) | Next Level Builder | MIT |
 | `web-design-guidelines/` | [djd933/claude-design-plugins](https://github.com/djd933/claude-design-plugins/tree/main/plugins/web-design-guidelines) | djd933 | MIT |
 | `logo-design/` | [kaankiziltug/logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) | Kaan Kiziltug | MIT |
+| `annotated-illustrations/` | [helloianneo/ian-xiaohei-illustrations](https://github.com/helloianneo/ian-xiaohei-illustrations) | Ian (helloianneo) | MIT |
 
 ## Linked (not vendored)
 
@@ -30,3 +31,9 @@ for `frontend-design`; the true upstreams above were verified before vendoring.
 skills; upstream verified as kaankiziltug/logo-design-skill (MIT). The 1,400+
 trademarked logo reference gallery is intentionally not vendored — see
 `logo-design/ATTRIBUTION.md`.
+
+`annotated-illustrations/` added 2026-10-12 from an Instagram reel ("Skill of
+the Week: Annotated Illustrations by Ian"); upstream verified as
+helloianneo/ian-xiaohei-illustrations (MIT, 12.5k stars). The ~13MB example
+illustrations are intentionally not vendored — see
+`annotated-illustrations/ATTRIBUTION.md`.

@@ -215,6 +215,29 @@
         "install a component",
         "unslop's own design rules"
       ]
+    },
+    {
+      "name": "community-annotated-illustrations",
+      "title": "Annotated Illustrations (community)",
+      "path": "skills/community/annotated-illustrations/SKILL.md",
+      "description": "Third-party skill for hand-drawn annotated illustrations: sparse 16:9 diagrams with handwritten notes that map system components, data flow, and breaking points. Reference on the community shelf; needs an image-model backend to render.",
+      "intents": [
+        "annotated illustrations",
+        "hand-drawn diagram",
+        "system diagram",
+        "explain architecture",
+        "illustration skill",
+        "xiaohei"
+      ],
+      "useCases": [
+        "diagram a system's components and data flow",
+        "explain a build to non-technical teammates",
+        "generate article illustrations"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
     }
   ],
   "name": "unslop-skills"
