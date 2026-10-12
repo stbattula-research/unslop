@@ -59,6 +59,24 @@ def test_illustration_query_routes_to_community_annotated_illustrations():
     assert matches[0][1] > 0
 
 
+def test_motion_query_routes_to_community_emilkowalski_motion():
+    matches = unslop.find_skill_matches("animate this button with smooth web motion", top=3)
+    assert matches[0][0]["name"] == "community-emilkowalski-motion"
+    assert matches[0][1] > 0
+
+
+def test_taste_query_routes_to_community_taste():
+    matches = unslop.find_skill_matches("taste skill avoid ai slop aesthetic", top=3)
+    assert matches[0][0]["name"] == "community-taste"
+    assert matches[0][1] > 0
+
+
+def test_impeccable_query_routes_to_community_impeccable():
+    matches = unslop.find_skill_matches("impeccable polish my frontend design", top=3)
+    assert matches[0][0]["name"] == "community-impeccable"
+    assert matches[0][1] > 0
+
+
 # --- scoring: component queries still rank components first ---
 
 
@@ -123,7 +141,8 @@ def test_skill_list_lists_all_skills():
     r = run_cli("skill", "--list")
     assert r.returncode == 0
     for name in ("unslop-router", "design-intel", "prompt-shaper", "community-logo-design",
-                 "community-annotated-illustrations"):
+                 "community-annotated-illustrations", "community-emilkowalski-motion",
+                 "community-impeccable", "community-taste"):
         assert name in r.stdout
 
 

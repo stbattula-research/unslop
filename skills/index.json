@@ -238,6 +238,74 @@
         "install a component",
         "unslop's own design rules"
       ]
+    },
+    {
+      "name": "community-emilkowalski-motion",
+      "title": "Emil Kowalski Motion (community)",
+      "path": "skills/community/emilkowalski-motion/emil-design-eng/SKILL.md",
+      "description": "Third-party motion-design skill set by Emil Kowalski (Linear/Vercel): purposeful web animation, micro-interactions, transitions with restraint \u2014 transform/opacity, 140-220ms, reduced-motion fallbacks. 15 skills; entry point emil-design-eng.",
+      "intents": [
+        "animate",
+        "web animation",
+        "motion design",
+        "micro-interactions",
+        "page transition",
+        "emil kowalski",
+        "smooth animation"
+      ],
+      "useCases": [
+        "add tasteful motion to an interface",
+        "review existing animations",
+        "find animation opportunities"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-impeccable",
+      "title": "Impeccable (community)",
+      "path": "skills/community/impeccable/SKILL.md",
+      "description": "Third-party frontend design skill by Paul Bakaus: 23 commands (craft, shape, audit, polish, bolder, quieter, animate, colorize\u2026) and 7 design pillars with deterministic anti-pattern rules. Reference on the community shelf.",
+      "intents": [
+        "impeccable",
+        "polish my ui",
+        "design audit",
+        "frontend design skill",
+        "fix my design",
+        "design review"
+      ],
+      "useCases": [
+        "audit and polish a frontend",
+        "apply a design command (bolder, quieter, distill)",
+        "harden a UI for production"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-taste",
+      "title": "Taste (community)",
+      "path": "skills/community/taste/SKILL.md",
+      "description": "Third-party taste skill by Leonxlnx: stops generic AI-slop interfaces with concrete aesthetic judgment \u2014 distinctive typography, deliberate color, confident design choices. Reference on the community shelf.",
+      "intents": [
+        "taste",
+        "design taste",
+        "avoid ai slop",
+        "make it look premium",
+        "aesthetic judgment"
+      ],
+      "useCases": [
+        "give an interface distinctive aesthetic direction",
+        "avoid generic AI-looking design"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
     }
   ],
   "name": "unslop-skills"
