@@ -47,6 +47,12 @@ def test_component_query_routes_to_router_skill():
     assert matches[0][0]["name"] == "unslop-router"
 
 
+def test_logo_query_routes_to_community_logo_design():
+    matches = unslop.find_skill_matches("design a logo for my startup", top=3)
+    assert matches[0][0]["name"] == "community-logo-design"
+    assert matches[0][1] > 0
+
+
 # --- scoring: component queries still rank components first ---
 
 
@@ -110,7 +116,7 @@ def test_confident_find_still_lists_components():
 def test_skill_list_lists_all_skills():
     r = run_cli("skill", "--list")
     assert r.returncode == 0
-    for name in ("unslop-router", "design-intel", "prompt-shaper"):
+    for name in ("unslop-router", "design-intel", "prompt-shaper", "community-logo-design"):
         assert name in r.stdout
 
 

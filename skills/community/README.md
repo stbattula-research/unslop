@@ -13,6 +13,7 @@ reach for it. Read the `ATTRIBUTION.md` in each folder before reusing.
 | `frontend-design/` | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design) | Anthropic | Apache-2.0 |
 | `ui-ux-pro-max/` | [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) via [JaimeJunr/claude-code-frontend-skills](https://github.com/JaimeJunr/claude-code-frontend-skills) | Next Level Builder | MIT |
 | `web-design-guidelines/` | [djd933/claude-design-plugins](https://github.com/djd933/claude-design-plugins/tree/main/plugins/web-design-guidelines) | djd933 | MIT |
+| `logo-design/` | [kaankiziltug/logo-design-skill](https://github.com/kaankiziltug/logo-design-skill) | Kaan Kiziltug | MIT |
 
 ## Linked (not vendored)
 
@@ -24,3 +25,8 @@ reach for it. Read the `ATTRIBUTION.md` in each folder before reusing.
 Fetched 2026-10-10 from a community reel listing these as essential Claude Code
 design plugins. The reel's `@claude-plugins-official` scope was only accurate
 for `frontend-design`; the true upstreams above were verified before vendoring.
+
+`logo-design/` added 2026-10-12 from an Instagram reel about Claude logo-design
+skills; upstream verified as kaankiziltug/logo-design-skill (MIT). The 1,400+
+trademarked logo reference gallery is intentionally not vendored — see
+`logo-design/ATTRIBUTION.md`.

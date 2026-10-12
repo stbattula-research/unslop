@@ -191,6 +191,30 @@
       "notFor": [
         "install a component"
       ]
+    },
+    {
+      "name": "community-logo-design",
+      "title": "Logo Design (community)",
+      "path": "skills/community/logo-design/SKILL.md",
+      "description": "Third-party logo-design skill: brand briefs, concepting, hand-coded SVG construction, logo testing, and favicon/app-icon export via dependency-free Python tools. Reference on the community shelf.",
+      "intents": [
+        "logo design skill",
+        "design a logo",
+        "brand identity",
+        "svg logo",
+        "logo testing",
+        "favicon export",
+        "app icon"
+      ],
+      "useCases": [
+        "design a logo from a brief",
+        "audit an SVG logo",
+        "export favicon and app-icon sets"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
     }
   ],
   "name": "unslop-skills"
