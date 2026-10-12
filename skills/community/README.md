@@ -1,5 +1,7 @@
 # Community shelf
 
+> **New here?** Start with [PLAYBOOK.md](PLAYBOOK.md) — goal-to-skill recipes for the whole shelf.
+
 Third-party design skills curated from the community — a reference shelf, not
 Unslop's own work. Unslop's components, design-intel, and prompt-shaper are
 hand-built to the bar in `DESIGN.md`; everything under `skills/community/` is
