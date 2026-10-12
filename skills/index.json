@@ -306,6 +306,285 @@
         "install a component",
         "unslop's own design rules"
       ]
+    },
+    {
+      "name": "community-gsap-motion",
+      "title": "GSAP Motion (community)",
+      "path": "skills/community/gsap-motion/gsap-core/SKILL.md",
+      "description": "Official GreenSock GSAP agent skills: core, timelines, ScrollTrigger, React, plugins, performance. The authority on smooth sliding and scroll-triggered motion.",
+      "intents": [
+        "gsap",
+        "scrolltrigger",
+        "scroll animation",
+        "timeline animation",
+        "smooth sliding"
+      ],
+      "useCases": [
+        "build scroll-triggered reveals",
+        "animate with GSAP timelines"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-motion-design",
+      "title": "Motion Design (community)",
+      "path": "skills/community/motion-design/SKILL.md",
+      "description": "LottieFiles motion-design skill: timing/easing/choreography judgment plus recipes for entrance/exit, state feedback, ambient motion. Tech-agnostic.",
+      "intents": [
+        "motion design principles",
+        "easing",
+        "choreography",
+        "lottie motion"
+      ],
+      "useCases": [
+        "choose timing and easing",
+        "design entrance and exit motion"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-motion-dev",
+      "title": "Motion.dev Animations (community)",
+      "path": "skills/community/motion-dev/SKILL.md",
+      "description": "Motion.dev (Framer Motion successor) recipes: spring physics, scroll reveals, parallax, magnetic buttons, hero fade-ups, with accessibility baked in.",
+      "intents": [
+        "motion.dev",
+        "framer motion",
+        "spring physics",
+        "magnetic button",
+        "parallax"
+      ],
+      "useCases": [
+        "add spring-physics motion",
+        "build scroll reveals and parallax"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-awwwards-ui",
+      "title": "Awwwards UI (community)",
+      "path": "skills/community/awwwards-ui/SKILL.md",
+      "description": "Award-tier web design skill: WebGL touches, smooth scrolling, spring micro-interactions, curated palettes, mandatory self-audit before returning code.",
+      "intents": [
+        "awwwards",
+        "premium design",
+        "award-winning website",
+        "cool ui"
+      ],
+      "useCases": [
+        "design a premium landing page",
+        "add award-tier polish"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-ilm-aesthetics",
+      "title": "Aesthetic Systems (community)",
+      "path": "skills/community/ilm-aesthetics/SKILL.md",
+      "description": "Eight locked aesthetic systems (Swiss, Brutalist, Aurora Maximalism, Retro-Futuristic\u2026), each pinning palette + typefaces + texture to concrete CSS tokens.",
+      "intents": [
+        "aesthetic",
+        "design system",
+        "brutalist",
+        "swiss design",
+        "aurora"
+      ],
+      "useCases": [
+        "pick a locked aesthetic system",
+        "get palette and typeface tokens"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-liquid-glass",
+      "title": "Liquid Glass (community)",
+      "path": "skills/community/liquid-glass/SKILL.md",
+      "description": "Glassmorphism reasoning system on Apple principles: material tiers, translucency hierarchy, accessible contrast for web, SwiftUI, and mobile.",
+      "intents": [
+        "glassmorphism",
+        "liquid glass",
+        "frosted glass",
+        "transparent components",
+        "translucency"
+      ],
+      "useCases": [
+        "design glassmorphic components",
+        "apply translucency hierarchy"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-ckw-design",
+      "title": "CKW Design (community)",
+      "path": "skills/community/ckw-design/design-thinking/SKILL.md",
+      "description": "Five composable design skills: design direction, token/typography systems, spatial composition, FOUT discipline, motion timing.",
+      "intents": [
+        "design direction",
+        "design tokens",
+        "typography system",
+        "fout"
+      ],
+      "useCases": [
+        "set design direction",
+        "build a token system"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-magic-ui",
+      "title": "Magic UI (community)",
+      "path": "skills/community/magic-ui/SKILL.md",
+      "description": "Official agent skill for Magic UI: animated React components (marquee, globe, blur-fade, bento grids) \u2014 selection and registry install patterns.",
+      "intents": [
+        "magic ui",
+        "animated components",
+        "marquee",
+        "bento grid",
+        "shiny button"
+      ],
+      "useCases": [
+        "pick an animated Magic UI component",
+        "install via registry"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-component-discovery",
+      "title": "Component Discovery (community)",
+      "path": "skills/community/component-discovery/shadcn-component-discovery/SKILL.md",
+      "description": "Discovers 1,500+ existing components across 30+ animated registries before hand-building; plus a component review skill.",
+      "intents": [
+        "find a component",
+        "component registry",
+        "aceternity",
+        "reactbits"
+      ],
+      "useCases": [
+        "discover an existing animated component",
+        "review a component"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-appllama-mobile",
+      "title": "App Design Mobile (community)",
+      "path": "skills/community/appllama-mobile/appllama-app-design-skill/SKILL.md",
+      "description": "Mobile app UI skill finished to a simulator-verified bar \u2014 native-quality mobile screens from app patterns.",
+      "intents": [
+        "mobile app design",
+        "app ui",
+        "ios design",
+        "android ui"
+      ],
+      "useCases": [
+        "design a mobile app screen",
+        "apply native app patterns"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-design-database",
+      "title": "Design Database (community)",
+      "path": "skills/community/design-database/README.md",
+      "description": "Curated data: 192 color palettes, 74 font pairings, 84 UI styles, 98 UX guidelines as CSVs. Query directly for palettes, fonts, styles.",
+      "intents": [
+        "color palette",
+        "font pairing",
+        "color scheme",
+        "palette database"
+      ],
+      "useCases": [
+        "look up a color palette",
+        "find a font pairing"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-glassmorphism",
+      "title": "Glassmorphism (community)",
+      "path": "skills/community/glassmorphism/SKILL.md",
+      "description": "Cherry-picked glassmorphism skill: frosted surfaces, depth, and light done right.",
+      "intents": [
+        "glass effect",
+        "frosted",
+        "glass card"
+      ],
+      "useCases": [
+        "build a glassmorphic card or panel"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-bento",
+      "title": "Bento (community)",
+      "path": "skills/community/bento/SKILL.md",
+      "description": "Cherry-picked bento-grid skill: modular card layouts with rhythm and hierarchy.",
+      "intents": [
+        "bento grid",
+        "card layout",
+        "modular layout"
+      ],
+      "useCases": [
+        "lay out a bento grid"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-gradient",
+      "title": "Gradient (community)",
+      "path": "skills/community/gradient/SKILL.md",
+      "description": "Cherry-picked gradient skill: mesh gradients, color transitions, atmospheric backgrounds.",
+      "intents": [
+        "gradient",
+        "mesh gradient",
+        "gradient background"
+      ],
+      "useCases": [
+        "design a gradient system"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
     }
   ],
   "name": "unslop-skills"

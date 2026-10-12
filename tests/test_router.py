@@ -77,6 +77,30 @@ def test_impeccable_query_routes_to_community_impeccable():
     assert matches[0][1] > 0
 
 
+def test_gsap_query_routes_to_community_gsap_motion():
+    matches = unslop.find_skill_matches("gsap scrolltrigger reveal animation", top=3)
+    assert matches[0][0]["name"] == "community-gsap-motion"
+    assert matches[0][1] > 0
+
+
+def test_glass_query_routes_to_community_glassmorphism():
+    matches = unslop.find_skill_matches("glassmorphism frosted card", top=3)
+    assert matches[0][0]["name"] == "community-glassmorphism"
+    assert matches[0][1] > 0
+
+
+def test_palette_query_routes_to_community_design_database():
+    matches = unslop.find_skill_matches("color palette for dark fintech dashboard", top=3)
+    assert matches[0][0]["name"] == "community-design-database"
+    assert matches[0][1] > 0
+
+
+def test_bento_query_routes_to_community_bento():
+    matches = unslop.find_skill_matches("bento grid layout", top=3)
+    assert matches[0][0]["name"] == "community-bento"
+    assert matches[0][1] > 0
+
+
 # --- scoring: component queries still rank components first ---
 
 
@@ -142,7 +166,12 @@ def test_skill_list_lists_all_skills():
     assert r.returncode == 0
     for name in ("unslop-router", "design-intel", "prompt-shaper", "community-logo-design",
                  "community-annotated-illustrations", "community-emilkowalski-motion",
-                 "community-impeccable", "community-taste"):
+                 "community-impeccable", "community-taste", "community-gsap-motion",
+                 "community-motion-design", "community-motion-dev", "community-awwwards-ui",
+                 "community-ilm-aesthetics", "community-liquid-glass", "community-ckw-design",
+                 "community-magic-ui", "community-component-discovery",
+                 "community-appllama-mobile", "community-design-database",
+                 "community-glassmorphism", "community-bento", "community-gradient"):
         assert name in r.stdout
 
 
