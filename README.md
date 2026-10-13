@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 10 components
+./unslop list                                      # list all 11 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 10 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 11 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -118,6 +118,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 08 | Poster CTA | Swiss-poster call to action: flat red, oversized grotesk type, rubber-stamp badge | [`r/cta-banner.json`](r/cta-banner.json) | [`components/html/cta-banner/`](components/html/cta-banner/) |
 | 09 | Colophon Footer | Footer set like a book colophon: small caps, credits, set-in-type details | [`r/footer.json`](r/footer.json) | [`components/html/footer/`](components/html/footer/) |
 | 10 | Letter Contact Form | A contact form written as a letter: salutation, ruled lines, sign-off submit | [`r/contact-form.json`](r/contact-form.json) | [`components/html/contact-form/`](components/html/contact-form/) |
+| 11 | The Logbook | Release notes as a ship's log: dated entries, oversized version numerals, rubber-stamp change tags | [`r/changelog.json`](r/changelog.json) | [`components/html/changelog/`](components/html/changelog/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 

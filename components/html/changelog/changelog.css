@@ -1,0 +1,145 @@
+/* Unslop — The Logbook. Self-contained; no build step. */
+
+:root {
+  --ink: #1c1917;
+  --paper: #faf7f0;
+  --muted: #57534e;
+  --accent: #b45309;
+  --rule: rgba(28, 25, 23, 0.25);
+  --stamp-bg: #fcd34d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.demo-note {
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+}
+.demo-note a { color: inherit; }
+
+/* --- The component --- */
+.log__inner { max-width: 56rem; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
+
+.log__kicker {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.log__heading {
+  margin: 1rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+}
+.log__standfirst {
+  margin: 1rem 0 0;
+  max-width: 34rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--muted);
+}
+
+.log__entries { margin-top: 3.5rem; border-top: 2px solid var(--ink); }
+
+.entry {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+@media (min-width: 48rem) {
+  .entry { grid-template-columns: 11rem 1fr; gap: 2.5rem; }
+}
+
+.entry__date {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.entry__version {
+  margin: 0.5rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 3.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.entry__codename {
+  margin: 0.5rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.entry__items { list-style: none; margin: 0; padding: 0; }
+.entry__items li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.entry__items li:last-child { margin-bottom: 0; }
+
+.stamp {
+  display: inline-block;
+  flex-shrink: 0;
+  transform: rotate(-1deg);
+  border: 2px solid var(--ink);
+  padding: 0.125rem 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.stamp--new { background: var(--stamp-bg); color: #1c1917; }
+.stamp--improved { background: var(--ink); color: var(--paper); }
+.stamp--fixed { background: transparent; color: var(--ink); }
+
+.log__footnote {
+  margin: 3rem auto 0;
+  max-width: 32rem;
+  text-align: center;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e7e5e4;
+    --paper: #1c1917;
+    --muted: #a8a29e;
+    --rule: rgba(231, 229, 228, 0.25);
+  }
+  .stamp--new { background: #fde68a; color: #1c1917; border-color: #e7e5e4; }
+  .stamp--improved { background: #e7e5e4; color: #1c1917; border-color: #e7e5e4; }
+  .stamp--fixed { color: #e7e5e4; border-color: #e7e5e4; }
+}

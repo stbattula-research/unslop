@@ -120,6 +120,12 @@ def test_faq_query_ranks_faq_first():
     assert matches[0][0]["name"] == "faq"
 
 
+def test_changelog_query_ranks_changelog_first():
+    matches = unslop.find_matches("release notes changelog for my product", top=3)
+    assert matches[0][0]["name"] == "changelog"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 # --- prompt-shaper trigger: vague queries don't guess a component ---
 
 

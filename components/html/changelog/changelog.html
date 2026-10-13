@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Logbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="changelog.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · changelog</p>
+
+  <!-- The component -->
+  <section class="log">
+    <div class="log__inner">
+      <p class="log__kicker">The logbook · release notes</p>
+      <h2 class="log__heading">Every voyage, logged.</h2>
+      <p class="log__standfirst">What changed, when it shipped, and nothing we would be embarrassed to read aloud.</p>
+
+      <div class="log__entries">
+        <article class="entry">
+          <div class="entry__meta">
+            <p class="entry__date">October 9, 2026</p>
+            <p class="entry__version">2.4.0</p>
+            <p class="entry__codename">&ldquo;The Cartographer&rdquo;</p>
+          </div>
+          <ul class="entry__items">
+            <li><span class="stamp stamp--new">New</span><span>Offline tile packs for the whole Pacific Northwest. Roam free, the signal is optional.</span></li>
+            <li><span class="stamp stamp--improved">Improved</span><span>Route redraw is three times faster on older phones.</span></li>
+            <li><span class="stamp stamp--fixed">Fixed</span><span>The compass rose no longer spins at the equator.</span></li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry__meta">
+            <p class="entry__date">September 18, 2026</p>
+            <p class="entry__version">2.3.1</p>
+          </div>
+          <ul class="entry__items">
+            <li><span class="stamp stamp--fixed">Fixed</span><span>Tide tables now respect daylight saving, as tides should.</span></li>
+            <li><span class="stamp stamp--fixed">Fixed</span><span>Share links stopped expiring after a single tide.</span></li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry__meta">
+            <p class="entry__date">September 2, 2026</p>
+            <p class="entry__version">2.3.0</p>
+            <p class="entry__codename">&ldquo;The Lookout&rdquo;</p>
+          </div>
+          <ul class="entry__items">
+            <li><span class="stamp stamp--new">New</span><span>Fog-of-war exploration mode: the map clears only where you have actually been.</span></li>
+            <li><span class="stamp stamp--new">New</span><span>GPX export with waypoints intact, because your detours are the point.</span></li>
+            <li><span class="stamp stamp--improved">Improved</span><span>Harbor search understands nicknames. Try &ldquo;the blue crane.&rdquo;</span></li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="log__footnote">Old entries are never rewritten — a logbook that edits its past is a novel.</p>
+    </div>
+  </section>
+</body>
+</html>
