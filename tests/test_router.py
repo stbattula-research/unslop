@@ -126,6 +126,12 @@ def test_changelog_query_ranks_changelog_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_comparison_query_ranks_vstable_first():
+    matches = unslop.find_matches("comparison table us vs them for my landing page", top=3)
+    assert matches[0][0]["name"] == "vs-table"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 # --- prompt-shaper trigger: vague queries don't guess a component ---
 
 

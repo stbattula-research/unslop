@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Weigh-In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vs-table.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · vs-table</p>
+
+  <!-- The component -->
+  <section class="weigh">
+    <div class="weigh__inner">
+      <p class="weigh__kicker">The weigh-in · an honest comparison</p>
+      <h2 class="weigh__heading">Two contenders. One honest scorecard.</h2>
+      <p class="weigh__standfirst">We asked both sides the same questions. One of them flinched.</p>
+
+      <!-- Tale of the tape -->
+      <div class="tape">
+        <div class="tape__head">
+          <p class="tape__corner">Tale of the tape</p>
+          <p class="tape__corner tape__corner--us">Red corner — Unslop</p>
+          <p class="tape__corner tape__corner--them">Blue corner — The other guys</p>
+        </div>
+        <div class="tape__row">
+          <p class="tape__label">Founded</p>
+          <p class="tape__us">2026</p>
+          <p class="tape__them">2019</p>
+        </div>
+        <div class="tape__row">
+          <p class="tape__label">Price</p>
+          <p class="tape__us">Free, MIT</p>
+          <p class="tape__them">$29/mo</p>
+        </div>
+        <div class="tape__row">
+          <p class="tape__label">Users</p>
+          <p class="tape__us">You, hopefully</p>
+          <p class="tape__them">Everyone else</p>
+        </div>
+      </div>
+
+      <!-- Fight card -->
+      <div class="card">
+        <div class="round">
+          <p class="round__num">R01</p>
+          <p class="round__feature">Components that don't look AI-made</p>
+          <div class="round__cell"><span class="round__who">Us</span><span class="mark mark--us" aria-label="yes">✓</span></div>
+          <div class="round__cell"><span class="round__who">Them</span><span class="mark" aria-label="no">✕</span></div>
+        </div>
+        <div class="round">
+          <p class="round__num">R02</p>
+          <p class="round__feature">Works in plain HTML, no build step</p>
+          <div class="round__cell"><span class="round__who">Us</span><span class="mark mark--us" aria-label="yes">✓</span></div>
+          <div class="round__cell"><span class="round__who">Them</span><span class="mark" aria-label="no">✕</span></div>
+        </div>
+        <div class="round">
+          <p class="round__num">R03</p>
+          <p class="round__feature">Installs with one shadcn command</p>
+          <div class="round__cell"><span class="round__who">Us</span><span class="mark mark--us" aria-label="yes">✓</span></div>
+          <div class="round__cell"><span class="round__who">Them</span><span class="mark mark--partial" aria-label="partially">≈</span></div>
+        </div>
+        <div class="round">
+          <p class="round__num">R04</p>
+          <p class="round__feature">Pre-launch audit plugin included</p>
+          <div class="round__cell"><span class="round__who">Us</span><span class="mark mark--us" aria-label="yes">✓</span></div>
+          <div class="round__cell"><span class="round__who">Them</span><span class="mark" aria-label="no">✕</span></div>
+        </div>
+        <div class="round">
+          <p class="round__num">R05</p>
+          <p class="round__feature">Gradients on everything</p>
+          <div class="round__cell"><span class="round__who">Us</span><span class="mark" aria-label="no">✕</span></div>
+          <div class="round__cell"><span class="round__who">Them</span><span class="mark mark--them" aria-label="yes">✓</span></div>
+        </div>
+      </div>
+
+      <!-- The decision -->
+      <div class="decision">
+        <p class="decision__label">The judges' decision</p>
+        <p class="decision__score">4 <span>–</span> 1</p>
+        <p class="decision__stamp">Winner: Unslop</p>
+      </div>
+
+      <p class="weigh__footnote">Scorecard settled by the house. Their lawyers were notified.</p>
+    </div>
+  </section>
+</body>
+</html>

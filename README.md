@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Components](https://img.shields.io/badge/components-10%20%C3%97%202-blue.svg)](#component-catalog)
+[![Components](https://img.shields.io/badge/components-12%20%C3%97%202-blue.svg)](#component-catalog)
 
 AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
 
@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 11 components
+./unslop list                                      # list all 12 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 11 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 12 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -119,6 +119,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 09 | Colophon Footer | Footer set like a book colophon: small caps, credits, set-in-type details | [`r/footer.json`](r/footer.json) | [`components/html/footer/`](components/html/footer/) |
 | 10 | Letter Contact Form | A contact form written as a letter: salutation, ruled lines, sign-off submit | [`r/contact-form.json`](r/contact-form.json) | [`components/html/contact-form/`](components/html/contact-form/) |
 | 11 | The Logbook | Release notes as a ship's log: dated entries, oversized version numerals, rubber-stamp change tags | [`r/changelog.json`](r/changelog.json) | [`components/html/changelog/`](components/html/changelog/) |
+| 12 | The Weigh-In | Us-vs-them comparison table as a boxing fight card: tale-of-the-tape stats, numbered rounds, judge's decision | [`r/vs-table.json`](r/vs-table.json) | [`components/html/vs-table/`](components/html/vs-table/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 

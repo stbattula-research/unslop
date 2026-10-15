@@ -283,6 +283,38 @@
         "marketing landing",
         "testimonials"
       ]
+    },
+    {
+      "name": "vs-table",
+      "title": "The Weigh-In",
+      "description": "Us-vs-them comparison table staged as a boxing fight card: tale-of-the-tape stat block, numbered rounds, judge's decision.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/vs-table.json",
+      "intents": [
+        "comparison table",
+        "us vs them",
+        "vs table",
+        "competitor comparison",
+        "alternative comparison",
+        "product comparison",
+        "why choose us",
+        "why us section",
+        "versus table",
+        "us versus them",
+        "compare us to competitors",
+        "comparison chart"
+      ],
+      "useCases": [
+        "competitor comparison",
+        "us vs them",
+        "alternative comparison",
+        "product comparison",
+        "why choose us"
+      ],
+      "notFor": [
+        "pricing tiers",
+        "plan comparison",
+        "testimonials"
+      ]
     }
   ],
   "name": "unslop"
