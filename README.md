@@ -1,1 +1,172 @@
-IyBVbnNsb3Ag4oCUIGh1bWFuLWdyYWRlIFVJIGNvbXBvbmVudHMgZm9yIHRoZSBBSSBlcmEKCjwhLS0gZGVtby5naWYgY29taW5nIHNvb24gLS0+CgpbIVtMaWNlbnNlOiBNSVRdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvTGljZW5zZS1NSVQtYW1iZXIuc3ZnKV0oTElDRU5TRSkKWyFbUFJzIHdlbGNvbWVdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvUFJzLXdlbGNvbWUtYnJpZ2h0Z3JlZW4uc3ZnKV0oQ09OVFJJQlVUSU5HLm1kKQpbIVtDb21wb25lbnRzXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL2NvbXBvbmVudHMtMTIlMjAlQzMlOTclMjAyLWJsdWUuc3ZnKV0oI2NvbXBvbmVudC1jYXRhbG9nKQoKQUkgdG9vbHMgYnVpbGQgd2Vic2l0ZXMgZmFzdC4gVGhleSBhbHNvIGJ1aWxkIHdlYnNpdGVzIHRoYXQgYWxsIGxvb2sgdGhlIHNhbWU6IHRoZSBwdXJwbGUgZ3JhZGllbnQsIHRoZSBjZW50ZXJlZCBwaWxsLWJhZGdlIGhlcm8sIHRoZSBnbGFzc21vcnBoaXNtIGNhcmRzLCB0aGUgInJldm9sdXRpb25pemUgeW91ciB3b3JrZmxvdyIgY29weS4gWW91IGNhbiBzcG90IG9uZSBpbiB0d28gc2Vjb25kcy4KCioqVW5zbG9wIGlzIGEgc2hlbGYgb2Ygd2Vic2l0ZSBjb21wb25lbnRzIHdpdGggYSBwb2ludCBvZiB2aWV3LioqIEV2ZXJ5IGNvbXBvbmVudCBsb29rcyBsaWtlIGEgaHVtYW4gZGVzaWduZXIgc3RheWVkIHVwIGxhdGUgb24gcHVycG9zZSDigJQgZWRpdG9yaWFsIHR5cG9ncmFwaHksIHJlc3RyYWluZWQgY29uZmlkZW50IGNvbG9yLCBhc3ltbWV0cmljIGxheW91dHMsIGNvcHkgdGhhdCBzb3VuZHMgbGlrZSBhIHBlcnNvbi4gQnVpbGQgd2l0aCBBSSwgc2hpcCB3aXRob3V0IHRoZSB0ZWxsLgoKRWFjaCBjb21wb25lbnQgc2hpcHMgaW4gKip0d28gZGlhbGVjdHMqKjoKCnwgU3RhY2sgfCBMb2NhdGlvbiB8IEluc3RhbGwgfAp8LS0tfC0tLXwtLS18CnwgUmVhY3QgKyBUYWlsd2luZCAoc2hhZGNuLWNvbXBhdGlibGUpIHwgYGNvbXBvbmVudHMvcmVhY3QvPG5hbWU+L2AgfCBgbnB4IHNoYWRjbkBsYXRlc3QgYWRkIGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9zdGJhdHR1bGEtcmVzZWFyY2gvdW5zbG9wL21haW4vci88bmFtZT4uanNvbmAgfAp8IEZyYW1ld29yay1mcmVlIEhUTUwvQ1NTIHwgYGNvbXBvbmVudHMvaHRtbC88bmFtZT4vYCB8IENvcHkgYGNvbXBvbmVudHMvaHRtbC88bmFtZT4vPG5hbWU+Lmh0bWxgICsgYDxuYW1lPi5jc3NgLCBvciBvcGVuIHRoZSBgLmh0bWxgIGZpbGUgZGlyZWN0bHkg4oCUIG5vIGJ1aWxkIHN0ZXAgfAoKUG9pbnQgeW91ciBBSSBjb2RpbmcgYWdlbnQgYXQgW2BTS0lMTC5tZGBdKFNLSUxMLm1kKSBhbmQgaXQgY2FuIGRpc2NvdmVyLCBmZXRjaCwgYW5kIGluc3RhbGwgY29tcG9uZW50cyBvbiBpdHMgb3duLgoKIyMgVW5zbG9wIFJvdXRlciDigJQgZGVzY3JpYmUgd2hhdCB5b3UgbmVlZCwgZ2V0IHRoZSBjb21wb25lbnQgaW5zdGFsbGVkCgpEb24ndCBicm93c2UgdGhlIGNhdGFsb2cuIFRlbGwgdGhlIHJvdXRlciB3aGF0IHlvdSdyZSBidWlsZGluZyBpbiBwbGFpbiB3b3JkcyDigJQgaXQgZmluZHMgdGhlIGJlc3QtbWF0Y2hpbmcgY29tcG9uZW50IGFuZCBpbnN0YWxscyBpdCBmb3IgeW91LgoKIyMjIFNldHVwCgpZb3UgbmVlZCAqKlB5dGhvbiAzKiogKG5vdGhpbmcgZWxzZSDigJQgbm8gcGFja2FnZXMgdG8gaW5zdGFsbCkgYW5kIGEgY2xvbmUgb2YgdGhpcyByZXBvOgoKYGBgYmFzaApnaXQgY2xvbmUgaHR0cHM6Ly9naXRodWIuY29tL3N0YmF0dHVsYS1yZXNlYXJjaC91bnNsb3AuZ2l0CmNkIHVuc2xvcApjaG1vZCAreCB1bnNsb3AgICAjIG9uZSB0aW1lOiBtYWtlcyB0aGUgc2NyaXB0IGV4ZWN1dGFibGUKYGBgCgojIyMgRmluZCBhIGNvbXBvbmVudAoKYGBgYmFzaAouL3Vuc2xvcCBmaW5kICJwcmljaW5nIHNlY3Rpb24gZm9yIGEgY29mZmVlIGJyYW5kIgpgYGAKClRoZSByb3V0ZXIgc2NvcmVzIHlvdXIgZGVzY3JpcHRpb24gYWdhaW5zdCBldmVyeSBjb21wb25lbnQgYW5kIHByaW50cyB0aGUgdG9wIG1hdGNoZXMgd2l0aCBpbnN0YWxsIGNvbW1hbmRzIGZvciBib3RoIHN0YWNrczoKCmBgYAoxLiBNZW51IFByaWNpbmcgIChwcmljaW5nKQogICBQcmljaW5nIGxhaWQgb3V0IGxpa2UgYSBiaXN0cm8gbWVudTogc2VyaWYgcHJpY2VzLCBkb3R0ZWQgbGVhZGVycy4uLgogICByZWFjdDogbnB4IHNoYWRjbkBsYXRlc3QgYWRkIGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS8uLi4vci9wcmljaW5nLmpzb24KICAgaHRtbDogIGN1cmwgLU8gaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tLy4uLi9jb21wb25lbnRzL2h0bWwvcHJpY2luZy9wcmljaW5nLmh0bWwgKyBwcmljaW5nLmNzcwpgYGAKCk90aGVyIHVzZWZ1bCBmb3JtczoKCmBgYGJhc2gKLi91bnNsb3AgZmluZCAiaGVybyBmb3IgbXkgbGFuZGluZyBwYWdlIiAtLXRvcCAyICAgIyBzaG93IG9ubHkgdGhlIHRvcCAyIG1hdGNoZXMKLi91bnNsb3AgbGlzdCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIyBsaXN0IGFsbCAxMyBjb21wb25lbnRzCi4vdW5zbG9wIHNraWxsICJjcml0aXF1ZSBteSBkZXNpZ24iICAgICAgICAgICAgICAgICMgc2VhcmNoIHRoZSBza2lsbCBpbmRleAouL3Vuc2xvcCBza2lsbCAtLWxpc3QgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAjIGxpc3Qgcm91dGVyLCBkZXNpZ24taW50ZWwsIHByb21wdC1zaGFwZXIKYGBgCgpUb28tdmFndWUgcXVlcmllcyBkb24ndCBnZXQgYSBndWVzczogYGZpbmRgIHJlZnVzZXMgYmVsb3cgaXRzIGNvbmZpZGVuY2UgZmxvb3IgYW5kIHBvaW50cyBhdCB0aGUgcHJvbXB0LXNoYXBlciBza2lsbCB0byBzaGFycGVuIHRoZSBhc2sgZmlyc3QuCgojIyMgSW5zdGFsbCBhIGNvbXBvbmVudAoKUGljayBhIGNvbXBvbmVudCBieSBpdHMgc2hvcnQgbmFtZSAodGhlIHBhcnQgaW4gcGFyZW50aGVzZXMsIGUuZy4gYHByaWNpbmdgLCBgaGVyb2AsIGBuYXZiYXJgKToKCioqUmVhY3QgKyBUYWlsd2luZCBwcm9qZWN0Kiog4oCUIHByaW50cyB0aGUgc2hhZGNuIGluc3RhbGwgY29tbWFuZDsgYWRkIGAtLXJ1bmAgdG8gZXhlY3V0ZSBpdCByaWdodCB0aGVyZToKCmBgYGJhc2gKLi91bnNsb3AgYWRkIHByaWNpbmcgLS1zdGFjayByZWFjdCAgICAgICAgICAjIHByaW50cyB0aGUgbnB4IHNoYWRjbiBjb21tYW5kCi4vdW5zbG9wIGFkZCBwcmljaW5nIC0tc3RhY2sgcmVhY3QgLS1ydW4gICAgICMgcnVucyBpdCBpbiB5b3VyIHByb2plY3QgZGlyZWN0b3J5CmBgYAoKKipQbGFpbiBIVE1ML0NTUyoqIOKAlCBwYXNzIGAtLWRlc3RgIHRvIGNvcHkgdGhlIGZpbGVzIHN0cmFpZ2h0IGludG8geW91ciBwcm9qZWN0LCBvciBsZWF2ZSBpdCBvdXQgdG8gZ2V0IHRoZSBgY3VybGAgY29tbWFuZHM6CgpgYGBiYXNoCi4vdW5zbG9wIGFkZCBoZXJvIC0tc3RhY2sgaHRtbCAtLWRlc3QgLi9zaXRlICAgIyBjb3BpZXMgaGVyby5odG1sICsgaGVyby5jc3MgaW50byAuL3NpdGUvCi4vdW5zbG9wIGFkZCBoZXJvIC0tc3RhY2sgaHRtbCAgICAgICAgICAgICAgICAgIyBwcmludHMgY3VybCBjb21tYW5kcyBpbnN0ZWFkCmBgYAoKQWZ0ZXIgY29weWluZyBIVE1ML0NTUyBmaWxlcywgbGluayB0aGUgc3R5bGVzaGVldCBpbiB5b3VyIHBhZ2U6CgpgYGBodG1sCjxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaGVyby5jc3MiPgpgYGAKCiMjIyBGb3IgQUkgY29kaW5nIGFnZW50cwoKUG9pbnQgeW91ciBhZ2VudCBhdCBbYHNraWxscy91bnNsb3Atcm91dGVyL1NLSUxMLm1kYF0oc2tpbGxzL3Vuc2xvcC1yb3V0ZXIvU0tJTEwubWQpLiBJdCB0YWtlcyBhIG5hdHVyYWwtbGFuZ3VhZ2UgcmVxdWVzdCwgc2NvcmVzIGl0IGFnYWluc3QgdGhlIGludGVudCB0YWdzIGluIGByZWdpc3RyeS5qc29uYCwgYXNrcyB5b3Ugd2hlbiB0d28gY29tcG9uZW50cyBhcmUgY2xvc2UsIGFuZCBpbnN0YWxscyB0aGUgd2lubmVyIOKAlCB3aXRob3V0IHJlc3R5bGluZyBpdCBpbnRvIHNsb3AuIChUaGUgZ2VuZXJhbCBhZ2VudCBndWlkZSBpcyBbYFNLSUxMLm1kYF0oU0tJTEwubWQpLikKCiMjIFRoZSBvbmUtcm9vZiBraXQKClVuc2xvcCBpcyBvbmUga2l0IGZvciBBSS1idWlsdCB3ZWJzaXRlcyB0aGF0IGRvbid0IGxvb2sgQUktYnVpbHQg4oCUIGNvbXBvbmVudHMsIGRpc2NvdmVyeSwgZGVzaWduIGp1ZGdtZW50LCBicmllZi1zaGFycGVuaW5nLCBtb3Rpb24sIGFuZCBsYXVuY2ggY2hlY2tzOgoKfCBQaWVjZSB8IFdoYXQgaXQgZG9lcyB8IFN0YXJ0IGhlcmUgfAp8LS0tfC0tLXwtLS18CnwgKipDb21wb25lbnRzKiogfCAxMyBodW1hbi1ncmFkZSBjb21wb25lbnRzIMOXIDIgc3RhY2tzIChSZWFjdCtUYWlsd2luZCwgSFRNTC9DU1MpIHwgW2NhdGFsb2ddKCNjb21wb25lbnQtY2F0YWxvZykgfAp8ICoqUm91dGVyKiogfCBgLi91bnNsb3AgZmluZCAiPG5lZWQ+ImAgc2NvcmVzIGludGVudCDihpIgY29tcG9uZW50LCBpbnN0YWxscyBpdDsgYWxzbyByb3V0ZXMgdG8gc2tpbGxzOyBzdWdnZXN0cyBwcm9tcHQtc2hhcGVyIHdoZW4gYSBxdWVyeSBpcyB0b28gdmFndWUgfCBbYHNraWxscy91bnNsb3Atcm91dGVyL1NLSUxMLm1kYF0oc2tpbGxzL3Vuc2xvcC1yb3V0ZXIvU0tJTEwubWQpIHwKfCAqKk1DUCBzZXJ2ZXIqKiB8IGBzZWFyY2hfY29tcG9uZW50c2AgLyBgZ2V0X2NvbXBvbmVudGAgLyBgaW5zdGFsbF9jb21wb25lbnRgIC8gYGF1ZGl0X3NpdGVgIC8gYHNoYXBlX3Byb21wdGAgYXMgbmF0aXZlIHRvb2wgY2FsbHMgKHN0ZGlvKSDigJQgY29tcG9uZW50cyArIHByZS1sYXVuY2ggYXVkaXQgKyBwcm9tcHQgc2hhcGluZywgc2FtZSBzY29yaW5nIGFzIHRoZSByb3V0ZXIgfCBbYHNlcnZlcnMvdW5zbG9wLW1jcC9gXShzZXJ2ZXJzL3Vuc2xvcC1tY3AvKSB8CnwgKipEZXNpZ24gSW50ZWwqKiB8IFNlbmlvci1kZXNpZ25lciBqdWRnbWVudCBhcyBydWxlczogdHlwZSBzY2FsZSwgc3BhY2luZyByaHl0aG0sIGluay9wYXBlci9hY2NlbnQgZGlzY2lwbGluZSwgZ2VucmUtcGlja2VkIGxheW91dHMsIGNvcHkgdm9pY2UgKyBhIDE1LXF1ZXN0aW9uIHNlbGYtY3JpdGlxdWUgcmV2aWV3IHwgW2Bza2lsbHMvZGVzaWduLWludGVsL1NLSUxMLm1kYF0oc2tpbGxzL2Rlc2lnbi1pbnRlbC9TS0lMTC5tZCkgfAp8ICoqUHJvbXB0IFNoYXBlcioqIHwgVmFndWUgcmVxdWVzdCBpbiDihpIgc2hhcnAgVW5zbG9wLWF3YXJlIGJ1aWxkIGJyaWVmIG91dCAoY29tcG9uZW50cyBtYXRjaGVkLCBERVNJR04ubWQgYmFrZWQgaW4sIHN0b3AgY29uZGl0aW9ucyBzZXQpIHwgW2Bza2lsbHMvcHJvbXB0LXNoYXBlci9TS0lMTC5tZGBdKHNraWxscy9wcm9tcHQtc2hhcGVyL1NLSUxMLm1kKSB8CnwgKipNb3Rpb24qKiB8IEFuaW1hdGlvbiBwbGF5Ym9vazogYW5pbWF0ZSBvbmUgdGhpbmcgb24gaW50ZXJhY3Rpb24gb3Igbm90aGluZyDigJQgc3ByaW5nIGNvbmZpZ3MsIGVhc2luZywgZHVyYXRpb24gYnVkZ2V0cywgdGhlIGNsaWNow6kgbGlzdCB8IFtgTU9USU9OLm1kYF0oTU9USU9OLm1kKSB8CnwgKipBdWRpdCoqIHwgUHJlLWxhdW5jaCBjaGVja3M6IDIyIGF1dG9tYXRlZCBDTEkgY2hlY2tzICsgbGF1bmNoL3NlY3VyaXR5IGNoZWNrbGlzdHMgfCBbYHBsdWdpbnMvcHJlbGF1bmNoLWF1ZGl0L2BdKHBsdWdpbnMvcHJlbGF1bmNoLWF1ZGl0LykgfAp8ICoqQ29tbXVuaXR5IHNoZWxmKiogfCBUaGlyZC1wYXJ0eSBkZXNpZ24gc2tpbGxzLCB2ZW5kb3JlZCBvciBsaW5rZWQgd2l0aCBhdHRyaWJ1dGlvbjogQW50aHJvcGljJ3MgYGZyb250ZW5kLWRlc2lnbmAsIGB1aS11eC1wcm8tbWF4YCAoNyBza2lsbHMpLCBgd2ViLWRlc2lnbi1ndWlkZWxpbmVzYCwgcGx1cyBsaW5rZWQgYHNoYWRjbmAgYW5kIEdhcnJ5IFRhbidzIGBnc3RhY2tgIHwgW2Bza2lsbHMvY29tbXVuaXR5L2BdKHNraWxscy9jb21tdW5pdHkvKSB8CgpBZ2VudCBlbnRyeSBwb2ludDogW2BTS0lMTC5tZGBdKFNLSUxMLm1kKSDigJQgZGlzY292ZXJ5LCBpbnN0YWxsLCByZXN0eWxlIHJ1bGVzLCBhbmQgcG9pbnRlcnMgdG8gZXZlcnkgc2tpbGwgYWJvdmUuCgojIyBDb21wb25lbnQgY2F0YWxvZwoKfCAjIHwgQ29tcG9uZW50IHwgQ2hhcmFjdGVyIHwgUmVhY3QgfCBIVE1MIHwKfC0tLXwtLS18LS0tfC0tLXwtLS18CnwgMDEgfCBIb25lc3QgQnV0dG9uIHwgV29ya3dlYXItaW5zcGlyZWQ6IGNodW5reSBpbmsgYm9yZGVyLCBoYXJkIG9mZnNldCBzaGFkb3csIHVwcGVyY2FzZSBncm90ZXNrIGxhYmVsIHwgW2ByL2J1dHRvbi5qc29uYF0oci9idXR0b24uanNvbikgfCBbYGNvbXBvbmVudHMvaHRtbC9idXR0b24vYF0oY29tcG9uZW50cy9odG1sL2J1dHRvbi8pIHwKfCAwMiB8IE1hc3RoZWFkIE5hdmJhciB8IFByaW50LWVkaXRvcmlhbCBtYXN0aGVhZDogc2VyaWYgd29yZG1hcmsgYmV0d2VlbiB0aGluIHJ1bGVzLCBpc3N1ZS1kYXRlIGxpbmUgfCBbYHIvbmF2YmFyLmpzb25gXShyL25hdmJhci5qc29uKSB8IFtgY29tcG9uZW50cy9odG1sL25hdmJhci9gXShjb21wb25lbnRzL2h0bWwvbmF2YmFyLykgfAp8IDAzIHwgTWFuaWZlc3RvIEhlcm8gfCBBc3ltbWV0cmljIGVkaXRvcmlhbCBoZXJvOiBvdmVyc2l6ZWQgc2VyaWYgZGlzcGxheSB0eXBlLCBsZWZ0LWFsaWduZWQsIHdhcm0gcGFwZXIgd2l0aCBkb3R0ZWQgdGV4dHVyZSB8IFtgci9oZXJvLmpzb25gXShyL2hlcm8uanNvbikgfCBbYGNvbXBvbmVudHMvaHRtbC9oZXJvL2BdKGNvbXBvbmVudHMvaHRtbC9oZXJvLykgfAp8IDA0IHwgTGVkZ2VyIEZlYXR1cmVzIHwgRmVhdHVyZXMgYXMgYW4gYXJjaGl2YWwgaW5kZXg6IG51bWJlcmVkIHJvd3MsIGhhaXJsaW5lIGRpdmlkZXJzLCBtb25vIGluZGV4IG51bWJlcnMgfCBbYHIvZmVhdHVyZXMuanNvbmBdKHIvZmVhdHVyZXMuanNvbikgfCBbYGNvbXBvbmVudHMvaHRtbC9mZWF0dXJlcy9gXShjb21wb25lbnRzL2h0bWwvZmVhdHVyZXMvKSB8CnwgMDUgfCBNZW51IFByaWNpbmcgfCBQcmljaW5nIGFzIGEgYmlzdHJvIG1lbnU6IHNlcmlmIHByaWNlcywgZG90dGVkIGxlYWRlcnMsIG9uZSAiY2hlZidzIHBpY2siIHRpZXIgaW4gaW5rIHwgW2ByL3ByaWNpbmcuanNvbmBdKHIvcHJpY2luZy5qc29uKSB8IFtgY29tcG9uZW50cy9odG1sL3ByaWNpbmcvYF0oY29tcG9uZW50cy9odG1sL3ByaWNpbmcvKSB8CnwgMDYgfCBNYXJnaW4gTm90ZXMgVGVzdGltb25pYWxzIHwgVGVzdGltb25pYWxzIGFzIGxpdGVyYXJ5IHB1bGwtcXVvdGVzIHdpdGggbWFyZ2luYWxpYS1zdHlsZSBhdHRyaWJ1dGlvbiDigJQgbm8gc3RhciByYXRpbmdzIHwgW2ByL3Rlc3RpbW9uaWFscy5qc29uYF0oci90ZXN0aW1vbmlhbHMuanNvbikgfCBbYGNvbXBvbmVudHMvaHRtbC90ZXN0aW1vbmlhbHMvYF0oY29tcG9uZW50cy9odG1sL3Rlc3RpbW9uaWFscy8pIHwKfCAwNyB8IEZvb3Rub3RlcyBGQVEgfCBBY2NvcmRpb24gc3R5bGVkIGxpa2Ugc2Nob2xhcmx5IGZvb3Rub3RlczogbnVtYmVyZWQsIHJ1bGVkLCBzZXJpZiAoSFRNTCB2ZXJzaW9uIG5lZWRzIG5vIEpTKSB8IFtgci9mYXEuanNvbmBdKHIvZmFxLmpzb24pIHwgW2Bjb21wb25lbnRzL2h0bWwvZmFxL2BdKGNvbXBvbmVudHMvaHRtbC9mYXEvKSB8CnwgMDggfCBQb3N0ZXIgQ1RBIHwgU3dpc3MtcG9zdGVyIGNhbGwgdG8gYWN0aW9uOiBmbGF0IHJlZCwgb3ZlcnNpemVkIGdyb3Rlc2sgdHlwZSwgcnViYmVyLXN0YW1wIGJhZGdlIHwgW2ByL2N0YS1iYW5uZXIuanNvbmBdKHIvY3RhLWJhbm5lci5qc29uKSB8IFtgY29tcG9uZW50cy9odG1sL2N0YS1iYW5uZXIvYF0oY29tcG9uZW50cy9odG1sL2N0YS1iYW5uZXIvKSB8CnwgMDkgfCBDb2xvcGhvbiBGb290ZXIgfCBGb290ZXIgc2V0IGxpa2UgYSBib29rIGNvbG9waG9uOiBzbWFsbCBjYXBzLCBjcmVkaXRzLCBzZXQtaW4tdHlwZSBkZXRhaWxzIHwgW2ByL2Zvb3Rlci5qc29uYF0oci9mb290ZXIuanNvbikgfCBbYGNvbXBvbmVudHMvaHRtbC9mb290ZXIvYF0oY29tcG9uZW50cy9odG1sL2Zvb3Rlci8pIHwKfCAxMCB8IExldHRlciBDb250YWN0IEZvcm0gfCBBIGNvbnRhY3QgZm9ybSB3cml0dGVuIGFzIGEgbGV0dGVyOiBzYWx1dGF0aW9uLCBydWxlZCBsaW5lcywgc2lnbi1vZmYgc3VibWl0IHwgW2ByL2NvbnRhY3QtZm9ybS5qc29uYF0oci9jb250YWN0LWZvcm0uanNvbikgfCBbYGNvbXBvbmVudHMvaHRtbC9jb250YWN0LWZvcm0vYF0oY29tcG9uZW50cy9odG1sL2NvbnRhY3QtZm9ybS8pIHwKfCAxMSB8IFRoZSBMb2dib29rIHwgUmVsZWFzZSBub3RlcyBhcyBhIHNoaXAncyBsb2c6IGRhdGVkIGVudHJpZXMsIG92ZXJzaXplZCB2ZXJzaW9uIG51bWVyYWxzLCBydWJiZXItc3RhbXAgY2hhbmdlIHRhZ3MgfCBbYHIvY2hhbmdlbG9nLmpzb25gXShyL2NoYW5nZWxvZy5qc29uKSB8IFtgY29tcG9uZW50cy9odG1sL2NoYW5nZWxvZy9gXShjb21wb25lbnRzL2h0bWwvY2hhbmdlbG9nLykgfAp8IDEyIHwgVGhlIFdlaWdoLUluIHwgVXMtdnMtdGhlbSBjb21wYXJpc29uIHRhYmxlIGFzIGEgYm94aW5nIGZpZ2h0IGNhcmQ6IHRhbGUtb2YtdGhlLXRhcGUgc3RhdHMsIG51bWJlcmVkIHJvdW5kcywganVkZ2UncyBkZWNpc2lvbiB8IFtgci92cy10YWJsZS5qc29uYF0oci92cy10YWJsZS5qc29uKSB8IFtgY29tcG9uZW50cy9odG1sL3ZzLXRhYmxlL2BdKGNvbXBvbmVudHMvaHRtbC92cy10YWJsZS8pIHwKfCAxMyB8IFRoZSBSZWNpcGUgfCBIb3ctaXQtd29ya3Mgc2VjdGlvbiBhcyBhIGNvb2tib29rIHJlY2lwZSBjYXJkOiBwcmVwLXRpbWUgbWV0YSBzdHJpcCwgbnVtYmVyZWQgcmVjaXBlIGluc3RydWN0aW9ucywgY2hlZidzIG5vdGUgfCBbYHIvcmVjaXBlLmpzb25gXShyL3JlY2lwZS5qc29uKSB8IFtgY29tcG9uZW50cy9odG1sL3JlY2lwZS9gXShjb21wb25lbnRzL2h0bWwvcmVjaXBlLykgfAoKUHJldmlldyBldmVyeSBIVE1MIGNvbXBvbmVudCB3aXRoIG5vIGJ1aWxkIHN0ZXA6IG9wZW4gW2Bjb21wb25lbnRzL2h0bWwvaW5kZXguaHRtbGBdKGNvbXBvbmVudHMvaHRtbC9pbmRleC5odG1sKSBpbiBhIGJyb3dzZXIuCgojIyBQbHVnaW5zIOKAlCBwcmUtbGF1bmNoIGF1ZGl0CgpDb21wb25lbnRzIGdldCB5b3UgYSBzaXRlIHRoYXQgZG9lc24ndCAqbG9vayogQUktbWFkZS4gVGhlIGF1ZGl0IHBsdWdpbiBtYWtlcyBzdXJlIGl0IGlzbid0ICpzaGlwcGVkKiBoYWxmLXJlYWR5OiBtaXNzaW5nIG1ldGEgZGVzY3JpcHRpb25zLCBubyBmYXZpY29uLCBicm9rZW4gbGlua3MsIGBjb25zb2xlLmxvZ2AgbGVmdCBpbiwgYW4gQVBJIGtleSBjb21taXR0ZWQgbmV4dCB0byB0aGUgaGVybyBpbWFnZS4KCmBgYGJhc2gKIyBhdWRpdCBhIGxvY2FsIGJ1aWxkLCBvciBhIGRlcGxveWVkIHNpdGUKLi9wbHVnaW5zL3ByZWxhdW5jaC1hdWRpdC9hdWRpdCAuL2Rpc3QKLi9wbHVnaW5zL3ByZWxhdW5jaC1hdWRpdC9hdWRpdCBodHRwczovL2V4YW1wbGUuY29tCmBgYAoKMjIgY2hlY2tzLCB6ZXJvIGRlcGVuZGVuY2llcyAoUHl0aG9uIDMgc3RkbGliIG9ubHkpLCBleGl0cyAxIG9uIGZhaWx1cmUgc28gaXQgd29ya3MgYXMgYSBDSSBnYXRlLiBTaGlwcyB3aXRoIGFuIFthZ2VudCBza2lsbF0ocGx1Z2lucy9wcmVsYXVuY2gtYXVkaXQvU0tJTEwubWQpIOKAlCB0aGUgYWdlbnQgcnVucyB0aGUgQ0xJLCB3YWxrcyB0aGUgW2xhdW5jaCBjaGVja2xpc3RdKHBsdWdpbnMvcHJlbGF1bmNoLWF1ZGl0L2NoZWNrbGlzdHMvY29yZS5tZCkgYW5kIFtzZWN1cml0eSBjaGVja2xpc3RdKHBsdWdpbnMvcHJlbGF1bmNoLWF1ZGl0L2NoZWNrbGlzdHMvc2VjdXJpdHkubWQpLCBmaXhlcyB3aGF0IGl0IGZpbmRzLCBhbmQgZmxhZ3Mgd2hhdCBuZWVkcyBhIGh1bWFuLiBEZXRhaWxzIGluIFtgcGx1Z2lucy9wcmVsYXVuY2gtYXVkaXQvUkVBRE1FLm1kYF0ocGx1Z2lucy9wcmVsYXVuY2gtYXVkaXQvUkVBRE1FLm1kKS4KCiMjIEluc3RhbGwg4oCUIFJlYWN0ICsgVGFpbHdpbmQKCkVhY2ggY29tcG9uZW50IGlzIGEgW3NoYWRjbiByZWdpc3RyeV0oaHR0cHM6Ly91aS5zaGFkY24uY29tL2RvY3MvcmVnaXN0cnkpIGl0ZW06CgpgYGBiYXNoCm5weCBzaGFkY25AbGF0ZXN0IGFkZCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vc3RiYXR0dWxhLXJlc2VhcmNoL3Vuc2xvcC9tYWluL3IvYnV0dG9uLmpzb24KYGBgCgpCcm93c2UgYWxsIGl0ZW1zIGluIFtgcmVnaXN0cnkuanNvbmBdKHJlZ2lzdHJ5Lmpzb24pLiBDb21wb25lbnRzIHVzZSBUYWlsd2luZCB1dGlsaXRpZXMgYW5kIHN5c3RlbSBmb250IHN0YWNrcyBvbmx5IOKAlCBubyBleHRyYSBkZXBlbmRlbmNpZXMsIG5vIGNvbmZpZyBjaGFuZ2VzLiBBIHRpbnkgYGNuKClgIGhlbHBlciBsaXZlcyBhdCBgY29tcG9uZW50cy9yZWFjdC9saWIvdXRpbHMudHNgIChkZXBlbmRlbmN5LWZyZWUpLgoKPiBGb250czogUmVhY3QgY29tcG9uZW50cyB1c2UgVGFpbHdpbmQncyBgZm9udC1zZXJpZmAgLyBgZm9udC1zYW5zYCAvIGBmb250LW1vbm9gIChzeXN0ZW0gc3RhY2tzKS4gRm9yIHRoZSBmdWxsIGVkaXRvcmlhbCBsb29rLCBhZGQgW0ZyYXVuY2VzXShodHRwczovL2ZvbnRzLmdvb2dsZS5jb20vc3BlY2ltZW4vRnJhdW5jZXMpIGFzIHlvdXIgc2VyaWYgaW4gYHRhaWx3aW5kLmNvbmZpZ2Ag4oCUIG9wdGlvbmFsLgoKIyMgSW5zdGFsbCDigJQgSFRNTC9DU1MKCmBgYGJhc2gKIyBncmFiIG9uZSBjb21wb25lbnQgKG5lZWRzIG5vdGhpbmcgYnV0IGEgYnJvd3NlcikKY3VybCAtTyBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vc3RiYXR0dWxhLXJlc2VhcmNoL3Vuc2xvcC9tYWluL2NvbXBvbmVudHMvaHRtbC9oZXJvL2hlcm8uaHRtbApjdXJsIC1PIGh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9zdGJhdHR1bGEtcmVzZWFyY2gvdW5zbG9wL21haW4vY29tcG9uZW50cy9odG1sL2hlcm8vaGVyby5jc3MKYGBgCgpPciBjbG9uZSB0aGUgcmVwbyBhbmQgb3BlbiBhbnkgYGNvbXBvbmVudHMvaHRtbC88bmFtZT4vPG5hbWU+Lmh0bWxgIGRpcmVjdGx5LiBHb29nbGUgRm9udHMgKEZyYXVuY2VzKSBsb2FkcyB2aWEgYDxsaW5rPmA7IGV2ZXJ5dGhpbmcgZWxzZSBpcyBsb2NhbC4KCiMjIERlc2lnbiBwcmluY2lwbGVzCgpVbnNsb3AgY29tcG9uZW50cyBmb2xsb3cgdGhlIGFudGktc2xvcCBydWxlcyBpbiBbYERFU0lHTi5tZGBdKERFU0lHTi5tZCkg4oCUIHRoZSBudW1iZXJlZCAidGVsbHMiIG9mIEFJLWdlbmVyYXRlZCB3ZWJzaXRlcyBhbmQgd2hhdCBlYWNoIGNvbXBvbmVudCBkb2VzIGluc3RlYWQuIFRoZSBvbmUgaGFyZCBydWxlIGZvciBjb250cmlidXRvcnM6ICoqcmVzdHlsZSB0b3dhcmQgYSBzdHJvbmdlciBwb2ludCBvZiB2aWV3LCBuZXZlciB0b3dhcmQgdGhlIGRlZmF1bHRzLioqCgojIyBDb250cmlidXRpbmcKCkJvdGggc3RhY2tzIGFyZSByZXF1aXJlZCBmb3IgZXZlcnkgbmV3IGNvbXBvbmVudCwgYW5kIGV2ZXJ5IGNvbXBvbmVudCBtdXN0IGNsZWFyIHRoZSBkZXNpZ24gYmFyLiBTZWUgW2BDT05UUklCVVRJTkcubWRgXShDT05UUklCVVRJTkcubWQpLgoKIyMgTGljZW5zZQoKW01JVF0oTElDRU5TRSkgwqkgMjAyNiBTYWkgVGVqYSBCYXR0dWxhCg==
+# Unslop — human-grade UI components for the AI era
+
+<!-- demo.gif coming soon -->
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Components](https://img.shields.io/badge/components-14%20%C3%97%202-blue.svg)](#component-catalog)
+
+AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
+
+**Unslop is a shelf of website components with a point of view.** Every component looks like a human designer stayed up late on purpose — editorial typography, restrained confident color, asymmetric layouts, copy that sounds like a person. Build with AI, ship without the tell.
+
+Each component ships in **two dialects**:
+
+| Stack | Location | Install |
+|---|---|---|
+| React + Tailwind (shadcn-compatible) | `components/react/<name>/` | `npx shadcn@latest add https://raw.githubusercontent.com/stbattula-research/unslop/main/r/<name>.json` |
+| Framework-free HTML/CSS | `components/html/<name>/` | Copy `components/html/<name>/<name>.html` + `<name>.css`, or open the `.html` file directly — no build step |
+
+Point your AI coding agent at [`SKILL.md`](SKILL.md) and it can discover, fetch, and install components on its own.
+
+## Unslop Router — describe what you need, get the component installed
+
+Don't browse the catalog. Tell the router what you're building in plain words — it finds the best-matching component and installs it for you.
+
+### Setup
+
+You need **Python 3** (nothing else — no packages to install) and a clone of this repo:
+
+```bash
+git clone https://github.com/stbattula-research/unslop.git
+cd unslop
+chmod +x unslop   # one time: makes the script executable
+```
+
+### Find a component
+
+```bash
+./unslop find "pricing section for a coffee brand"
+```
+
+The router scores your description against every component and prints the top matches with install commands for both stacks:
+
+```
+1. Menu Pricing  (pricing)
+   Pricing laid out like a bistro menu: serif prices, dotted leaders...
+   react: npx shadcn@latest add https://raw.githubusercontent.com/.../r/pricing.json
+   html:  curl -O https://raw.githubusercontent.com/.../components/html/pricing/pricing.html + pricing.css
+```
+
+Other useful forms:
+
+```bash
+./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
+./unslop list                                      # list all 14 components
+./unslop skill "critique my design"                # search the skill index
+./unslop skill --list                              # list router, design-intel, prompt-shaper
+```
+
+Too-vague queries don't get a guess: `find` refuses below its confidence floor and points at the prompt-shaper skill to sharpen the ask first.
+
+### Install a component
+
+Pick a component by its short name (the part in parentheses, e.g. `pricing`, `hero`, `navbar`):
+
+**React + Tailwind project** — prints the shadcn install command; add `--run` to execute it right there:
+
+```bash
+./unslop add pricing --stack react          # prints the npx shadcn command
+./unslop add pricing --stack react --run     # runs it in your project directory
+```
+
+**Plain HTML/CSS** — pass `--dest` to copy the files straight into your project, or leave it out to get the `curl` commands:
+
+```bash
+./unslop add hero --stack html --dest ./site   # copies hero.html + hero.css into ./site/
+./unslop add hero --stack html                 # prints curl commands instead
+```
+
+After copying HTML/CSS files, link the stylesheet in your page:
+
+```html
+<link rel="stylesheet" href="hero.css">
+```
+
+### For AI coding agents
+
+Point your agent at [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md). It takes a natural-language request, scores it against the intent tags in `registry.json`, asks you when two components are close, and installs the winner — without restyling it into slop. (The general agent guide is [`SKILL.md`](SKILL.md).)
+
+## The one-roof kit
+
+Unslop is one kit for AI-built websites that don't look AI-built — components, discovery, design judgment, brief-sharpening, motion, and launch checks:
+
+| Piece | What it does | Start here |
+|---|---|---|
+| **Components** | 14 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
+| **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
+| **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
+| **Prompt Shaper** | Vague request in → sharp Unslop-aware build brief out (components matched, DESIGN.md baked in, stop conditions set) | [`skills/prompt-shaper/SKILL.md`](skills/prompt-shaper/SKILL.md) |
+| **Motion** | Animation playbook: animate one thing on interaction or nothing — spring configs, easing, duration budgets, the cliché list | [`MOTION.md`](MOTION.md) |
+| **Audit** | Pre-launch checks: 22 automated CLI checks + launch/security checklists | [`plugins/prelaunch-audit/`](plugins/prelaunch-audit/) |
+| **Community shelf** | Third-party design skills, vendored or linked with attribution: Anthropic's `frontend-design`, `ui-ux-pro-max` (7 skills), `web-design-guidelines`, plus linked `shadcn` and Garry Tan's `gstack` | [`skills/community/`](skills/community/) |
+
+Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules, and pointers to every skill above.
+
+## Component catalog
+
+| # | Component | Character | React | HTML |
+|---|---|---|---|---|
+| 01 | Honest Button | Workwear-inspired: chunky ink border, hard offset shadow, uppercase grotesk label | [`r/button.json`](r/button.json) | [`components/html/button/`](components/html/button/) |
+| 02 | Masthead Navbar | Print-editorial masthead: serif wordmark between thin rules, issue-date line | [`r/navbar.json`](r/navbar.json) | [`components/html/navbar/`](components/html/navbar/) |
+| 03 | Manifesto Hero | Asymmetric editorial hero: oversized serif display type, left-aligned, warm paper with dotted texture | [`r/hero.json`](r/hero.json) | [`components/html/hero/`](components/html/hero/) |
+| 04 | Ledger Features | Features as an archival index: numbered rows, hairline dividers, mono index numbers | [`r/features.json`](r/features.json) | [`components/html/features/`](components/html/features/) |
+| 05 | Menu Pricing | Pricing as a bistro menu: serif prices, dotted leaders, one "chef's pick" tier in ink | [`r/pricing.json`](r/pricing.json) | [`components/html/pricing/`](components/html/pricing/) |
+| 06 | Margin Notes Testimonials | Testimonials as literary pull-quotes with marginalia-style attribution — no star ratings | [`r/testimonials.json`](r/testimonials.json) | [`components/html/testimonials/`](components/html/testimonials/) |
+| 07 | Footnotes FAQ | Accordion styled like scholarly footnotes: numbered, ruled, serif (HTML version needs no JS) | [`r/faq.json`](r/faq.json) | [`components/html/faq/`](components/html/faq/) |
+| 08 | Poster CTA | Swiss-poster call to action: flat red, oversized grotesk type, rubber-stamp badge | [`r/cta-banner.json`](r/cta-banner.json) | [`components/html/cta-banner/`](components/html/cta-banner/) |
+| 09 | Colophon Footer | Footer set like a book colophon: small caps, credits, set-in-type details | [`r/footer.json`](r/footer.json) | [`components/html/footer/`](components/html/footer/) |
+| 10 | Letter Contact Form | A contact form written as a letter: salutation, ruled lines, sign-off submit | [`r/contact-form.json`](r/contact-form.json) | [`components/html/contact-form/`](components/html/contact-form/) |
+| 11 | The Logbook | Release notes as a ship's log: dated entries, oversized version numerals, rubber-stamp change tags | [`r/changelog.json`](r/changelog.json) | [`components/html/changelog/`](components/html/changelog/) |
+| 12 | The Weigh-In | Us-vs-them comparison table as a boxing fight card: tale-of-the-tape stats, numbered rounds, judge's decision | [`r/vs-table.json`](r/vs-table.json) | [`components/html/vs-table/`](components/html/vs-table/) |
+| 13 | The Recipe | How-it-works section as a cookbook recipe card: prep-time meta strip, numbered recipe instructions, chef's note | [`r/recipe.json`](r/recipe.json) | [`components/html/recipe/`](components/html/recipe/) |
+| 14 | The Scoreboard | Stats band staged as a stadium scoreboard: warm-black LED board, oversized amber tabular numerals, mono labels, a sports-ticker strip of small print | [`r/stats-band.json`](r/stats-band.json) | [`components/html/stats-band/`](components/html/stats-band/) |
+
+Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
+
+## Plugins — pre-launch audit
+
+Components get you a site that doesn't *look* AI-made. The audit plugin makes sure it isn't *shipped* half-ready: missing meta descriptions, no favicon, broken links, `console.log` left in, an API key committed next to the hero image.
+
+```bash
+# audit a local build, or a deployed site
+./plugins/prelaunch-audit/audit ./dist
+./plugins/prelaunch-audit/audit https://example.com
+```
+
+22 checks, zero dependencies (Python 3 stdlib only), exits 1 on failure so it works as a CI gate. Ships with an [agent skill](plugins/prelaunch-audit/SKILL.md) — the agent runs the CLI, walks the [launch checklist](plugins/prelaunch-audit/checklists/core.md) and [security checklist](plugins/prelaunch-audit/checklists/security.md), fixes what it finds, and flags what needs a human. Details in [`plugins/prelaunch-audit/README.md`](plugins/prelaunch-audit/README.md).
+
+## Install — React + Tailwind
+
+Each component is a [shadcn registry](https://ui.shadcn.com/docs/registry) item:
+
+```bash
+npx shadcn@latest add https://raw.githubusercontent.com/stbattula-research/unslop/main/r/button.json
+```
+
+Browse all items in [`registry.json`](registry.json). Components use Tailwind utilities and system font stacks only — no extra dependencies, no config changes. A tiny `cn()` helper lives at `components/react/lib/utils.ts` (dependency-free).
+
+> Fonts: React components use Tailwind's `font-serif` / `font-sans` / `font-mono` (system stacks). For the full editorial look, add [Fraunces](https://fonts.google.com/specimen/Fraunces) as your serif in `tailwind.config` — optional.
+
+## Install — HTML/CSS
+
+```bash
+# grab one component (needs nothing but a browser)
+curl -O https://raw.githubusercontent.com/stbattula-research/unslop/main/components/html/hero/hero.html
+curl -O https://raw.githubusercontent.com/stbattula-research/unslop/main/components/html/hero/hero.css
+```
+
+Or clone the repo and open any `components/html/<name>/<name>.html` directly. Google Fonts (Fraunces) loads via `<link>`; everything else is local.
+
+## Design principles
+
+Unslop components follow the anti-slop rules in [`DESIGN.md`](DESIGN.md) — the numbered "tells" of AI-generated websites and what each component does instead. The one hard rule for contributors: **restyle toward a stronger point of view, never toward the defaults.**
+
+## Contributing
+
+Both stacks are required for every new component, and every component must clear the design bar. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE) © 2026 Sai Teja Battula

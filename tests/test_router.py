@@ -1,1 +1,205 @@
-IiIiVGVzdHMgZm9yIHRoZSBgdW5zbG9wYCByb3V0ZXIgQ0xJOiBjb21wb25lbnQgcm91dGluZywgc2tpbGwgcm91dGluZywKYW5kIHRoZSBwcm9tcHQtc2hhcGVyIGZhbGxiYWNrIGZvciB2YWd1ZSBxdWVyaWVzLgoKSW1wb3J0cyB0aGUgcmVwby1yb290IGB1bnNsb3BgIHNjcmlwdCBkaXJlY3RseSAobm8gaW5zdGFsbCBuZWVkZWQpLgoiIiIKCmltcG9ydCBpbXBvcnRsaWIubWFjaGluZXJ5CmltcG9ydCBpbXBvcnRsaWIudXRpbAppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgc3lzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKaW1wb3J0IHB5dGVzdAoKSEVSRSA9IFBhdGgoX19maWxlX18pLnJlc29sdmUoKS5wYXJlbnQKVU5TTDBQID0gSEVSRS5wYXJlbnQgLyAidW5zbG9wIgoKX2xvYWRlciA9IGltcG9ydGxpYi5tYWNoaW5lcnkuU291cmNlRmlsZUxvYWRlcigidW5zbG9wX2NsaSIsIHN0cihVTlNMMFApKQpfc3BlYyA9IGltcG9ydGxpYi51dGlsLnNwZWNfZnJvbV9sb2FkZXIoInVuc2xvcF9jbGkiLCBfbG9hZGVyKQp1bnNsb3AgPSBpbXBvcnRsaWIudXRpbC5tb2R1bGVfZnJvbV9zcGVjKF9zcGVjKQpfbG9hZGVyLmV4ZWNfbW9kdWxlKHVuc2xvcCkKCgpkZWYgcnVuX2NsaSgqYXJncyk6CiAgICByZXR1cm4gc3VicHJvY2Vzcy5ydW4oCiAgICAgICAgW3N5cy5leGVjdXRhYmxlLCBzdHIoVU5TTDBQKSwgKmFyZ3NdLAogICAgICAgIGNhcHR1cmVfb3V0cHV0PVRydWUsIHRleHQ9VHJ1ZSwgdGltZW91dD02MCwKICAgICkKCgojIC0tLSBzY29yaW5nOiBza2lsbCBxdWVyaWVzIHJvdXRlIHRvIHNraWxscyAtLS0KCgpkZWYgdGVzdF9za2lsbF9xdWVyeV9yb3V0ZXNfdG9fcHJvbXB0X3NoYXBlcigpOgogICAgbWF0Y2hlcyA9IHVuc2xvcC5maW5kX3NraWxsX21hdGNoZXMoImhlbHAgbWUgd3JpdGUgYSBiZXR0ZXIgYnJpZWYiLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gInByb21wdC1zaGFwZXIiCiAgICBhc3NlcnQgbWF0Y2hlc1swXVsxXSA+IDAKCgpkZWYgdGVzdF9kZXNpZ25fcXVlcnlfcm91dGVzX3RvX2Rlc2lnbl9pbnRlbCgpOgogICAgbWF0Y2hlcyA9IHVuc2xvcC5maW5kX3NraWxsX21hdGNoZXMoImNyaXRpcXVlIG15IGRlc2lnbiB0eXBvZ3JhcGh5IGFuZCBjb2xvciBwYWxldHRlIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJkZXNpZ24taW50ZWwiCgoKZGVmIHRlc3RfY29tcG9uZW50X3F1ZXJ5X3JvdXRlc190b19yb3V0ZXJfc2tpbGwoKToKICAgIG1hdGNoZXMgPSB1bnNsb3AuZmluZF9za2lsbF9tYXRjaGVzKCJ3aGljaCBjb21wb25lbnQgc2hvdWxkIEkgdXNlIGZvciBteSBzaXRlIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJ1bnNsb3Atcm91dGVyIgoKCmRlZiB0ZXN0X2xvZ29fcXVlcnlfcm91dGVzX3RvX2NvbW11bml0eV9sb2dvX2Rlc2lnbigpOgogICAgbWF0Y2hlcyA9IHVuc2xvcC5maW5kX3NraWxsX21hdGNoZXMoImRlc2lnbiBhIGxvZ28gZm9yIG15IHN0YXJ0dXAiLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gImNvbW11bml0eS1sb2dvLWRlc2lnbiIKICAgIGFzc2VydCBtYXRjaGVzWzBdWzFdID4gMAoKCmRlZiB0ZXN0X2lsbHVzdHJhdGlvbl9xdWVyeV9yb3V0ZXNfdG9fY29tbXVuaXR5X2Fubm90YXRlZF9pbGx1c3RyYXRpb25zKCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfc2tpbGxfbWF0Y2hlcygiZHJhdyBhIGhhbmQtZHJhd24gZGlhZ3JhbSBvZiBteSBzeXN0ZW0gYXJjaGl0ZWN0dXJlIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJjb21tdW5pdHktYW5ub3RhdGVkLWlsbHVzdHJhdGlvbnMiCiAgICBhc3NlcnQgbWF0Y2hlc1swXVsxXSA+IDAKCgpkZWYgdGVzdF9tb3Rpb25fcXVlcnlfcm91dGVzX3RvX2NvbW11bml0eV9lbWlsa293YWxza2lfbW90aW9uKCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfc2tpbGxfbWF0Y2hlcygiYW5pbWF0ZSB0aGlzIGJ1dHRvbiB3aXRoIHNtb290aCB3ZWIgbW90aW9uIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJjb21tdW5pdHktZW1pbGtvd2Fsc2tpLW1vdGlvbiIKICAgIGFzc2VydCBtYXRjaGVzWzBdWzFdID4gMAoKCmRlZiB0ZXN0X3Rhc3RlX3F1ZXJ5X3JvdXRlc190b19jb21tdW5pdHlfdGFzdGUoKToKICAgIG1hdGNoZXMgPSB1bnNsb3AuZmluZF9za2lsbF9tYXRjaGVzKCJ0YXN0ZSBza2lsbCBhdm9pZCBhaSBzbG9wIGFlc3RoZXRpYyIsIHRvcD0zKQogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMF1bIm5hbWUiXSA9PSAiY29tbXVuaXR5LXRhc3RlIgogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMV0gPiAwCgoKZGVmIHRlc3RfaW1wZWNjYWJsZV9xdWVyeV9yb3V0ZXNfdG9fY29tbXVuaXR5X2ltcGVjY2FibGUoKToKICAgIG1hdGNoZXMgPSB1bnNsb3AuZmluZF9za2lsbF9tYXRjaGVzKCJpbXBlY2NhYmxlIHBvbGlzaCBteSBmcm9udGVuZCBkZXNpZ24iLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gImNvbW11bml0eS1pbXBlY2NhYmxlIgogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMV0gPiAwCgoKZGVmIHRlc3RfZ3NhcF9xdWVyeV9yb3V0ZXNfdG9fY29tbXVuaXR5X2dzYXBfbW90aW9uKCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfc2tpbGxfbWF0Y2hlcygiZ3NhcCBzY3JvbGx0cmlnZ2VyIHJldmVhbCBhbmltYXRpb24iLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gImNvbW11bml0eS1nc2FwLW1vdGlvbiIKICAgIGFzc2VydCBtYXRjaGVzWzBdWzFdID4gMAoKCmRlZiB0ZXN0X2dsYXNzX3F1ZXJ5X3JvdXRlc190b19jb21tdW5pdHlfZ2xhc3Ntb3JwaGlzbSgpOgogICAgbWF0Y2hlcyA9IHVuc2xvcC5maW5kX3NraWxsX21hdGNoZXMoImdsYXNzbW9ycGhpc20gZnJvc3RlZCBjYXJkIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJjb21tdW5pdHktZ2xhc3Ntb3JwaGlzbSIKICAgIGFzc2VydCBtYXRjaGVzWzBdWzFdID4gMAoKCmRlZiB0ZXN0X3BhbGV0dGVfcXVlcnlfcm91dGVzX3RvX2NvbW11bml0eV9kZXNpZ25fZGF0YWJhc2UoKToKICAgIG1hdGNoZXMgPSB1bnNsb3AuZmluZF9za2lsbF9tYXRjaGVzKCJjb2xvciBwYWxldHRlIGZvciBkYXJrIGZpbnRlY2ggZGFzaGJvYXJkIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJjb21tdW5pdHktZGVzaWduLWRhdGFiYXNlIgogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMV0gPiAwCgoKZGVmIHRlc3RfYmVudG9fcXVlcnlfcm91dGVzX3RvX2NvbW11bml0eV9iZW50bygpOgogICAgbWF0Y2hlcyA9IHVuc2xvcC5maW5kX3NraWxsX21hdGNoZXMoImJlbnRvIGdyaWQgbGF5b3V0IiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJjb21tdW5pdHktYmVudG8iCiAgICBhc3NlcnQgbWF0Y2hlc1swXVsxXSA+IDAKCgojIC0tLSBzY29yaW5nOiBjb21wb25lbnQgcXVlcmllcyBzdGlsbCByYW5rIGNvbXBvbmVudHMgZmlyc3QgLS0tCgoKZGVmIHRlc3RfcHJpY2luZ19xdWVyeV9yYW5rc19wcmljaW5nX2ZpcnN0KCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfbWF0Y2hlcygicHJpY2luZyBzZWN0aW9uIGZvciBhIGNvZmZlZSBicmFuZCIsIHRvcD0zKQogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMF1bIm5hbWUiXSA9PSAicHJpY2luZyIKICAgIGFzc2VydCBtYXRjaGVzWzBdWzFdID49IHVuc2xvcC5DT05GSURFTkNFX0ZMT09SCgoKZGVmIHRlc3RfaGVyb19xdWVyeV9yYW5rc19oZXJvX2ZpcnN0KCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfbWF0Y2hlcygiaGVybyBmb3IgbXkgbGFuZGluZyBwYWdlIiwgdG9wPTMpCiAgICBhc3NlcnQgbWF0Y2hlc1swXVswXVsibmFtZSJdID09ICJoZXJvIgoKCmRlZiB0ZXN0X2ZhcV9xdWVyeV9yYW5rc19mYXFfZmlyc3QoKToKICAgIG1hdGNoZXMgPSB1bnNsb3AuZmluZF9tYXRjaGVzKCJmcmVxdWVudGx5IGFza2VkIHF1ZXN0aW9ucyBoZWxwIHNlY3Rpb24iLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gImZhcSIKCgpkZWYgdGVzdF9jaGFuZ2Vsb2dfcXVlcnlfcmFua3NfY2hhbmdlbG9nX2ZpcnN0KCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfbWF0Y2hlcygicmVsZWFzZSBub3RlcyBjaGFuZ2Vsb2cgZm9yIG15IHByb2R1Y3QiLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gImNoYW5nZWxvZyIKICAgIGFzc2VydCBtYXRjaGVzWzBdWzFdID49IHVuc2xvcC5DT05GSURFTkNFX0ZMT09SCgoKZGVmIHRlc3RfY29tcGFyaXNvbl9xdWVyeV9yYW5rc192c3RhYmxlX2ZpcnN0KCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfbWF0Y2hlcygiY29tcGFyaXNvbiB0YWJsZSB1cyB2cyB0aGVtIGZvciBteSBsYW5kaW5nIHBhZ2UiLCB0b3A9MykKICAgIGFzc2VydCBtYXRjaGVzWzBdWzBdWyJuYW1lIl0gPT0gInZzLXRhYmxlIgogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMV0gPj0gdW5zbG9wLkNPTkZJREVOQ0VfRkxPT1IKCgpkZWYgdGVzdF9ob3dpdHdvcmtzX3F1ZXJ5X3JhbmtzX3JlY2lwZV9maXJzdCgpOgogICAgbWF0Y2hlcyA9IHVuc2xvcC5maW5kX21hdGNoZXMoImhvdyBpdCB3b3JrcyBzZWN0aW9uIHdpdGggdGhyZWUgc3RlcHMgZm9yIG15IGxhbmRpbmcgcGFnZSIsIHRvcD0zKQogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMF1bIm5hbWUiXSA9PSAicmVjaXBlIgogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMV0gPj0gdW5zbG9wLkNPTkZJREVOQ0VfRkxPT1IKCgojIC0tLSBwcm9tcHQtc2hhcGVyIHRyaWdnZXI6IHZhZ3VlIHF1ZXJpZXMgZG9uJ3QgZ3Vlc3MgYSBjb21wb25lbnQgLS0tCgoKZGVmIHRlc3RfdmFndWVfcXVlcnlfc2NvcmVzX2JlbG93X2Zsb29yKCk6CiAgICBtYXRjaGVzID0gdW5zbG9wLmZpbmRfbWF0Y2hlcygibWFrZSBtZSBzb21ldGhpbmcgY29vbCIsIHRvcD0zKQogICAgYXNzZXJ0IG1hdGNoZXNbMF1bMV0gPCB1bnNsb3AuQ09ORklERU5DRV9GTE9PUgoKCmRlZiB0ZXN0X3NraWxsX2RvbWluYXRlc193ZWFrX2NvbXBvbmVudF9tYXRjaCgpOgogICAgIyAiaGVscCIgd2Vha2x5IG1hdGNoZXMgZmFxLCBidXQgdGhlIHNraWxsIHNjb3JlIGNydXNoZXMgaXQg4oCUIHNraWxscyB3aW4uCiAgICBjID0gdW5zbG9wLmZpbmRfbWF0Y2hlcygiaGVscCBtZSB3cml0ZSBhIGJldHRlciBicmllZiIsIHRvcD0zKQogICAgcyA9IHVuc2xvcC5maW5kX3NraWxsX21hdGNoZXMoImhlbHAgbWUgd3JpdGUgYSBiZXR0ZXIgYnJpZWYiLCB0b3A9MykKICAgIGFzc2VydCBzWzBdWzFdID4gY1swXVsxXQogICAgYXNzZXJ0IHNbMF1bMV0gPj0gdW5zbG9wLkNPTkZJREVOQ0VfRkxPT1IKCgpkZWYgdGVzdF9za2lsbF9xdWVyeV9yb3V0ZXNfdG9fc2tpbGxzX25vdF9jb21wb25lbnRzKCk6CiAgICByID0gcnVuX2NsaSgiZmluZCIsICJoZWxwIG1lIHdyaXRlIGEgYmV0dGVyIGJyaWVmIikKICAgIGFzc2VydCByLnJldHVybmNvZGUgPT0gMAogICAgYXNzZXJ0ICJQcm9tcHQgU2hhcGVyIiBpbiByLnN0ZG91dAogICAgYXNzZXJ0ICJNZW51IFByaWNpbmciIG5vdCBpbiByLnN0ZG91dAogICAgYXNzZXJ0ICJGb290bm90ZXMgRkFRIiBub3QgaW4gci5zdGRvdXQKCgpkZWYgdGVzdF92YWd1ZV9maW5kX3N1Z2dlc3RzX3NoYXBlcigpOgogICAgciA9IHJ1bl9jbGkoImZpbmQiLCAibWFrZSBtZSBzb21ldGhpbmcgY29vbCIpCiAgICBhc3NlcnQgci5yZXR1cm5jb2RlID09IDAKICAgIGFzc2VydCAidG9vIHZhZ3VlIiBpbiByLnN0ZG91dAogICAgYXNzZXJ0ICJza2lsbHMvcHJvbXB0LXNoYXBlci9TS0lMTC5tZCIgaW4gci5zdGRvdXQKCgpkZWYgdGVzdF9jb25maWRlbnRfZmluZF9zdGlsbF9saXN0c19jb21wb25lbnRzKCk6CiAgICByID0gcnVuX2NsaSgiZmluZCIsICJwcmljaW5nIHNlY3Rpb24gZm9yIGEgY29mZmVlIGJyYW5kIikKICAgIGFzc2VydCByLnJldHVybmNvZGUgPT0gMAogICAgYXNzZXJ0ICJNZW51IFByaWNpbmciIGluIHIuc3Rkb3V0CiAgICBhc3NlcnQgInRvbyB2YWd1ZSIgbm90IGluIHIuc3Rkb3V0CgoKIyAtLS0gc2tpbGwgc3ViY29tbWFuZCAtLS0KCgpkZWYgdGVzdF9za2lsbF9saXN0X2xpc3RzX2FsbF9za2lsbHMoKToKICAgIHIgPSBydW5fY2xpKCJza2lsbCIsICItLWxpc3QiKQogICAgYXNzZXJ0IHIucmV0dXJuY29kZSA9PSAwCiAgICBmb3IgbmFtZSBpbiAoInVuc2xvcC1yb3V0ZXIiLCAiZGVzaWduLWludGVsIiwgInByb21wdC1zaGFwZXIiLCAiY29tbXVuaXR5LWxvZ28tZGVzaWduIiwKICAgICAgICAgICAgICAgICAiY29tbXVuaXR5LWFubm90YXRlZC1pbGx1c3RyYXRpb25zIiwgImNvbW11bml0eS1lbWlsa293YWxza2ktbW90aW9uIiwKICAgICAgICAgICAgICAgICAiY29tbXVuaXR5LWltcGVjY2FibGUiLCAiY29tbXVuaXR5LXRhc3RlIiwgImNvbW11bml0eS1nc2FwLW1vdGlvbiIsCiAgICAgICAgICAgICAgICAgImNvbW11bml0eS1tb3Rpb24tZGVzaWduIiwgImNvbW11bml0eS1tb3Rpb24tZGV2IiwgImNvbW11bml0eS1hd3d3YXJkcy11aSIsCiAgICAgICAgICAgICAgICAgImNvbW11bml0eS1pbG0tYWVzdGhldGljcyIsICJjb21tdW5pdHktbGlxdWlkLWdsYXNzIiwgImNvbW11bml0eS1ja3ctZGVzaWduIiwKICAgICAgICAgICAgICAgICAiY29tbXVuaXR5LW1hZ2ljLXVpIiwgImNvbW11bml0eS1jb21wb25lbnQtZGlzY292ZXJ5IiwKICAgICAgICAgICAgICAgICAiY29tbXVuaXR5LWFwcGxsYW1hLW1vYmlsZSIsICJjb21tdW5pdHktZGVzaWduLWRhdGFiYXNlIiwKICAgICAgICAgICAgICAgICAiY29tbXVuaXR5LWdsYXNzbW9ycGhpc20iLCAiY29tbXVuaXR5LWJlbnRvIiwgImNvbW11bml0eS1ncmFkaWVudCIpOgogICAgICAgIGFzc2VydCBuYW1lIGluIHIuc3Rkb3V0CgoKZGVmIHRlc3Rfc2tpbGxfc2VhcmNoX3JhbmtzX3Byb21wdF9zaGFwZXIoKToKICAgIHIgPSBydW5fY2xpKCJza2lsbCIsICJzaGFycGVuIG15IHByb21wdCIpCiAgICBhc3NlcnQgci5yZXR1cm5jb2RlID09IDAKICAgIGFzc2VydCAiUHJvbXB0IFNoYXBlciIgaW4gci5zdGRvdXQK
+"""Tests for the `unslop` router CLI: component routing, skill routing,
+and the prompt-shaper fallback for vague queries.
+
+Imports the repo-root `unslop` script directly (no install needed).
+"""
+
+import importlib.machinery
+import importlib.util
+import subprocess
+import sys
+from pathlib import Path
+
+import pytest
+
+HERE = Path(__file__).resolve().parent
+UNSL0P = HERE.parent / "unslop"
+
+_loader = importlib.machinery.SourceFileLoader("unslop_cli", str(UNSL0P))
+_spec = importlib.util.spec_from_loader("unslop_cli", _loader)
+unslop = importlib.util.module_from_spec(_spec)
+_loader.exec_module(unslop)
+
+
+def run_cli(*args):
+    return subprocess.run(
+        [sys.executable, str(UNSL0P), *args],
+        capture_output=True, text=True, timeout=60,
+    )
+
+
+# --- scoring: skill queries route to skills ---
+
+
+def test_skill_query_routes_to_prompt_shaper():
+    matches = unslop.find_skill_matches("help me write a better brief", top=3)
+    assert matches[0][0]["name"] == "prompt-shaper"
+    assert matches[0][1] > 0
+
+
+def test_design_query_routes_to_design_intel():
+    matches = unslop.find_skill_matches("critique my design typography and color palette", top=3)
+    assert matches[0][0]["name"] == "design-intel"
+
+
+def test_component_query_routes_to_router_skill():
+    matches = unslop.find_skill_matches("which component should I use for my site", top=3)
+    assert matches[0][0]["name"] == "unslop-router"
+
+
+def test_logo_query_routes_to_community_logo_design():
+    matches = unslop.find_skill_matches("design a logo for my startup", top=3)
+    assert matches[0][0]["name"] == "community-logo-design"
+    assert matches[0][1] > 0
+
+
+def test_illustration_query_routes_to_community_annotated_illustrations():
+    matches = unslop.find_skill_matches("draw a hand-drawn diagram of my system architecture", top=3)
+    assert matches[0][0]["name"] == "community-annotated-illustrations"
+    assert matches[0][1] > 0
+
+
+def test_motion_query_routes_to_community_emilkowalski_motion():
+    matches = unslop.find_skill_matches("animate this button with smooth web motion", top=3)
+    assert matches[0][0]["name"] == "community-emilkowalski-motion"
+    assert matches[0][1] > 0
+
+
+def test_taste_query_routes_to_community_taste():
+    matches = unslop.find_skill_matches("taste skill avoid ai slop aesthetic", top=3)
+    assert matches[0][0]["name"] == "community-taste"
+    assert matches[0][1] > 0
+
+
+def test_impeccable_query_routes_to_community_impeccable():
+    matches = unslop.find_skill_matches("impeccable polish my frontend design", top=3)
+    assert matches[0][0]["name"] == "community-impeccable"
+    assert matches[0][1] > 0
+
+
+def test_gsap_query_routes_to_community_gsap_motion():
+    matches = unslop.find_skill_matches("gsap scrolltrigger reveal animation", top=3)
+    assert matches[0][0]["name"] == "community-gsap-motion"
+    assert matches[0][1] > 0
+
+
+def test_glass_query_routes_to_community_glassmorphism():
+    matches = unslop.find_skill_matches("glassmorphism frosted card", top=3)
+    assert matches[0][0]["name"] == "community-glassmorphism"
+    assert matches[0][1] > 0
+
+
+def test_palette_query_routes_to_community_design_database():
+    matches = unslop.find_skill_matches("color palette for dark fintech dashboard", top=3)
+    assert matches[0][0]["name"] == "community-design-database"
+    assert matches[0][1] > 0
+
+
+def test_bento_query_routes_to_community_bento():
+    matches = unslop.find_skill_matches("bento grid layout", top=3)
+    assert matches[0][0]["name"] == "community-bento"
+    assert matches[0][1] > 0
+
+
+# --- scoring: component queries still rank components first ---
+
+
+def test_pricing_query_ranks_pricing_first():
+    matches = unslop.find_matches("pricing section for a coffee brand", top=3)
+    assert matches[0][0]["name"] == "pricing"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
+def test_hero_query_ranks_hero_first():
+    matches = unslop.find_matches("hero for my landing page", top=3)
+    assert matches[0][0]["name"] == "hero"
+
+
+def test_faq_query_ranks_faq_first():
+    matches = unslop.find_matches("frequently asked questions help section", top=3)
+    assert matches[0][0]["name"] == "faq"
+
+
+def test_changelog_query_ranks_changelog_first():
+    matches = unslop.find_matches("release notes changelog for my product", top=3)
+    assert matches[0][0]["name"] == "changelog"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
+def test_comparison_query_ranks_vstable_first():
+    matches = unslop.find_matches("comparison table us vs them for my landing page", top=3)
+    assert matches[0][0]["name"] == "vs-table"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
+def test_howitworks_query_ranks_recipe_first():
+    matches = unslop.find_matches("how it works section with three steps for my landing page", top=3)
+    assert matches[0][0]["name"] == "recipe"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
+def test_stats_query_ranks_scoreboard_first():
+    matches = unslop.find_matches("stats band with big numbers for my landing page", top=3)
+    assert matches[0][0]["name"] == "stats-band"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
+# --- prompt-shaper trigger: vague queries don't guess a component ---
+
+
+def test_vague_query_scores_below_floor():
+    matches = unslop.find_matches("make me something cool", top=3)
+    assert matches[0][1] < unslop.CONFIDENCE_FLOOR
+
+
+def test_skill_dominates_weak_component_match():
+    # "help" weakly matches faq, but the skill score crushes it — skills win.
+    c = unslop.find_matches("help me write a better brief", top=3)
+    s = unslop.find_skill_matches("help me write a better brief", top=3)
+    assert s[0][1] > c[0][1]
+    assert s[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
+def test_skill_query_routes_to_skills_not_components():
+    r = run_cli("find", "help me write a better brief")
+    assert r.returncode == 0
+    assert "Prompt Shaper" in r.stdout
+    assert "Menu Pricing" not in r.stdout
+    assert "Footnotes FAQ" not in r.stdout
+
+
+def test_vague_find_suggests_shaper():
+    r = run_cli("find", "make me something cool")
+    assert r.returncode == 0
+    assert "too vague" in r.stdout
+    assert "skills/prompt-shaper/SKILL.md" in r.stdout
+
+
+def test_confident_find_still_lists_components():
+    r = run_cli("find", "pricing section for a coffee brand")
+    assert r.returncode == 0
+    assert "Menu Pricing" in r.stdout
+    assert "too vague" not in r.stdout
+
+
+# --- skill subcommand ---
+
+
+def test_skill_list_lists_all_skills():
+    r = run_cli("skill", "--list")
+    assert r.returncode == 0
+    for name in ("unslop-router", "design-intel", "prompt-shaper", "community-logo-design",
+                 "community-annotated-illustrations", "community-emilkowalski-motion",
+                 "community-impeccable", "community-taste", "community-gsap-motion",
+                 "community-motion-design", "community-motion-dev", "community-awwwards-ui",
+                 "community-ilm-aesthetics", "community-liquid-glass", "community-ckw-design",
+                 "community-magic-ui", "community-component-discovery",
+                 "community-appllama-mobile", "community-design-database",
+                 "community-glassmorphism", "community-bento", "community-gradient"):
+        assert name in r.stdout
+
+
+def test_skill_search_ranks_prompt_shaper():
+    r = run_cli("skill", "sharpen my prompt")
+    assert r.returncode == 0
+    assert "Prompt Shaper" in r.stdout
