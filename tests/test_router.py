@@ -144,6 +144,12 @@ def test_stats_query_ranks_scoreboard_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_commandpalette_query_ranks_switchboard_first():
+    matches = unslop.find_matches("command palette cmdk quick actions menu for my app", top=3)
+    assert matches[0][0]["name"] == "command-palette"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 # --- prompt-shaper trigger: vague queries don't guess a component ---
 
 

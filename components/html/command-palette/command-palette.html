@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Switchboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="command-palette.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · command-palette</p>
+
+  <!-- The component -->
+  <section class="switchboard">
+    <div class="switchboard__inner">
+      <p class="switchboard__kicker">The exchange · est. ⌘K</p>
+      <h2 class="switchboard__heading">Every command, one call away.</h2>
+      <p class="switchboard__standfirst">No menus to dive through. The operator connects you the moment you speak.</p>
+
+      <div class="exchange">
+        <!-- Header strip -->
+        <div class="exchange__head">
+          <p class="exchange__title">The Switchboard</p>
+          <p class="exchange__lamp"><span class="lamp" aria-hidden="true"></span>Lines open</p>
+        </div>
+
+        <!-- Operator's mouthpiece -->
+        <div class="exchange__mouthpiece">
+          <span class="mouthpiece__icon" aria-hidden="true">✆</span>
+          <label class="sr-only" for="call-input">State your call</label>
+          <input id="call-input" type="text" placeholder="Operator — state your call…" autocomplete="off">
+          <kbd class="key">⌘K</kbd>
+        </div>
+
+        <!-- The jacks -->
+        <div class="exchange__jacks" id="jacks" role="listbox" aria-label="Available lines"></div>
+        <p class="exchange__empty" id="empty" hidden>No lines by that name. Operators love brevity — try a shorter number.</p>
+
+        <!-- Telephone etiquette -->
+        <div class="exchange__foot">
+          <p>↑ ↓ switch lines&ensp;·&ensp;⏎ connect&ensp;·&ensp;esc hang up</p>
+        </div>
+      </div>
+
+      <p class="switchboard__note" id="note" hidden><span class="switchboard__note-label">Connected — </span><span id="note-text"></span> The operator thanks you.</p>
+    </div>
+  </section>
+
+  <script>
+    // The exchange's lines: commands are data, not buttons.
+    var LINES = [
+      { number: "OP-01", name: "Billing settings", hint: "Where the invoices live", shortcut: "g b", group: "Lines" },
+      { number: "OP-02", name: "New invoice", hint: "Bill someone, politely", shortcut: "c i", group: "Lines" },
+      { number: "OP-03", name: "Search customers", hint: "Everybody you've ever sold to", shortcut: "g c", group: "Lines" },
+      { number: "OP-04", name: "Invite teammate", hint: "One more pair of hands", shortcut: "⌘ ⇧ i", group: "Operator's desk" },
+      { number: "OP-05", name: "Toggle dark mode", hint: "The exchange has no windows", shortcut: "⌘ d", group: "Operator's desk" },
+      { number: "OP-06", name: "Sign out", hint: "Hang up for the day", shortcut: "⌘ ⇧ q", group: "Operator's desk" }
+    ];
+
+    // Fuzzy subsequence match: "blst" finds "Billing settings".
+    function matches(query, line) {
+      var q = query.trim().toLowerCase();
+      if (!q) return true;
+      var text = (line.name + " " + (line.hint || "")).toLowerCase();
+      var i = 0;
+      for (var j = 0; j < text.length; j++) {
+        if (text[j] === q[i]) i++;
+        if (i === q.length) return true;
+      }
+      return false;
+    }
+
+    var input = document.getElementById("call-input");
+    var jacks = document.getElementById("jacks");
+    var empty = document.getElementById("empty");
+    var note = document.getElementById("note");
+    var noteText = document.getElementById("note-text");
+    var shown = [];
+    var active = 0;
+
+    function esc(s) {
+      return s.replace(/[&<>"]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+      });
+    }
+
+    function render() {
+      var q = input.value;
+      shown = LINES.filter(function (l) { return matches(q, l); });
+      active = 0;
+      var html = "";
+      var lastGroup = null;
+      shown.forEach(function (line, idx) {
+        if (line.group !== lastGroup) {
+          lastGroup = line.group;
+          html += '<p class="jack-group">' + esc(line.group) + '<span class="jack-rule" aria-hidden="true"></span></p><ul class="jack-list">';
+        }
+        html += '<li class="jack' + (idx === active ? " jack--active" : "") + '" role="option" data-i="' + idx + '">'
+          + '<span class="jack__plug" aria-hidden="true">' + (idx === active ? "◉" : "○") + "</span>"
+          + '<span class="jack__number">' + esc(line.number) + "</span>"
+          + '<span class="jack__body"><span class="jack__name">' + esc(line.name) + "</span>"
+          + (line.hint ? '<span class="jack__hint">' + esc(line.hint) + "</span>" : "")
+          + "</span>"
+          + (line.shortcut ? '<kbd class="key">' + esc(line.shortcut) + "</kbd>" : "")
+          + "</li>";
+        var next = shown[idx + 1];
+        if (!next || next.group !== lastGroup) html += "</ul>";
+      });
+      jacks.innerHTML = html;
+      empty.hidden = shown.length > 0;
+      Array.prototype.forEach.call(jacks.querySelectorAll(".jack"), function (el) {
+        el.addEventListener("click", function () { connect(shown[+el.getAttribute("data-i")]); });
+        el.addEventListener("mouseenter", function () {
+          active = +el.getAttribute("data-i");
+          paint();
+        });
+      });
+    }
+
+    function paint() {
+      Array.prototype.forEach.call(jacks.querySelectorAll(".jack"), function (el, idx) {
+        el.classList.toggle("jack--active", idx === active);
+        el.setAttribute("aria-selected", idx === active ? "true" : "false");
+        el.querySelector(".jack__plug").textContent = idx === active ? "◉" : "○";
+      });
+    }
+
+    function connect(line) {
+      noteText.textContent = line.name + ".";
+      note.hidden = false;
+    }
+
+    input.addEventListener("input", render);
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (shown.length) { active = (active + 1) % shown.length; paint(); }
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (shown.length) { active = (active - 1 + shown.length) % shown.length; paint(); }
+      } else if (e.key === "Enter") {
+        e.preventDefault();
+        if (shown[active]) connect(shown[active]);
+      } else if (e.key === "Escape") {
+        if (input.value) input.value = "";
+        else input.blur();
+        render();
+      }
+    });
+
+    render();
+    input.focus(); // autofocus is the whole UX
+  </script>
+</body>
+</html>

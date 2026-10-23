@@ -1,0 +1,277 @@
+/* The Switchboard — a command palette staged as an old telephone exchange.
+   Flat cream paper and ink, one signal-red accent. Typography is the
+   ornament: call numbers, mono group labels, serif command names. */
+
+:root {
+  --paper: #faf3e8;
+  --ink: #1c1917;
+  --red: #b91c1c;
+  --muted: #78716c;
+  --faint: rgba(28, 25, 23, 0.12);
+  --rule: #a8a29e;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.demo-note {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.demo-note a { color: var(--red); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  clip: rect(0 0 0 0); overflow: hidden;
+}
+
+.switchboard__inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+.switchboard__kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+
+.switchboard__heading {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.05;
+  margin-top: 1rem;
+  max-width: 36rem;
+}
+
+.switchboard__standfirst {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: #57534e;
+  margin-top: 1rem;
+  max-width: 34rem;
+}
+
+/* ---- The exchange panel ---- */
+
+.exchange {
+  margin-top: 3.5rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.exchange__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1.25rem;
+}
+
+.exchange__title,
+.exchange__lamp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.exchange__lamp { display: flex; align-items: center; gap: 0.5rem; }
+.lamp {
+  display: inline-block;
+  width: 0.5rem; height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--red);
+}
+
+.exchange__mouthpiece {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+.mouthpiece__icon {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--red);
+}
+
+.exchange__mouthpiece input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.exchange__mouthpiece input:focus { outline: none; }
+.exchange__mouthpiece input::placeholder { color: var(--rule); }
+
+.key {
+  flex-shrink: 0;
+  border: 1px solid var(--rule);
+  padding: 0.125rem 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #57534e;
+}
+
+.exchange__jacks { max-height: 24rem; overflow-y: auto; }
+
+.jack-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.25rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--muted);
+}
+.jack-rule { flex: 1; border-top: 1px dotted var(--rule); }
+
+.jack-list { list-style: none; padding: 0.5rem 0; }
+
+.jack {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+}
+.jack--active { background: rgba(185, 28, 28, 0.07); }
+
+.jack__plug {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem; height: 1.5rem;
+  flex-shrink: 0;
+  font-family: ui-monospace, monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+}
+.jack--active .jack__plug {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--paper);
+}
+
+.jack__number {
+  width: 3.5rem;
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+.jack__body { flex: 1; min-width: 0; }
+.jack__name {
+  display: block;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.jack__hint {
+  display: block;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exchange__empty {
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.exchange__foot {
+  border-top: 2px solid var(--ink);
+  padding: 0.75rem 1.25rem;
+}
+.exchange__foot p {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.switchboard__note {
+  max-width: 34rem;
+  margin: 2rem auto 0;
+  text-align: center;
+  transform: rotate(-1deg);
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  color: #57534e;
+}
+.switchboard__note-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-style: normal;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--red);
+}
+
+@media (max-width: 640px) {
+  .jack__number { width: 2.75rem; }
+  .switchboard__inner { padding: 3rem 1rem 4rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0c0a09;
+    --ink: #f5f5f4;
+    --red: #f87171;
+    --muted: #a8a29e;
+    --faint: rgba(245, 245, 244, 0.08);
+    --rule: #57534e;
+  }
+  .switchboard__standfirst, .switchboard__note { color: #a8a29e; }
+  .jack__hint { color: #a8a29e; }
+  .key { color: #d6d3d1; }
+  .jack--active { background: rgba(248, 113, 113, 0.1); }
+}

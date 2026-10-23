@@ -390,6 +390,46 @@
         "testimonials",
         "star ratings"
       ]
+    },
+    {
+      "name": "command-palette",
+      "title": "The Switchboard",
+      "description": "Command palette as an old telephone exchange: call numbers, dotted switchboard rules, operator microcopy, fuzzy filtering, full keyboard nav.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/command-palette.json",
+      "intents": [
+        "command palette",
+        "cmdk",
+        "command menu",
+        "command bar",
+        "cmd k",
+        "command k",
+        "keyboard shortcut menu",
+        "search menu",
+        "quick actions",
+        "spotlight search",
+        "action menu",
+        "keyboard commands",
+        "command search",
+        "ctrl k",
+        "pallete",
+        "app launcher",
+        "command launcher",
+        "go to menu",
+        "jump to"
+      ],
+      "useCases": [
+        "command palette",
+        "keyboard shortcuts",
+        "quick actions",
+        "search navigation",
+        "app launcher"
+      ],
+      "notFor": [
+        "search results page",
+        "site search",
+        "testimonials",
+        "pricing tiers"
+      ]
     }
   ],
   "name": "unslop"
