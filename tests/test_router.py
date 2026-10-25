@@ -150,6 +150,12 @@ def test_commandpalette_query_ranks_switchboard_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_logocloud_query_ranks_gallerywall_first():
+    matches = unslop.find_matches("logo cloud trusted by companies for my landing page", top=3)
+    assert matches[0][0]["name"] == "logo-cloud"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 # --- prompt-shaper trigger: vague queries don't guess a component ---
 
 

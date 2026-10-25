@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Components](https://img.shields.io/badge/components-15%20%C3%97%202-blue.svg)](#component-catalog)
+[![Components](https://img.shields.io/badge/components-16%20%C3%97%202-blue.svg)](#component-catalog)
 
 AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
 
@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 15 components
+./unslop list                                      # list all 16 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 14 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 16 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -123,6 +123,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 13 | The Recipe | How-it-works section as a cookbook recipe card: prep-time meta strip, numbered recipe instructions, chef's note | [`r/recipe.json`](r/recipe.json) | [`components/html/recipe/`](components/html/recipe/) |
 | 14 | The Scoreboard | Stats band staged as a stadium scoreboard: warm-black LED board, oversized amber tabular numerals, mono labels, a sports-ticker strip of small print | [`r/stats-band.json`](r/stats-band.json) | [`components/html/stats-band/`](components/html/stats-band/) |
 | 15 | The Switchboard | Command palette as an old telephone exchange: call numbers, dotted switchboard rules, operator microcopy, fuzzy filtering, full keyboard nav | [`r/command-palette.json`](r/command-palette.json) | [`components/html/command-palette/`](components/html/command-palette/) |
+| 16 | The Gallery Wall | Logo cloud as a museum gallery wall: each logo framed as an exhibit in its own type treatment, with a wall plaque (exhibit number, medium, year) | [`r/logo-cloud.json`](r/logo-cloud.json) | [`components/html/logo-cloud/`](components/html/logo-cloud/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 

@@ -430,6 +430,45 @@
         "testimonials",
         "pricing tiers"
       ]
+    },
+    {
+      "name": "logo-cloud",
+      "title": "The Gallery Wall",
+      "description": "Logo cloud as a museum gallery wall: each logo framed as an exhibit in its own type treatment, with a wall plaque (exhibit number, medium, year). No greyed-out logo soup.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/logo-cloud.json",
+      "intents": [
+        "logo cloud",
+        "logos",
+        "trusted by",
+        "as seen in",
+        "customer logos",
+        "brand logos",
+        "partner logos",
+        "logo strip",
+        "logo wall",
+        "trusted by companies",
+        "our customers",
+        "trusted by customers",
+        "logo section",
+        "company logos",
+        "client logos",
+        "featured in",
+        "logo grid",
+        "press logos"
+      ],
+      "useCases": [
+        "logo cloud",
+        "social proof",
+        "trusted by section",
+        "customer logos",
+        "partner logos"
+      ],
+      "notFor": [
+        "logo design",
+        "brand identity",
+        "testimonials",
+        "pricing tiers"
+      ]
     }
   ],
   "name": "unslop"
