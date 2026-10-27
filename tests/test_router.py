@@ -156,6 +156,12 @@ def test_logocloud_query_ranks_gallerywall_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_waitlist_query_ranks_ticketwindow_first():
+    matches = unslop.find_matches("waitlist signup early access join the waitlist for my launch", top=3)
+    assert matches[0][0]["name"] == "waitlist"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 # --- prompt-shaper trigger: vague queries don't guess a component ---
 
 

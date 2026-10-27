@@ -469,6 +469,41 @@
         "testimonials",
         "pricing tiers"
       ]
+    },
+    {
+      "name": "waitlist",
+      "title": "The Ticket Window",
+      "description": "Waitlist signup as a box-office ticket window: the pitch as a 'now showing' poster, the signup as a perforated ticket stub with a big mono ticket number. No fake scarcity counter.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/waitlist.json",
+      "intents": [
+        "waitlist",
+        "wait list",
+        "join waitlist",
+        "early access",
+        "coming soon signup",
+        "launch signup",
+        "beta signup",
+        "get notified",
+        "sign up for launch",
+        "join the waitlist",
+        "pre-launch signup",
+        "waitlist section",
+        "email signup",
+        "early access signup"
+      ],
+      "useCases": [
+        "waitlist",
+        "pre-launch signup",
+        "early access",
+        "product launch",
+        "beta signup"
+      ],
+      "notFor": [
+        "newsletter signup",
+        "contact form",
+        "login page",
+        "pricing tiers"
+      ]
     }
   ],
   "name": "unslop"

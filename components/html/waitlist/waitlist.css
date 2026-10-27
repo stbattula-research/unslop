@@ -1,0 +1,251 @@
+/* The Ticket Window — a waitlist signup staged as a box-office ticket window.
+   Flat paper + ink + ticket red, typography as the ornament, static except
+   for the form itself. The stub number is a demo starting point, not a
+   live queue count — no fake scarcity copy. */
+
+.demo-note {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  background: #fff;
+}
+
+.demo-note a { color: #6b7280; }
+
+.ticket-window {
+  background: #f6f1e7;
+  color: #1c1917;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ticket-window__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+.ticket-window__kicker {
+  margin: 0;
+  border-top: 1px solid rgba(28, 25, 23, 0.2);
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  padding: 0.375rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.ticket-window__grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .ticket-window__grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+
+.poster { min-width: 0; }
+
+.poster__heading {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.poster__standfirst {
+  margin: 1rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #57534e;
+}
+
+.poster__label {
+  margin: 2.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #b91c1c;
+}
+
+.poster__perks {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  border-top: 2px solid #1c1917;
+}
+
+.poster__perks li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  min-width: 0;
+}
+
+.perk__num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #b91c1c;
+  flex-shrink: 0;
+}
+
+.perk__text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.stub-wrap { min-width: 0; }
+
+.stub {
+  border: 2px solid #1c1917;
+  background: #fff;
+}
+
+.stub__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px dashed rgba(28, 25, 23, 0.4);
+  padding: 0.75rem 1.25rem;
+}
+
+.stub__admit {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.stub__open {
+  background: #b91c1c;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.stub__body { padding: 1.5rem 1.25rem; }
+
+.stub__label {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #57534e;
+}
+
+.stub__number {
+  margin: 0.25rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 900;
+  font-size: clamp(3rem, 10vw, 4.5rem);
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: break-word;
+}
+
+.stub__form { margin-top: 1.5rem; }
+
+.stub__form label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.stub__form input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-top: 0.5rem;
+  border: 2px solid #1c1917;
+  background: #f6f1e7;
+  padding: 0.75rem 1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  color: #1c1917;
+}
+
+.stub__form input:focus { outline: none; box-shadow: 0 0 0 2px #b91c1c; }
+
+.stub__form button {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  background: #1c1917;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+.stub__form button:hover { background: #b91c1c; }
+
+.stub__claimed {
+  margin: 1.5rem 0 0;
+  border-left: 2px solid #b91c1c;
+  padding-left: 1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.stub__smallprint {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  color: #57534e;
+}
+
+.stub__aside {
+  margin: 1rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #57534e;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ticket-window { background: #1c1917; color: #e7e5e4; }
+  .ticket-window__kicker { border-color: rgba(231, 229, 228, 0.2); }
+  .poster__standfirst, .stub__label, .stub__smallprint, .stub__aside { color: #a8a29e; }
+  .poster__perks { border-top-color: #e7e5e4; }
+  .poster__perks li { border-bottom-color: rgba(231, 229, 228, 0.2); }
+  .stub { border-color: #e7e5e4; background: #292524; }
+  .stub__head { border-bottom-color: rgba(231, 229, 228, 0.4); }
+  .stub__form input { border-color: #e7e5e4; background: #1c1917; color: #e7e5e4; }
+  .stub__form button { background: #e7e5e4; color: #1c1917; }
+  .stub__form button:hover { background: #b91c1c; color: #fff; }
+}

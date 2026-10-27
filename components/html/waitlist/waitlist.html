@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Ticket Window</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="waitlist.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · waitlist</p>
+
+  <!-- The component -->
+  <section class="ticket-window">
+    <div class="ticket-window__inner">
+      <p class="ticket-window__kicker">The ticket window · now booking</p>
+
+      <div class="ticket-window__grid">
+        <!-- The poster: what the ticket gets you -->
+        <div class="poster">
+          <h2 class="poster__heading">Take a number.</h2>
+          <p class="poster__standfirst">The doors aren't open yet. Leave an email at the window and we'll call your number when they are — one email, no newsletter drip.</p>
+
+          <p class="poster__label">Now showing — for ticket holders</p>
+          <ul class="poster__perks">
+            <li><span class="perk__num">01</span><span class="perk__text">First through the door when we open</span></li>
+            <li><span class="perk__num">02</span><span class="perk__text">The launch price, held for ticket holders</span></li>
+            <li><span class="perk__num">03</span><span class="perk__text">One email when your number is called — then silence</span></li>
+          </ul>
+        </div>
+
+        <!-- The ticket stub -->
+        <div class="stub-wrap">
+          <div class="stub">
+            <div class="stub__head">
+              <span class="stub__admit">Admit one · Waitlist</span>
+              <span class="stub__open">Window open</span>
+            </div>
+            <div class="stub__body">
+              <p class="stub__label">Your number in line</p>
+              <p class="stub__number">Nº 214</p>
+
+              <form class="stub__form" id="ticket-form">
+                <label for="ticket-email">Email, please</label>
+                <input id="ticket-email" type="email" required placeholder="you@example.com">
+                <button type="submit">Take a number →</button>
+              </form>
+              <p class="stub__claimed" id="ticket-claimed" hidden role="status">
+                Ticket Nº 214 is yours. We'll call your number when the doors open — and not before.
+              </p>
+
+              <p class="stub__smallprint">One email when your number is called. No drip campaign, no sharing your address. This stub is a demo — point the form at your real list.</p>
+            </div>
+          </div>
+          <p class="stub__aside">A waitlist that says what it will do, and what it won't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Demo only: claim the ticket in place. No email is sent anywhere.
+    document.getElementById('ticket-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('ticket-email').value.trim();
+      if (!email) return;
+      e.target.hidden = true;
+      document.getElementById('ticket-claimed').hidden = false;
+    });
+  </script>
+</body>
+</html>
