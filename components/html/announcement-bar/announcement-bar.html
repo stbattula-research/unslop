@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Town Crier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="announcement-bar.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · announcement-bar</p>
+
+  <!-- The component: a town crier's proclamation strip. One message,
+       standing still — no rotation, no restarting countdown. -->
+  <div class="town-crier" role="region" aria-label="Announcement" id="town-crier">
+    <div class="town-crier__inner">
+      <p class="town-crier__call">Hear ye · Proclamation Nº 04</p>
+      <p class="town-crier__message">The autumn sale ends Sunday at midnight — real midnight, not a timer that restarts when you reload.</p>
+      <a class="town-crier__link" href="#">Read the notice →</a>
+      <button class="town-crier__dismiss" type="button" id="town-crier-dismiss" aria-label="Dismiss announcement">Dismiss ✕</button>
+    </div>
+    <div class="town-crier__rule" aria-hidden="true"></div>
+  </div>
+
+  <!-- Sample content below the bar, so the strip reads in context -->
+  <main class="town-crier__sample">
+    <p class="town-crier__sample-kicker">The rest of the page, for scale</p>
+    <h1 class="town-crier__sample-heading">The bar above is the whole component.</h1>
+    <p class="town-crier__sample-text">It sits at the top of the page, says one thing, and gets out of the way. Dismiss it and it stays dismissed — for this visit, at least. Wire the button to your own persistence if you want it to remember.</p>
+  </main>
+
+  <script>
+    // Demo only: dismissing hides the bar for this page view.
+    document.getElementById('town-crier-dismiss').addEventListener('click', function () {
+      document.getElementById('town-crier').hidden = true;
+    });
+  </script>
+</body>
+</html>

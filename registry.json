@@ -504,6 +504,42 @@
         "login page",
         "pricing tiers"
       ]
+    },
+    {
+      "name": "announcement-bar",
+      "title": "The Town Crier",
+      "description": "Announcement bar as a town crier's proclamation: one message standing still, a mono HEAR YE call with an edition number, one link, and a real dismiss button. No rotating messages or restarting countdown.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/announcement-bar.json",
+      "intents": [
+        "announcement bar",
+        "announcement",
+        "site notice",
+        "top bar",
+        "hello bar",
+        "notice bar",
+        "promo bar",
+        "sale announcement",
+        "sitewide message",
+        "top banner notice",
+        "announcement strip",
+        "site announcement",
+        "header notice",
+        "dismissible banner",
+        "notice strip"
+      ],
+      "useCases": [
+        "announcement bar",
+        "site notice",
+        "sale announcement",
+        "sitewide message",
+        "top-of-page notice"
+      ],
+      "notFor": [
+        "call to action section",
+        "hero section",
+        "newsletter signup",
+        "pricing tiers"
+      ]
     }
   ],
   "name": "unslop"

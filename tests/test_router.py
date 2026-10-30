@@ -156,6 +156,11 @@ def test_logocloud_query_ranks_gallerywall_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_announcement_query_ranks_towncrier_first():
+    matches = unslop.find_matches("announcement bar notice at the top of my site for a sale", top=3)
+    assert matches[0][0]["name"] == "announcement-bar"
+
+
 def test_waitlist_query_ranks_ticketwindow_first():
     matches = unslop.find_matches("waitlist signup early access join the waitlist for my launch", top=3)
     assert matches[0][0]["name"] == "waitlist"
