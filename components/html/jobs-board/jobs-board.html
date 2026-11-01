@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Classifieds</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jobs-board.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · jobs-board</p>
+
+  <!-- The component: a careers board as a newspaper's help-wanted
+       classifieds. One ruled ad per role, mono reference numbers, the
+       salary printed in the ad. No fake urgency, no hidden pay. -->
+  <section class="classifieds" aria-label="Open roles">
+    <div class="classifieds__inner">
+      <p class="classifieds__kicker">Classifieds · Help wanted</p>
+      <h2 class="classifieds__heading">Help wanted.</h2>
+      <p class="classifieds__standfirst">Four open roles, printed plainly. The pay is in the ad — a listing that hides it has forgotten the price.</p>
+
+      <div class="classifieds__filters" role="group" aria-label="Filter by department">
+        <button class="classifieds__filter is-active" type="button" data-filter="All" aria-pressed="true">All</button>
+        <button class="classifieds__filter" type="button" data-filter="Engineering" aria-pressed="false">Engineering</button>
+        <button class="classifieds__filter" type="button" data-filter="Design" aria-pressed="false">Design</button>
+        <button class="classifieds__filter" type="button" data-filter="Support" aria-pressed="false">Support</button>
+        <span class="classifieds__count" id="classifieds-count">4 notices under this heading</span>
+      </div>
+
+      <ul class="classifieds__list">
+        <li class="classifieds__ad" data-department="Engineering">
+          <article class="classifieds__item">
+            <p class="classifieds__ref">Nº 047</p>
+            <div class="classifieds__main">
+              <h3 class="classifieds__title">Senior Frontend Engineer</h3>
+              <p class="classifieds__meta">Engineering · Remote — US · Full-time</p>
+              <p class="classifieds__blurb">You will own the checkout, not attend meetings about the checkout.</p>
+            </div>
+            <div class="classifieds__side">
+              <p class="classifieds__salary">$140k–$175k</p>
+              <a class="classifieds__apply" href="#">Apply →</a>
+            </div>
+          </article>
+        </li>
+        <li class="classifieds__ad" data-department="Design">
+          <article class="classifieds__item">
+            <p class="classifieds__ref">Nº 048</p>
+            <div class="classifieds__main">
+              <h3 class="classifieds__title">Product Designer</h3>
+              <p class="classifieds__meta">Design · Austin, TX · Full-time</p>
+              <p class="classifieds__blurb">One designer per surface, end to end — research, type, and the shipped pixels.</p>
+            </div>
+            <div class="classifieds__side">
+              <p class="classifieds__salary">$115k–$145k</p>
+              <a class="classifieds__apply" href="#">Apply →</a>
+            </div>
+          </article>
+        </li>
+        <li class="classifieds__ad" data-department="Support">
+          <article class="classifieds__item">
+            <p class="classifieds__ref">Nº 049</p>
+            <div class="classifieds__main">
+              <h3 class="classifieds__title">Support Engineer</h3>
+              <p class="classifieds__meta">Support · Remote — Worldwide · Full-time</p>
+              <p class="classifieds__blurb">You answer the ticket and you fix the bug behind it. Same person, same day.</p>
+            </div>
+            <div class="classifieds__side">
+              <p class="classifieds__salary">$80k–$100k</p>
+              <a class="classifieds__apply" href="#">Apply →</a>
+            </div>
+          </article>
+        </li>
+        <li class="classifieds__ad" data-department="Engineering">
+          <article class="classifieds__item">
+            <p class="classifieds__ref">Nº 050</p>
+            <div class="classifieds__main">
+              <h3 class="classifieds__title">Engineering Manager</h3>
+              <p class="classifieds__meta">Engineering · Remote — US · Full-time</p>
+              <p class="classifieds__blurb">Six engineers, one roadmap, and a calendar you are allowed to defend.</p>
+            </div>
+            <div class="classifieds__side">
+              <p class="classifieds__salary">$165k–$200k</p>
+              <a class="classifieds__apply" href="#">Apply →</a>
+            </div>
+          </article>
+        </li>
+      </ul>
+
+      <p class="classifieds__empty" id="classifieds-empty" hidden>No notices under that heading — yet. Check back; the page is reprinted when a role opens, not on a schedule.</p>
+
+      <p class="classifieds__footnote">Salaries are the range each role was posted with — not a promise, not a negotiation tactic. Every role lists its real location and type; nothing here is ‘fast-growing’ or ‘urgent’.</p>
+    </div>
+  </section>
+
+  <script>
+    // Demo only: department filter tabs. Filtering hides ads and updates
+    // the notice count; it never rewrites the ads themselves.
+    (function () {
+      var buttons = document.querySelectorAll('.classifieds__filter');
+      var ads = document.querySelectorAll('.classifieds__ad');
+      var count = document.getElementById('classifieds-count');
+      var empty = document.getElementById('classifieds-empty');
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          var filter = button.getAttribute('data-filter');
+          var shown = 0;
+          buttons.forEach(function (b) {
+            var active = b === button;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          ads.forEach(function (ad) {
+            var match = filter === 'All' || ad.getAttribute('data-department') === filter;
+            ad.hidden = !match;
+            if (match) shown += 1;
+          });
+          count.textContent = shown + ' notice' + (shown === 1 ? '' : 's') + ' under this heading';
+          empty.hidden = shown !== 0;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

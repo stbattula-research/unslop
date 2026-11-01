@@ -1,0 +1,246 @@
+/* The Classifieds — a careers/jobs board staged as a newspaper's
+   help-wanted classifieds. Flat paper + ink + advert red, typography as
+   the ornament, static apart from the department filter. Mobile safety:
+   every row wraps, the ad body has min-width: 0 and breaks long words,
+   and nothing inside is wider than the viewport. */
+
+.demo-note {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  background: #fff;
+}
+
+.demo-note a { color: #6b7280; }
+
+.classifieds {
+  background: #f6f1e7;
+  color: #1c1917;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.classifieds__inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+}
+
+@media (min-width: 40rem) {
+  .classifieds__inner { padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 4rem; }
+}
+
+.classifieds__kicker {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #b91c1c;
+}
+
+.classifieds__heading {
+  margin: 0.75rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 40rem) {
+  .classifieds__heading { font-size: 3rem; }
+}
+
+.classifieds__standfirst {
+  margin: 1rem 0 0;
+  max-width: 42rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #57534e;
+}
+
+.classifieds__filters {
+  margin-top: 2rem;
+  border-top: 2px solid #1c1917;
+  border-bottom: 2px solid #1c1917;
+  padding: 0.75rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.classifieds__filter {
+  flex-shrink: 0;
+  border: 1px solid rgba(28, 25, 23, 0.4);
+  background: transparent;
+  color: #44403c;
+  padding: 0.375rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+}
+
+.classifieds__filter:hover { border-color: #1c1917; }
+
+.classifieds__filter.is-active {
+  border-color: #1c1917;
+  background: #1c1917;
+  color: #f6f1e7;
+}
+
+.classifieds__count {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #78716c;
+}
+
+.classifieds__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.classifieds__ad {
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+}
+
+.classifieds__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding: 1.5rem 0;
+}
+
+@media (min-width: 40rem) {
+  .classifieds__item { padding: 1.75rem 0; }
+}
+
+.classifieds__ref {
+  margin: 0;
+  width: 4rem;
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #b91c1c;
+}
+
+.classifieds__main {
+  min-width: 0;
+  flex: 1;
+}
+
+.classifieds__title {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 40rem) {
+  .classifieds__title { font-size: 1.75rem; }
+}
+
+.classifieds__meta {
+  margin: 0.25rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #78716c;
+  overflow-wrap: break-word;
+}
+
+.classifieds__blurb {
+  margin: 0.5rem 0 0;
+  max-width: 42rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #44403c;
+  overflow-wrap: break-word;
+}
+
+.classifieds__side {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.classifieds__salary {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.classifieds__apply {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #b91c1c;
+  text-decoration: underline;
+  text-decoration-color: rgba(185, 28, 28, 0.5);
+  text-underline-offset: 4px;
+}
+
+.classifieds__apply:hover { color: #991b1b; }
+
+.classifieds__empty {
+  margin: 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  padding: 2.5rem 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  color: #57534e;
+}
+
+.classifieds__footnote {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  color: #78716c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .classifieds { background: #1c1917; color: #e7e5e4; }
+  .classifieds__standfirst { color: #a8a29e; }
+  .classifieds__filters { border-color: #e7e5e4; }
+  .classifieds__filter { border-color: rgba(231, 229, 228, 0.4); color: #d6d3d1; }
+  .classifieds__filter:hover { border-color: #e7e5e4; }
+  .classifieds__filter.is-active { border-color: #e7e5e4; background: #e7e5e4; color: #1c1917; }
+  .classifieds__ad { border-bottom-color: rgba(231, 229, 228, 0.2); }
+  .classifieds__meta { color: #a8a29e; }
+  .classifieds__blurb { color: #d6d3d1; }
+  .classifieds__empty { border-bottom-color: rgba(231, 229, 228, 0.2); color: #a8a29e; }
+  .classifieds__footnote { color: #a8a29e; }
+  .classifieds__kicker, .classifieds__ref { color: #f87171; }
+  .classifieds__apply { color: #f87171; text-decoration-color: rgba(248, 113, 113, 0.5); }
+  .classifieds__apply:hover { color: #fca5a5; }
+}

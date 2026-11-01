@@ -540,6 +540,39 @@
         "newsletter signup",
         "pricing tiers"
       ]
+    },
+    {
+      "name": "jobs-board",
+      "title": "The Classifieds",
+      "description": "Careers/jobs board as a newspaper's help-wanted classifieds: one ruled ad per role with a mono reference number, department filter tabs, and the salary printed in the ad itself. No hidden pay or fake urgency.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/jobs-board.json",
+      "intents": [
+        "jobs board",
+        "careers page",
+        "open roles",
+        "job listings",
+        "hiring page",
+        "careers section",
+        "open positions",
+        "job openings",
+        "work with us careers",
+        "join the team hiring",
+        "employment listings",
+        "help wanted jobs"
+      ],
+      "useCases": [
+        "jobs board",
+        "careers page",
+        "open roles",
+        "job listings",
+        "hiring page"
+      ],
+      "notFor": [
+        "pricing tiers",
+        "testimonials",
+        "contact form",
+        "team member profiles"
+      ]
     }
   ],
   "name": "unslop"
