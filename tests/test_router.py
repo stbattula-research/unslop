@@ -161,6 +161,12 @@ def test_jobs_query_ranks_classifieds_first():
     assert matches[0][0]["name"] == "jobs-board"
 
 
+def test_errorpage_query_ranks_deadletter_first():
+    matches = unslop.find_matches("404 page not found error page for my site", top=3)
+    assert matches[0][0]["name"] == "error-page"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_announcement_query_ranks_towncrier_first():
     matches = unslop.find_matches("announcement bar notice at the top of my site for a sale", top=3)
     assert matches[0][0]["name"] == "announcement-bar"

@@ -573,6 +573,40 @@
         "contact form",
         "team member profiles"
       ]
+    },
+    {
+      "name": "error-page",
+      "title": "The Dead Letter Office",
+      "description": "A 404 page as undeliverable mail: the attempted address struck through on a returned envelope, a rotated RETURN TO SENDER stamp, three possible causes stated as possibilities, and a real way home. No fake search box or mascot.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/error-page.json",
+      "intents": [
+        "404 page",
+        "404 error page",
+        "error page",
+        "page not found",
+        "not found page",
+        "not found screen",
+        "missing page",
+        "dead link page",
+        "broken link page",
+        "error 404",
+        "404 screen",
+        "page missing",
+        "url not found"
+      ],
+      "useCases": [
+        "404 page",
+        "error page",
+        "page not found",
+        "missing route",
+        "dead link handling"
+      ],
+      "notFor": [
+        "error tracking",
+        "form validation errors",
+        "pricing tiers",
+        "testimonials"
+      ]
     }
   ],
   "name": "unslop"

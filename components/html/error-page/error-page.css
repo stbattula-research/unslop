@@ -1,0 +1,223 @@
+/* The Dead Letter Office — a 404 page staged as undeliverable mail.
+   Flat paper + ink + return-red, typography as the ornament, static.
+   Mobile safety: the envelope wraps, the struck-through address has
+   min-width: 0 and breaks long words, the stamp is positioned inside
+   the envelope so it cannot push the page wider. */
+
+.demo-note {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  background: #fff;
+}
+
+.demo-note a { color: #6b7280; }
+
+.dead-letter {
+  background: #f6f1e7;
+  color: #1c1917;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dead-letter__inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 3rem 1rem 4rem;
+}
+
+@media (min-width: 40rem) {
+  .dead-letter__inner { padding-left: 1.5rem; padding-right: 1.5rem; padding-top: 4rem; }
+}
+
+.dead-letter__kicker {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #b91c1c;
+}
+
+.dead-letter__code {
+  margin: 0.75rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 40rem) {
+  .dead-letter__code { font-size: 6rem; }
+}
+
+.dead-letter__standfirst {
+  margin: 1rem 0 0;
+  max-width: 42rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #57534e;
+}
+
+.dead-letter__envelope {
+  position: relative;
+  margin-top: 2.5rem;
+  border: 2px solid #1c1917;
+  background: #fdfbf7;
+  padding: 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .dead-letter__envelope { padding: 2rem; }
+}
+
+.dead-letter__stamp {
+  position: absolute;
+  top: -1rem;
+  right: 1rem;
+  margin: 0;
+  border: 3px solid #b91c1c;
+  padding: 0.25rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #b91c1c;
+  background: #fdfbf7;
+  transform: rotate(-6deg);
+}
+
+.dead-letter__label,
+.dead-letter__reason {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #78716c;
+}
+
+.dead-letter__address {
+  margin: 0.5rem 0 0;
+  min-width: 0;
+  overflow-wrap: break-word;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-decoration: line-through;
+  text-decoration-color: #b91c1c;
+  text-decoration-thickness: 2px;
+}
+
+@media (min-width: 40rem) {
+  .dead-letter__address { font-size: 1.875rem; }
+}
+
+.dead-letter__reason { margin-top: 0.75rem; }
+
+.dead-letter__actions {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(28, 25, 23, 0.2);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dead-letter__home {
+  flex-shrink: 0;
+  background: #1c1917;
+  color: #f6f1e7;
+  padding: 0.625rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+}
+
+.dead-letter__hint {
+  min-width: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: #57534e;
+}
+
+.dead-letter__subhead {
+  margin: 2.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.dead-letter__list {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid #1c1917;
+}
+
+.dead-letter__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  padding: 1rem 0;
+}
+
+.dead-letter__cause {
+  margin: 0;
+  width: 9rem;
+  flex-shrink: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.3;
+}
+
+.dead-letter__detail {
+  margin: 0;
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: break-word;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: #44403c;
+}
+
+.dead-letter__footnote {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+  color: #78716c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dead-letter { background: #1c1917; color: #e7e5e4; }
+  .dead-letter__standfirst, .dead-letter__hint { color: #a8a29e; }
+  .dead-letter__envelope { border-color: #e7e5e4; background: #0c0a09; }
+  .dead-letter__stamp { border-color: #f87171; color: #f87171; background: #0c0a09; }
+  .dead-letter__label, .dead-letter__reason, .dead-letter__footnote { color: #a8a29e; }
+  .dead-letter__address { text-decoration-color: #f87171; }
+  .dead-letter__actions { border-top-color: rgba(231, 229, 228, 0.2); }
+  .dead-letter__home { background: #e7e5e4; color: #1c1917; }
+  .dead-letter__list { border-top-color: #e7e5e4; }
+  .dead-letter__row { border-bottom-color: rgba(231, 229, 228, 0.2); }
+  .dead-letter__detail { color: #d6d3d1; }
+}

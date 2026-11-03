@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Dead Letter Office</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="error-page.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · error-page</p>
+
+  <!-- The component: a 404 page as undeliverable mail. The attempted
+       address is struck through, a RETURN TO SENDER stamp sits on the
+       envelope, and the three possible causes are stated as
+       possibilities — not as facts about a page nobody has seen. The
+       sample address below is a demo value; wire the real requested
+       path in when you install it. -->
+  <section class="dead-letter" aria-label="Page not found">
+    <div class="dead-letter__inner">
+      <p class="dead-letter__kicker">Dead Letter Office · Undeliverable</p>
+      <h1 class="dead-letter__code">404</h1>
+      <p class="dead-letter__standfirst">This page did not arrive. The address below came back unopened — not because you did anything wrong, but because nothing lives there now.</p>
+
+      <div class="dead-letter__envelope">
+        <p class="dead-letter__stamp" aria-hidden="true">Return to sender</p>
+        <p class="dead-letter__label">Addressed to</p>
+        <p class="dead-letter__address">/the-page-you-asked-for</p>
+        <p class="dead-letter__reason">Reason for return: no such address on this site</p>
+        <div class="dead-letter__actions">
+          <a class="dead-letter__home" href="/">Go to the homepage →</a>
+          <span class="dead-letter__hint">The front door is still open. Start there.</span>
+        </div>
+      </div>
+
+      <h2 class="dead-letter__subhead">What might have happened</h2>
+      <ul class="dead-letter__list">
+        <li class="dead-letter__row">
+          <p class="dead-letter__cause">It moved</p>
+          <p class="dead-letter__detail">The page was renamed or rehoused, and the old address was never forwarded.</p>
+        </li>
+        <li class="dead-letter__row">
+          <p class="dead-letter__cause">It was mistyped</p>
+          <p class="dead-letter__detail">One wrong character in the address is enough — check the envelope above.</p>
+        </li>
+        <li class="dead-letter__row">
+          <p class="dead-letter__cause">It was taken down</p>
+          <p class="dead-letter__detail">Some pages are withdrawn on purpose. Nothing here pretends otherwise.</p>
+        </li>
+      </ul>
+
+      <p class="dead-letter__footnote">If you followed a link to get here, that link is stale — the page it pointed at is no longer at that address. Nothing was delivered, nothing was charged, nothing was lost except the trip.</p>
+    </div>
+  </section>
+</body>
+</html>
