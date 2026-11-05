@@ -167,6 +167,12 @@ def test_errorpage_query_ranks_deadletter_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_newsletter_query_ranks_telegram_first():
+    matches = unslop.find_matches("newsletter signup section for my weekly email list", top=3)
+    assert matches[0][0]["name"] == "newsletter"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_announcement_query_ranks_towncrier_first():
     matches = unslop.find_matches("announcement bar notice at the top of my site for a sale", top=3)
     assert matches[0][0]["name"] == "announcement-bar"

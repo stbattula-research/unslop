@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Telegram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="newsletter.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · newsletter</p>
+
+  <!-- The component -->
+  <section class="telegram">
+    <div class="telegram__inner">
+      <p class="telegram__kicker">The wire · one dispatch a week</p>
+
+      <div class="telegram__grid">
+        <!-- The pitch: what the dispatch carries -->
+        <div class="pitch">
+          <h2 class="pitch__heading">Send for the dispatch.</h2>
+          <p class="pitch__standfirst">One telegram a week. What we found, what it costs, and what we'd do about it — no drip campaign, no sponsor slot, no reply-all.</p>
+
+          <p class="pitch__label">Recent dispatches — read before you subscribe</p>
+          <ul class="pitch__issues">
+            <li><span class="issue__date">Oct 30</span><span class="issue__title">Why every pricing page quietly raised its floor</span></li>
+            <li><span class="issue__date">Oct 23</span><span class="issue__title">The checkout field that costs shops 11% of carts</span></li>
+            <li><span class="issue__date">Oct 16</span><span class="issue__title">A polite case against the rotating hero</span></li>
+          </ul>
+
+          <p class="pitch__cadence">One dispatch, every Friday · STOP</p>
+        </div>
+
+        <!-- The wire form -->
+        <div class="wire-wrap">
+          <div class="wire">
+            <div class="wire__head">
+              <span class="wire__form">Telegram · Wire form</span>
+              <span class="wire__open">Lines open</span>
+            </div>
+            <div class="wire__body">
+              <dl class="wire__lines">
+                <div class="wire__line"><dt>To:</dt><dd><strong>The Friday Dispatch</strong></dd></div>
+                <div class="wire__line"><dt>From:</dt><dd>Your inbox, every Friday</dd></div>
+                <div class="wire__line"><dt>Message:</dt><dd>One dispatch a week. Nothing else. STOP</dd></div>
+              </dl>
+
+              <form class="wire__form-body" id="telegram-form">
+                <label for="telegram-email">Your address, please</label>
+                <input id="telegram-email" type="email" required placeholder="you@example.com">
+                <button type="submit">Send the wire →</button>
+              </form>
+              <p class="wire__received" id="telegram-received" hidden role="status">
+                Wire received. The first dispatch arrives Friday — and replying STOP to any of them ends it, no questions asked.
+              </p>
+
+              <p class="wire__smallprint">One dispatch, every Friday. Reply STOP any time to end it. Your address is never shared or sold. This form is a demo — point the form at your real list.</p>
+            </div>
+          </div>
+          <p class="wire__aside">A signup form that prints its terms before asking for the address.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Demo only: mark the wire received in place. No email is sent anywhere.
+    document.getElementById('telegram-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('telegram-email').value.trim();
+      if (!email) return;
+      e.target.hidden = true;
+      document.getElementById('telegram-received').hidden = false;
+    });
+  </script>
+</body>
+</html>

@@ -607,6 +607,40 @@
         "pricing tiers",
         "testimonials"
       ]
+    },
+    {
+      "name": "newsletter",
+      "title": "The Telegram",
+      "description": "Newsletter signup as a telegram / wire dispatch: the pitch is recent issues with dates (the archive, not a promise), the signup is a TO / FROM / MESSAGE wire form with STOP separators, and the unsubscribe is printed on the form itself \u2014 no subscriber count, no fake urgency.",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/newsletter.json",
+      "intents": [
+        "newsletter signup",
+        "newsletter subscribe",
+        "email newsletter",
+        "newsletter section",
+        "subscribe form",
+        "email signup",
+        "mailing list signup",
+        "newsletter landing page",
+        "subscribe to newsletter",
+        "email list signup",
+        "weekly newsletter signup",
+        "newsletter form",
+        "newsletter subscription"
+      ],
+      "useCases": [
+        "newsletter signup",
+        "email newsletter",
+        "newsletter section",
+        "mailing list signup",
+        "subscribe form"
+      ],
+      "notFor": [
+        "waitlist signup",
+        "contact form",
+        "pricing tiers",
+        "testimonials"
+      ]
     }
   ],
   "name": "unslop"
