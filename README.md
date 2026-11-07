@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Components](https://img.shields.io/badge/components-21%20%C3%97%202-blue.svg)](#component-catalog)
+[![Components](https://img.shields.io/badge/components-22%20%C3%97%202-blue.svg)](#component-catalog)
 
 AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
 
@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 21 components
+./unslop list                                      # list all 22 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 21 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 22 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -129,6 +129,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 19 | The Classifieds | Careers/jobs board as a newspaper's help-wanted classifieds: one ruled ad per role with a mono reference number, department filter tabs, the salary printed in the ad | [`r/jobs-board.json`](r/jobs-board.json) | [`components/html/jobs-board/`](components/html/jobs-board/) |
 | 20 | The Dead Letter Office | A 404 page as undeliverable mail: the attempted address struck through on a returned envelope, a rotated RETURN TO SENDER stamp, three possible causes stated as possibilities, and a real way home | [`r/error-page.json`](r/error-page.json) | [`components/html/error-page/`](components/html/error-page/) |
 | 21 | The Telegram | Newsletter signup as a telegram / wire dispatch: the pitch is recent issues with dates (the archive, not a promise), the signup is a TO / FROM / MESSAGE wire form with STOP separators, and the unsubscribe is printed on the form itself — no subscriber count, no fake urgency | [`r/newsletter.json`](r/newsletter.json) | [`components/html/newsletter/`](components/html/newsletter/) |
+| 22 | The Cloakroom | Cookie consent as a cloakroom ticket: your data is your coat — three choices in exactly equal weight (accept all, necessary only, customize), nothing pre-ticked, and the choice files down to a ticket stub with a way back — no dark patterns, no “by scrolling you agree” | [`r/cookie-consent.json`](r/cookie-consent.json) | [`components/html/cookie-consent/`](components/html/cookie-consent/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 

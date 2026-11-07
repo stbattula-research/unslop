@@ -173,6 +173,12 @@ def test_newsletter_query_ranks_telegram_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_cookie_query_ranks_cloakroom_first():
+    matches = unslop.find_matches("cookie consent banner for GDPR with accept and reject options", top=3)
+    assert matches[0][0]["name"] == "cookie-consent"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_announcement_query_ranks_towncrier_first():
     matches = unslop.find_matches("announcement bar notice at the top of my site for a sale", top=3)
     assert matches[0][0]["name"] == "announcement-bar"

@@ -641,6 +641,40 @@
         "pricing tiers",
         "testimonials"
       ]
+    },
+    {
+      "description": "Cookie consent as a cloakroom ticket: your data is your coat \u2014 three choices in exactly equal weight (accept all, necessary only, customize), nothing pre-ticked, and the choice files down to a ticket stub with a way back \u2014 no dark patterns, no \u201cby scrolling you agree\u201d.",
+      "intents": [
+        "cookie consent",
+        "cookie banner",
+        "cookie consent banner",
+        "gdpr consent",
+        "privacy banner",
+        "cookie notice",
+        "accept cookies",
+        "cookie preferences",
+        "consent banner",
+        "cookie settings",
+        "privacy consent",
+        "tracking consent",
+        "cookie popup"
+      ],
+      "name": "cookie-consent",
+      "notFor": [
+        "newsletter signup",
+        "announcement bar",
+        "waitlist signup",
+        "contact form"
+      ],
+      "title": "The Cloakroom",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/cookie-consent.json",
+      "useCases": [
+        "cookie consent",
+        "cookie banner",
+        "gdpr consent",
+        "privacy banner",
+        "cookie preferences"
+      ]
     }
   ],
   "name": "unslop"

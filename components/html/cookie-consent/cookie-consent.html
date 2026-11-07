@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Cloakroom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cookie-consent.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · cookie-consent</p>
+
+  <!-- Demo page body, so the banner has a page to sit on -->
+  <main class="demo-page">
+    <h1>A page that asks before it remembers.</h1>
+    <p>This is the page underneath the ticket. Scroll it, read it, ignore it — the cloakroom waits at the bottom until you answer it, and it never takes your silence for a yes.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </main>
+
+  <!-- The component -->
+  <div class="cloakroom" role="region" aria-label="Cookie consent">
+    <div class="cloakroom__bar">
+      <!-- Filed stub: shown after a choice, with a way back -->
+      <div class="cloakroom__stub" id="cloakroom-stub" hidden>
+        <span class="cloakroom__stub-label">Cloakroom · Ticket Nº 042</span>
+        <span class="cloakroom__stub-text" id="cloakroom-stub-text" role="status"></span>
+        <button type="button" class="cloakroom__change" id="cloakroom-change">Change your mind →</button>
+      </div>
+
+      <!-- The ticket -->
+      <div class="cloakroom__ticket" id="cloakroom-ticket">
+        <div class="cloakroom__perforation">
+          <span class="cloakroom__perforation-label">Cloakroom</span>
+          <span class="cloakroom__perforation-ticket">Ticket</span>
+          <span class="cloakroom__perforation-number">Nº 042</span>
+          <span class="cloakroom__perforation-note">Keep this ticket — it is your receipt</span>
+        </div>
+
+        <div class="cloakroom__ask">
+          <p class="cloakroom__kicker">Cloakroom · check your data at the door</p>
+          <h2 class="cloakroom__heading">Your coat, your call.</h2>
+          <p class="cloakroom__standfirst">We'd like to remember a few things about your visit — which pages you read, so the site gets better. Nothing leaves the building without your say-so.</p>
+
+          <!-- Customize panel: nothing is ticked for you -->
+          <fieldset class="cloakroom__prefs" id="cloakroom-prefs" hidden>
+            <legend>Pick each item — nothing is ticked for you</legend>
+            <ul>
+              <li>
+                <input type="checkbox" id="cloakroom-necessary" checked disabled>
+                <div>
+                  <label for="cloakroom-necessary">Necessary <span class="cloakroom__always">Always on</span></label>
+                  <p>The coat check itself — remembering that you are logged in, and what is in your basket. The site does not work without these.</p>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" id="cloakroom-analytics">
+                <div>
+                  <label for="cloakroom-analytics">Analytics</label>
+                  <p>We count visits, not visitors — which pages get read, never who read them.</p>
+                </div>
+              </li>
+              <li>
+                <input type="checkbox" id="cloakroom-marketing">
+                <div>
+                  <label for="cloakroom-marketing">Marketing</label>
+                  <p>Ads that follow you around the web. We do not run these unless you ask us to.</p>
+                </div>
+              </li>
+            </ul>
+            <div class="cloakroom__prefs-actions">
+              <button type="button" class="cloakroom__btn cloakroom__btn--solid" id="cloakroom-save">Save these choices</button>
+              <button type="button" class="cloakroom__back" id="cloakroom-back">← Back to the ticket</button>
+            </div>
+          </fieldset>
+
+          <!-- Three choices, in exactly equal weight -->
+          <div class="cloakroom__choices" id="cloakroom-choices">
+            <button type="button" class="cloakroom__btn cloakroom__btn--solid" id="cloakroom-accept">Take the lot</button>
+            <button type="button" class="cloakroom__btn cloakroom__btn--outline" id="cloakroom-reject">Coat only</button>
+            <button type="button" class="cloakroom__btn cloakroom__btn--outline" id="cloakroom-customize" aria-expanded="false">Pick each item</button>
+          </div>
+          <p class="cloakroom__smallprint">All three weigh the same — saying no is as easy as saying yes. No pre-ticked boxes, no “by scrolling you agree”. This demo sets nothing; point the choice at your consent store.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Demo only: the choice lives in this page, nothing is stored anywhere.
+    (function () {
+      var ticket = document.getElementById('cloakroom-ticket');
+      var stub = document.getElementById('cloakroom-stub');
+      var stubText = document.getElementById('cloakroom-stub-text');
+      var prefs = document.getElementById('cloakroom-prefs');
+      var choices = document.getElementById('cloakroom-choices');
+      var customize = document.getElementById('cloakroom-customize');
+      var today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+      function file(label) {
+        stubText.textContent = 'Filed ' + today + ' — ' + label + '. Your coat is safe.';
+        ticket.hidden = true;
+        stub.hidden = false;
+      }
+
+      document.getElementById('cloakroom-accept').addEventListener('click', function () {
+        file('Take the lot');
+      });
+
+      document.getElementById('cloakroom-reject').addEventListener('click', function () {
+        file('Coat only');
+      });
+
+      customize.addEventListener('click', function () {
+        prefs.hidden = false;
+        choices.hidden = true;
+        customize.setAttribute('aria-expanded', 'true');
+      });
+
+      document.getElementById('cloakroom-back').addEventListener('click', function () {
+        prefs.hidden = true;
+        choices.hidden = false;
+        customize.setAttribute('aria-expanded', 'false');
+      });
+
+      document.getElementById('cloakroom-save').addEventListener('click', function () {
+        var analytics = document.getElementById('cloakroom-analytics').checked;
+        var marketing = document.getElementById('cloakroom-marketing').checked;
+        var picked = [];
+        if (analytics) picked.push('analytics');
+        if (marketing) picked.push('marketing');
+        file(picked.length ? 'Your picks (' + picked.join(', ') + ')' : 'Your picks (necessary only)');
+      });
+
+      document.getElementById('cloakroom-change').addEventListener('click', function () {
+        stub.hidden = true;
+        ticket.hidden = false;
+        prefs.hidden = true;
+        choices.hidden = false;
+        customize.setAttribute('aria-expanded', 'false');
+      });
+    })();
+  </script>
+</body>
+</html>
