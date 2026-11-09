@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Pre-Flight Checklist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="onboarding-checklist.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · onboarding-checklist</p>
+
+  <!-- The component -->
+  <section class="preflight" role="region" aria-label="Onboarding checklist">
+    <div class="preflight__card">
+      <!-- Flight plan header -->
+      <div class="preflight__head">
+        <div class="preflight__head-text">
+          <p class="preflight__kicker">Pre-flight · first flight</p>
+          <h2 class="preflight__heading">Before you fly, check the list.</h2>
+          <p class="preflight__standfirst">Five checks, about five minutes, and one real project at the end of it. The list is honest about what is done and what is not — a checklist that lies about progress is worse than no checklist.</p>
+        </div>
+        <span class="preflight__stamp" id="preflight-stamp" hidden>Cleared for takeoff</span>
+      </div>
+
+      <!-- Flight-plan strip -->
+      <dl class="preflight__strip">
+        <div class="preflight__cell">
+          <dt>Flight</dt>
+          <dd>FLT 001</dd>
+        </div>
+        <div class="preflight__cell">
+          <dt>Destination</dt>
+          <dd>First project shipped</dd>
+        </div>
+        <div class="preflight__cell">
+          <dt>Est. time</dt>
+          <dd>About 5 minutes</dd>
+        </div>
+        <div class="preflight__cell">
+          <dt>Status</dt>
+          <dd class="preflight__status" id="preflight-status">1 required left</dd>
+        </div>
+      </dl>
+
+      <!-- Honest progress -->
+      <div class="preflight__progress">
+        <div class="preflight__progress-labels">
+          <p id="preflight-count">2 of 5 checks complete</p>
+          <p id="preflight-required-count">2 of 3 required</p>
+        </div>
+        <div class="preflight__bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" aria-label="2 of 5 checks complete" id="preflight-bar">
+          <div class="preflight__bar-fill" id="preflight-fill" style="width: 40%"></div>
+        </div>
+      </div>
+
+      <!-- The checks -->
+      <ol class="preflight__list">
+        <li>
+          <input type="checkbox" id="preflight-verify-email" class="preflight__check" data-required="true" checked>
+          <div class="preflight__step">
+            <div class="preflight__step-head">
+              <span class="preflight__num">CHK-01</span>
+              <label for="preflight-verify-email">Verify your email</label>
+              <span class="preflight__tag preflight__tag--required">Required</span>
+            </div>
+            <p class="preflight__detail">One click in the inbox. Proves the address is yours, so password resets and receipts reach a real person.</p>
+            <p class="preflight__meta"><span>About 30 seconds</span><span aria-hidden="true">·</span><span class="preflight__state">Checked</span></p>
+          </div>
+        </li>
+        <li>
+          <input type="checkbox" id="preflight-name-workspace" class="preflight__check" data-required="true" checked>
+          <div class="preflight__step">
+            <div class="preflight__step-head">
+              <span class="preflight__num">CHK-02</span>
+              <label for="preflight-name-workspace">Name your workspace</label>
+              <span class="preflight__tag preflight__tag--required">Required</span>
+            </div>
+            <p class="preflight__detail">The name on every project, invoice, and invite. Pick the one your team already calls it.</p>
+            <p class="preflight__meta"><span>About 1 minute</span><span aria-hidden="true">·</span><span class="preflight__state">Checked</span></p>
+          </div>
+        </li>
+        <li>
+          <input type="checkbox" id="preflight-first-project" class="preflight__check" data-required="true">
+          <div class="preflight__step">
+            <div class="preflight__step-head">
+              <span class="preflight__num">CHK-03</span>
+              <label for="preflight-first-project">Create your first project</label>
+              <span class="preflight__tag preflight__tag--required">Required</span>
+            </div>
+            <p class="preflight__detail">The reason you signed up. One project, one real task inside it — that is the whole flight.</p>
+            <p class="preflight__meta"><span>About 2 minutes</span><span aria-hidden="true">·</span><span class="preflight__state">Not yet checked</span></p>
+          </div>
+        </li>
+        <li>
+          <input type="checkbox" id="preflight-invite-teammate" class="preflight__check" data-required="false">
+          <div class="preflight__step">
+            <div class="preflight__step-head">
+              <span class="preflight__num">CHK-04</span>
+              <label for="preflight-invite-teammate">Invite one teammate</label>
+              <span class="preflight__tag">Optional</span>
+            </div>
+            <p class="preflight__detail">Optional. A second pair of eyes catches what one person misses — but the plane flies with one pilot.</p>
+            <p class="preflight__meta"><span>About 1 minute</span><span aria-hidden="true">·</span><span class="preflight__state">Not yet checked</span></p>
+          </div>
+        </li>
+        <li>
+          <input type="checkbox" id="preflight-connect-integration" class="preflight__check" data-required="false">
+          <div class="preflight__step">
+            <div class="preflight__step-head">
+              <span class="preflight__num">CHK-05</span>
+              <label for="preflight-connect-integration">Connect one integration</label>
+              <span class="preflight__tag">Optional</span>
+            </div>
+            <p class="preflight__detail">Optional. Pull in the tool you already live in. Skip it now and connect it later — nothing breaks.</p>
+            <p class="preflight__meta"><span>About 2 minutes</span><span aria-hidden="true">·</span><span class="preflight__state">Not yet checked</span></p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="preflight__smallprint">Optional steps never block takeoff. The stamp appears when the required checks are done — not before, not because you asked nicely. This demo stores nothing; wire the checkboxes to your real completion state.</p>
+    </div>
+  </section>
+
+  <script>
+    // Demo only: the state lives in this page, nothing is stored anywhere.
+    (function () {
+      var checks = Array.prototype.slice.call(document.querySelectorAll('.preflight__check'));
+      var count = document.getElementById('preflight-count');
+      var requiredCount = document.getElementById('preflight-required-count');
+      var status = document.getElementById('preflight-status');
+      var bar = document.getElementById('preflight-bar');
+      var fill = document.getElementById('preflight-fill');
+      var stamp = document.getElementById('preflight-stamp');
+
+      function update() {
+        var total = checks.length;
+        var done = checks.filter(function (c) { return c.checked; }).length;
+        var required = checks.filter(function (c) { return c.dataset.required === 'true'; });
+        var requiredDone = required.filter(function (c) { return c.checked; }).length;
+        var requiredLeft = required.length - requiredDone;
+        var cleared = required.length > 0 && requiredDone === required.length;
+
+        count.textContent = done + ' of ' + total + ' checks complete';
+        requiredCount.textContent = requiredDone + ' of ' + required.length + ' required';
+        status.textContent = cleared ? 'Cleared' : requiredLeft + ' required left';
+        fill.style.width = Math.round((done / total) * 100) + '%';
+        bar.setAttribute('aria-valuenow', String(done));
+        bar.setAttribute('aria-label', done + ' of ' + total + ' checks complete');
+        stamp.hidden = !cleared;
+
+        checks.forEach(function (c) {
+          var state = c.closest('li').querySelector('.preflight__state');
+          state.textContent = c.checked ? 'Checked' : 'Not yet checked';
+        });
+      }
+
+      checks.forEach(function (c) { c.addEventListener('change', update); });
+      update();
+    })();
+  </script>
+</body>
+</html>

@@ -179,6 +179,12 @@ def test_cookie_query_ranks_cloakroom_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_onboarding_query_ranks_preflight_first():
+    matches = unslop.find_matches("onboarding checklist for new users with setup steps", top=3)
+    assert matches[0][0]["name"] == "onboarding-checklist"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_announcement_query_ranks_towncrier_first():
     matches = unslop.find_matches("announcement bar notice at the top of my site for a sale", top=3)
     assert matches[0][0]["name"] == "announcement-bar"

@@ -254,10 +254,7 @@
       ]
     },
     {
-      "name": "changelog",
-      "title": "The Logbook",
       "description": "Release notes kept like a ship's log: dated entries, oversized version numerals, rubber-stamp change tags.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/changelog.json",
       "intents": [
         "changelog",
         "release notes",
@@ -271,24 +268,24 @@
         "update log",
         "product changelog"
       ],
+      "name": "changelog",
+      "notFor": [
+        "blog posts",
+        "marketing landing",
+        "testimonials"
+      ],
+      "title": "The Logbook",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/changelog.json",
       "useCases": [
         "release notes",
         "version history",
         "product changelog",
         "release announcements",
         "update feed"
-      ],
-      "notFor": [
-        "blog posts",
-        "marketing landing",
-        "testimonials"
       ]
     },
     {
-      "name": "vs-table",
-      "title": "The Weigh-In",
       "description": "Us-vs-them comparison table staged as a boxing fight card: tale-of-the-tape stat block, numbered rounds, judge's decision.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/vs-table.json",
       "intents": [
         "comparison table",
         "us vs them",
@@ -303,24 +300,24 @@
         "compare us to competitors",
         "comparison chart"
       ],
+      "name": "vs-table",
+      "notFor": [
+        "pricing tiers",
+        "plan comparison",
+        "testimonials"
+      ],
+      "title": "The Weigh-In",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/vs-table.json",
       "useCases": [
         "competitor comparison",
         "us vs them",
         "alternative comparison",
         "product comparison",
         "why choose us"
-      ],
-      "notFor": [
-        "pricing tiers",
-        "plan comparison",
-        "testimonials"
       ]
     },
     {
-      "name": "recipe",
-      "title": "The Recipe",
       "description": "How-it-works section as a cookbook recipe card: prep-time meta strip, numbered recipe instructions, chef's note.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/recipe.json",
       "intents": [
         "how it works",
         "how it works section",
@@ -339,25 +336,25 @@
         "how-to section",
         "simple steps"
       ],
+      "name": "recipe",
+      "notFor": [
+        "pricing tiers",
+        "testimonials",
+        "changelog",
+        "features list"
+      ],
+      "title": "The Recipe",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/recipe.json",
       "useCases": [
         "how it works",
         "process explainer",
         "onboarding steps",
         "getting started guide",
         "product walkthrough"
-      ],
-      "notFor": [
-        "pricing tiers",
-        "testimonials",
-        "changelog",
-        "features list"
       ]
     },
     {
-      "name": "stats-band",
-      "title": "The Scoreboard",
       "description": "Stats band staged as a stadium scoreboard: warm-black LED board, oversized amber tabular numerals, mono labels, a sports-ticker strip of small print.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/stats-band.json",
       "intents": [
         "stats band",
         "stats section",
@@ -377,6 +374,14 @@
         "key numbers",
         "traction stats"
       ],
+      "name": "stats-band",
+      "notFor": [
+        "pricing tiers",
+        "testimonials",
+        "star ratings"
+      ],
+      "title": "The Scoreboard",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/stats-band.json",
       "useCases": [
         "stats section",
         "social proof numbers",
@@ -384,18 +389,10 @@
         "company stats",
         "traction proof",
         "trust indicators"
-      ],
-      "notFor": [
-        "pricing tiers",
-        "testimonials",
-        "star ratings"
       ]
     },
     {
-      "name": "command-palette",
-      "title": "The Switchboard",
       "description": "Command palette as an old telephone exchange: call numbers, dotted switchboard rules, operator microcopy, fuzzy filtering, full keyboard nav.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/command-palette.json",
       "intents": [
         "command palette",
         "cmdk",
@@ -417,25 +414,25 @@
         "go to menu",
         "jump to"
       ],
+      "name": "command-palette",
+      "notFor": [
+        "search results page",
+        "site search",
+        "testimonials",
+        "pricing tiers"
+      ],
+      "title": "The Switchboard",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/command-palette.json",
       "useCases": [
         "command palette",
         "keyboard shortcuts",
         "quick actions",
         "search navigation",
         "app launcher"
-      ],
-      "notFor": [
-        "search results page",
-        "site search",
-        "testimonials",
-        "pricing tiers"
       ]
     },
     {
-      "name": "logo-cloud",
-      "title": "The Gallery Wall",
       "description": "Logo cloud as a museum gallery wall: each logo framed as an exhibit in its own type treatment, with a wall plaque (exhibit number, medium, year). No greyed-out logo soup.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/logo-cloud.json",
       "intents": [
         "logo cloud",
         "logos",
@@ -456,25 +453,25 @@
         "logo grid",
         "press logos"
       ],
+      "name": "logo-cloud",
+      "notFor": [
+        "logo design",
+        "brand identity",
+        "testimonials",
+        "pricing tiers"
+      ],
+      "title": "The Gallery Wall",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/logo-cloud.json",
       "useCases": [
         "logo cloud",
         "social proof",
         "trusted by section",
         "customer logos",
         "partner logos"
-      ],
-      "notFor": [
-        "logo design",
-        "brand identity",
-        "testimonials",
-        "pricing tiers"
       ]
     },
     {
-      "name": "waitlist",
-      "title": "The Ticket Window",
       "description": "Waitlist signup as a box-office ticket window: the pitch as a 'now showing' poster, the signup as a perforated ticket stub with a big mono ticket number. No fake scarcity counter.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/waitlist.json",
       "intents": [
         "waitlist",
         "wait list",
@@ -491,25 +488,25 @@
         "email signup",
         "early access signup"
       ],
+      "name": "waitlist",
+      "notFor": [
+        "newsletter signup",
+        "contact form",
+        "login page",
+        "pricing tiers"
+      ],
+      "title": "The Ticket Window",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/waitlist.json",
       "useCases": [
         "waitlist",
         "pre-launch signup",
         "early access",
         "product launch",
         "beta signup"
-      ],
-      "notFor": [
-        "newsletter signup",
-        "contact form",
-        "login page",
-        "pricing tiers"
       ]
     },
     {
-      "name": "announcement-bar",
-      "title": "The Town Crier",
       "description": "Announcement bar as a town crier's proclamation: one message standing still, a mono HEAR YE call with an edition number, one link, and a real dismiss button. No rotating messages or restarting countdown.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/announcement-bar.json",
       "intents": [
         "announcement bar",
         "announcement",
@@ -527,25 +524,25 @@
         "dismissible banner",
         "notice strip"
       ],
+      "name": "announcement-bar",
+      "notFor": [
+        "call to action section",
+        "hero section",
+        "newsletter signup",
+        "pricing tiers"
+      ],
+      "title": "The Town Crier",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/announcement-bar.json",
       "useCases": [
         "announcement bar",
         "site notice",
         "sale announcement",
         "sitewide message",
         "top-of-page notice"
-      ],
-      "notFor": [
-        "call to action section",
-        "hero section",
-        "newsletter signup",
-        "pricing tiers"
       ]
     },
     {
-      "name": "jobs-board",
-      "title": "The Classifieds",
       "description": "Careers/jobs board as a newspaper's help-wanted classifieds: one ruled ad per role with a mono reference number, department filter tabs, and the salary printed in the ad itself. No hidden pay or fake urgency.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/jobs-board.json",
       "intents": [
         "jobs board",
         "careers page",
@@ -560,25 +557,25 @@
         "employment listings",
         "help wanted jobs"
       ],
+      "name": "jobs-board",
+      "notFor": [
+        "pricing tiers",
+        "testimonials",
+        "contact form",
+        "team member profiles"
+      ],
+      "title": "The Classifieds",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/jobs-board.json",
       "useCases": [
         "jobs board",
         "careers page",
         "open roles",
         "job listings",
         "hiring page"
-      ],
-      "notFor": [
-        "pricing tiers",
-        "testimonials",
-        "contact form",
-        "team member profiles"
       ]
     },
     {
-      "name": "error-page",
-      "title": "The Dead Letter Office",
       "description": "A 404 page as undeliverable mail: the attempted address struck through on a returned envelope, a rotated RETURN TO SENDER stamp, three possible causes stated as possibilities, and a real way home. No fake search box or mascot.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/error-page.json",
       "intents": [
         "404 page",
         "404 error page",
@@ -594,25 +591,25 @@
         "page missing",
         "url not found"
       ],
+      "name": "error-page",
+      "notFor": [
+        "error tracking",
+        "form validation errors",
+        "pricing tiers",
+        "testimonials"
+      ],
+      "title": "The Dead Letter Office",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/error-page.json",
       "useCases": [
         "404 page",
         "error page",
         "page not found",
         "missing route",
         "dead link handling"
-      ],
-      "notFor": [
-        "error tracking",
-        "form validation errors",
-        "pricing tiers",
-        "testimonials"
       ]
     },
     {
-      "name": "newsletter",
-      "title": "The Telegram",
       "description": "Newsletter signup as a telegram / wire dispatch: the pitch is recent issues with dates (the archive, not a promise), the signup is a TO / FROM / MESSAGE wire form with STOP separators, and the unsubscribe is printed on the form itself \u2014 no subscriber count, no fake urgency.",
-      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/newsletter.json",
       "intents": [
         "newsletter signup",
         "newsletter subscribe",
@@ -628,18 +625,21 @@
         "newsletter form",
         "newsletter subscription"
       ],
+      "name": "newsletter",
+      "notFor": [
+        "waitlist signup",
+        "contact form",
+        "pricing tiers",
+        "testimonials"
+      ],
+      "title": "The Telegram",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/newsletter.json",
       "useCases": [
         "newsletter signup",
         "email newsletter",
         "newsletter section",
         "mailing list signup",
         "subscribe form"
-      ],
-      "notFor": [
-        "waitlist signup",
-        "contact form",
-        "pricing tiers",
-        "testimonials"
       ]
     },
     {
@@ -674,6 +674,36 @@
         "gdpr consent",
         "privacy banner",
         "cookie preferences"
+      ]
+    },
+    {
+      "description": "Onboarding as a pre-flight checklist: a flight-plan header (flight, destination, estimated time), five checks with honest progress, required and optional steps kept apart, and a CLEARED FOR TAKEOFF stamp that appears only when the required checks are actually done \u2014 no confetti, no fake 100% pre-checked state.",
+      "intents": [
+        "onboarding checklist",
+        "onboarding",
+        "setup checklist",
+        "getting started",
+        "new user checklist",
+        "activation checklist",
+        "setup steps",
+        "checklist",
+        "first steps",
+        "welcome checklist"
+      ],
+      "name": "onboarding-checklist",
+      "notFor": [
+        "product tour",
+        "to-do list",
+        "task manager",
+        "dashboard"
+      ],
+      "title": "The Pre-Flight Checklist",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/onboarding-checklist.json",
+      "useCases": [
+        "new user onboarding",
+        "setup checklist",
+        "activation flow",
+        "getting started guide"
       ]
     }
   ],

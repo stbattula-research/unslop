@@ -1,0 +1,286 @@
+/* The Pre-Flight Checklist — an onboarding checklist staged as a pilot's
+   pre-flight checklist. Flat flight-plan paper, ink, aviation blue, static.
+   Progress is counted honestly; the CLEARED FOR TAKEOFF stamp appears only
+   when every required check is actually done, and optional steps never
+   block takeoff. A checklist is printed on paper, even at night, so it
+   stays paper in both modes. */
+
+.demo-note {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  background: #fff;
+}
+
+.demo-note a { color: #6b7280; }
+
+.preflight {
+  background: #f4efe3;
+  color: #1c1917;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 2rem 1rem 4rem;
+}
+
+.preflight__card {
+  max-width: 48rem;
+  margin: 0 auto;
+  border: 2px solid #1c1917;
+  padding: 1.5rem 1.25rem;
+}
+
+@media (min-width: 48rem) {
+  .preflight__card { padding: 2rem; }
+}
+
+/* --- Flight plan header --- */
+
+.preflight__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.preflight__head-text { min-width: 0; }
+
+.preflight__kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #1e40af;
+  margin: 0;
+}
+
+.preflight__heading {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.875rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0.5rem 0 0;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 48rem) {
+  .preflight__heading { font-size: 2.25rem; }
+}
+
+.preflight__standfirst {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #57534e;
+  margin: 0.5rem 0 0;
+  max-width: 34rem;
+  overflow-wrap: break-word;
+}
+
+/* The stamp: only shown when every required check is done */
+.preflight__stamp {
+  flex-shrink: 0;
+  transform: rotate(-6deg);
+  border: 3px double #1e40af;
+  color: #1e40af;
+  padding: 0.5rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* --- Flight-plan strip --- */
+
+.preflight__strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(28, 25, 23, 0.4);
+  border: 1px solid rgba(28, 25, 23, 0.4);
+  margin: 1.5rem 0 0;
+}
+
+@media (min-width: 48rem) {
+  .preflight__strip { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.preflight__cell {
+  min-width: 0;
+  background: #f4efe3;
+  padding: 0.5rem 0.75rem;
+}
+
+.preflight__cell dt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #78716c;
+}
+
+.preflight__cell dd {
+  margin: 0.125rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+.preflight__status { color: #1e40af; }
+
+/* --- Honest progress --- */
+
+.preflight__progress { margin-top: 1.5rem; }
+
+.preflight__progress-labels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.preflight__progress-labels p {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.preflight__progress-labels p:first-child { font-weight: 700; }
+.preflight__progress-labels p:last-child { color: #78716c; }
+
+.preflight__bar {
+  margin-top: 0.5rem;
+  height: 0.375rem;
+  width: 100%;
+  background: rgba(28, 25, 23, 0.15);
+}
+
+.preflight__bar-fill {
+  height: 100%;
+  background: #1e40af;
+}
+
+/* --- The checks --- */
+
+.preflight__list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border-top: 2px solid #1c1917;
+}
+
+.preflight__list li {
+  display: flex;
+  gap: 0.75rem;
+  min-width: 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  padding: 1rem 0;
+}
+
+@media (min-width: 48rem) {
+  .preflight__list li { gap: 1rem; }
+}
+
+.preflight__check {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+  accent-color: #1e40af;
+}
+
+.preflight__step { min-width: 0; flex: 1; }
+
+.preflight__step-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.125rem 0.75rem;
+  min-width: 0;
+}
+
+.preflight__num {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #1e40af;
+}
+
+.preflight__step-head label {
+  min-width: 0;
+  cursor: pointer;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 900;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.preflight__tag {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #78716c;
+}
+
+.preflight__tag--required { color: #1e40af; }
+
+.preflight__detail {
+  margin: 0.25rem 0 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #57534e;
+  overflow-wrap: break-word;
+}
+
+.preflight__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  margin: 0.375rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #78716c;
+}
+
+.preflight__meta a {
+  font-weight: 700;
+  color: #1e40af;
+  text-underline-offset: 4px;
+}
+
+.preflight__meta a:hover { color: #1c1917; }
+
+/* --- Small print --- */
+
+.preflight__smallprint {
+  margin: 1.25rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  line-height: 1.7;
+  letter-spacing: 0.15em;
+  color: #78716c;
+  overflow-wrap: break-word;
+}
