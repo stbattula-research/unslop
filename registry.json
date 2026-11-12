@@ -705,6 +705,36 @@
         "activation flow",
         "getting started guide"
       ]
+    },
+    {
+      "description": "Product roadmap as a railway departures board: each feature is a departure, the time column is a horizon (Now / Next / Later \u2014 never a date), statuses read BOARDING / ON TIME / DELAYED / NO DATE PROMISED, delays name their reason, and shipped work leaves the board for a Recently departed strip with real ship dates.",
+      "intents": [
+        "product roadmap",
+        "roadmap",
+        "roadmap section",
+        "public roadmap",
+        "now next later",
+        "feature roadmap",
+        "what's coming",
+        "upcoming features",
+        "product plan",
+        "what's next"
+      ],
+      "name": "roadmap",
+      "notFor": [
+        "project plan",
+        "gantt chart",
+        "sprint board",
+        "kanban board"
+      ],
+      "title": "The Departures Board",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/roadmap.json",
+      "useCases": [
+        "public roadmap page",
+        "product roadmap section",
+        "feature timeline",
+        "what's next page"
+      ]
     }
   ],
   "name": "unslop"

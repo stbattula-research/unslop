@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Components](https://img.shields.io/badge/components-23%20%C3%97%202-blue.svg)](#component-catalog)
+[![Components](https://img.shields.io/badge/components-24%20%C3%97%202-blue.svg)](#component-catalog)
 
 AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
 
@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 23 components
+./unslop list                                      # list all 24 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 23 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 24 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -131,6 +131,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 21 | The Telegram | Newsletter signup as a telegram / wire dispatch: the pitch is recent issues with dates (the archive, not a promise), the signup is a TO / FROM / MESSAGE wire form with STOP separators, and the unsubscribe is printed on the form itself — no subscriber count, no fake urgency | [`r/newsletter.json`](r/newsletter.json) | [`components/html/newsletter/`](components/html/newsletter/) |
 | 22 | The Cloakroom | Cookie consent as a cloakroom ticket: your data is your coat — three choices in exactly equal weight (accept all, necessary only, customize), nothing pre-ticked, and the choice files down to a ticket stub with a way back — no dark patterns, no “by scrolling you agree” | [`r/cookie-consent.json`](r/cookie-consent.json) | [`components/html/cookie-consent/`](components/html/cookie-consent/) |
 | 23 | The Pre-Flight Checklist | Onboarding checklist as a pilot's pre-flight checklist: a flight-plan header (flight, destination, estimated time), five checks with honest progress, required and optional steps kept apart, and a CLEARED FOR TAKEOFF stamp that appears only when the required checks are actually done — no confetti, no fake 100% pre-checked state | [`r/onboarding-checklist.json`](r/onboarding-checklist.json) | [`components/html/onboarding-checklist/`](components/html/onboarding-checklist/) |
+| 24 | The Departures Board | Product roadmap as a railway departures board: each feature is a departure, the time column is a horizon (Now / Next / Later — never a date), statuses read BOARDING / ON TIME / DELAYED / NO DATE PROMISED, delays name their reason, and shipped work leaves the board for a Recently departed strip with real ship dates | [`r/roadmap.json`](r/roadmap.json) | [`components/html/roadmap/`](components/html/roadmap/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 

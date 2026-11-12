@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Departures Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="roadmap.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · roadmap</p>
+
+  <!-- The component -->
+  <section class="board" role="region" aria-label="Product roadmap">
+    <div class="board__inner">
+      <!-- Board header -->
+      <div class="board__head">
+        <div class="board__head-text">
+          <p class="board__kicker">Departures · all lines</p>
+          <h2 class="board__heading">Where this product is going.</h2>
+          <p class="board__standfirst">Every feature on this board is a departure. The time column is a horizon — Now, Next, Later — because a date on a public roadmap is a promise, and promises are what get broken. A delayed train says so, out loud.</p>
+        </div>
+        <span class="board__stamp" aria-label="Departures board for Central station">Central</span>
+      </div>
+
+      <!-- Last-updated line — the board's honesty clock -->
+      <p class="board__updated">Revised 3 November 2026 · Revised monthly. A row that has sat untouched for a quarter is archived, not left to rot.</p>
+
+      <!-- Column headings -->
+      <div class="board__cols" aria-hidden="true">
+        <span>Time</span>
+        <span>Destination</span>
+        <span class="board__cols-status">Status</span>
+      </div>
+
+      <!-- The departures -->
+      <ol class="board__list">
+        <li>
+          <div class="board__time">
+            <span class="board__horizon">Now</span>
+            <span class="board__horizon-note">Being built</span>
+          </div>
+          <div class="board__dest">
+            <p class="board__name">Offline mode</p>
+            <p class="board__detail">The whole app, usable on a dead connection. It syncs when the signal returns — nothing typed is ever lost to a tunnel.</p>
+          </div>
+          <span class="board__status board__status--boarding">Boarding</span>
+        </li>
+        <li>
+          <div class="board__time">
+            <span class="board__horizon">Now</span>
+            <span class="board__horizon-note">Being built</span>
+          </div>
+          <div class="board__dest">
+            <p class="board__name">Shared workspaces</p>
+            <p class="board__detail">One project, many hands. Permissions that say who can do what, in plain words, not role codes.</p>
+          </div>
+          <span class="board__status board__status--boarding">Boarding</span>
+        </li>
+        <li>
+          <div class="board__time">
+            <span class="board__horizon">Next</span>
+            <span class="board__horizon-note">Planned</span>
+          </div>
+          <div class="board__dest">
+            <p class="board__name">Usage-based billing</p>
+            <p class="board__detail">Pay for what you use, counted in the open. No tiers, no surprise at the end of the month.</p>
+          </div>
+          <span class="board__status board__status--ontime">On time</span>
+        </li>
+        <li>
+          <div class="board__time">
+            <span class="board__horizon">Next</span>
+            <span class="board__horizon-note">Planned</span>
+          </div>
+          <div class="board__dest">
+            <p class="board__name">Native mobile apps</p>
+            <p class="board__detail">The apps are built and waiting on one thing: the accessibility audit. A keyboard that works everywhere comes first.</p>
+            <p class="board__delay">Delayed — Held for the accessibility audit, which jumped the queue.</p>
+          </div>
+          <span class="board__status board__status--delayed">Delayed</span>
+        </li>
+        <li>
+          <div class="board__time">
+            <span class="board__horizon">Later</span>
+            <span class="board__horizon-note">A direction</span>
+          </div>
+          <div class="board__dest">
+            <p class="board__name">Team analytics</p>
+            <p class="board__detail">A direction, not a date. It gets built when the first three carriages are running and we know what teams actually ask for.</p>
+          </div>
+          <span class="board__status board__status--nodate">No date promised</span>
+        </li>
+        <li>
+          <div class="board__time">
+            <span class="board__horizon">Later</span>
+            <span class="board__horizon-note">A direction</span>
+          </div>
+          <div class="board__dest">
+            <p class="board__name">Public API</p>
+            <p class="board__detail">Same rule: a direction, no date promised. Ask for it, and your request is counted — that count is what moves it up the board.</p>
+          </div>
+          <span class="board__status board__status--nodate">No date promised</span>
+        </li>
+      </ol>
+
+      <!-- Recently departed -->
+      <div class="board__departed">
+        <p class="board__departed-title">Recently departed</p>
+        <ul>
+          <li>
+            <span class="board__departed-mark">✓ Departed</span>
+            <span class="board__departed-name">Two-factor login</span>
+            <span class="board__departed-date">14 October 2026</span>
+          </li>
+          <li>
+            <span class="board__departed-mark">✓ Departed</span>
+            <span class="board__departed-name">Export to CSV</span>
+            <span class="board__departed-date">30 September 2026</span>
+          </li>
+          <li>
+            <span class="board__departed-mark">✓ Departed</span>
+            <span class="board__departed-name">Dark mode that respects the system</span>
+            <span class="board__departed-date">12 September 2026</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="board__smallprint">All trains leave when they are ready. None before. A date on this board would be a promise — so the board prints horizons instead, and the shipped dates below are the only dates it ever carries.</p>
+    </div>
+  </section>
+</body>
+</html>
