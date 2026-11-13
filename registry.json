@@ -735,6 +735,38 @@
         "feature timeline",
         "what's next page"
       ]
+    },
+    {
+      "description": "Team section as a theatre playbill: the team is the cast, in order of appearance, with typographic monogram portraits instead of stock photographs, roles in mono caps, the year each person joined, and one line each in their own words; open roles are printed as parts still to cast, never as people who do not exist.",
+      "intents": [
+        "team",
+        "team section",
+        "meet the team",
+        "our team",
+        "team members",
+        "people behind the product",
+        "who built this",
+        "about the team",
+        "staff",
+        "cast list",
+        "who we are"
+      ],
+      "name": "team",
+      "notFor": [
+        "testimonials",
+        "job listings",
+        "careers page",
+        "hiring",
+        "individual bio page"
+      ],
+      "title": "The Playbill",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/team.json",
+      "useCases": [
+        "meet the team section",
+        "about us team page",
+        "company team section",
+        "who we are page"
+      ]
     }
   ],
   "name": "unslop"

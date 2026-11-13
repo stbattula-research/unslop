@@ -1,0 +1,261 @@
+/* The Playbill — a team section as a theatre playbill.
+   A playbill is printed: warm paper in both modes, no dark variant.
+   Flat color, ink and stage red, serif names, mono roles. Static. */
+
+body {
+  margin: 0;
+  background: #f6f1e7;
+  color: #1c1917;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.demo-note {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.demo-note a {
+  color: #991b1b;
+}
+
+.playbill__inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2.5rem;
+}
+
+.playbill__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  min-width: 0;
+}
+
+.playbill__head-text {
+  min-width: 0;
+  flex: 1 1 20rem;
+}
+
+.playbill__kicker {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #991b1b;
+}
+
+.playbill__heading {
+  margin: 0.5rem 0 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  overflow-wrap: break-word;
+}
+
+.playbill__standfirst {
+  margin: 0.5rem 0 0;
+  max-width: 36rem;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(28, 25, 23, 0.7);
+  overflow-wrap: break-word;
+}
+
+.playbill__stamp {
+  flex-shrink: 0;
+  transform: rotate(-3deg);
+  border: 3px double #991b1b;
+  padding: 0.5rem 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #991b1b;
+  overflow-wrap: break-word;
+}
+
+.playbill__cast {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid #1c1917;
+}
+
+.playbill__cast li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.75rem 1.25rem;
+  min-width: 0;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.playbill__num {
+  flex-shrink: 0;
+  padding-top: 0.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.playbill__monogram {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 2px solid #1c1917;
+  background: #efe7d3;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.playbill__person {
+  min-width: 0;
+  flex: 1 1 16rem;
+}
+
+.playbill__name {
+  margin: 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+.playbill__role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0.25rem 0 0;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: #991b1b;
+  overflow-wrap: break-word;
+}
+
+.playbill__role .playbill__since {
+  flex-shrink: 0;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.playbill__line {
+  margin: 0.25rem 0 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(28, 25, 23, 0.7);
+  overflow-wrap: break-word;
+}
+
+.playbill__open {
+  margin-top: 1.5rem;
+}
+
+.playbill__open-title {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #991b1b;
+}
+
+.playbill__open ul {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.playbill__open li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  min-width: 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed rgba(28, 25, 23, 0.15);
+}
+
+.playbill__vacant {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.playbill__part {
+  min-width: 0;
+  flex: 1 1 auto;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1c1917;
+  text-decoration: underline;
+  text-decoration-color: #991b1b;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  overflow-wrap: break-word;
+}
+
+.playbill__apply {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.playbill__smallprint {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: rgba(28, 25, 23, 0.5);
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .playbill__heading {
+    font-size: 1.75rem;
+  }
+
+  .playbill__name {
+    font-size: 1.375rem;
+  }
+}

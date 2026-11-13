@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Playbill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="team.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · team</p>
+
+  <!-- The component -->
+  <section class="playbill" role="region" aria-label="Meet the team">
+    <div class="playbill__inner">
+      <!-- Playbill header -->
+      <div class="playbill__head">
+        <div class="playbill__head-text">
+          <p class="playbill__kicker">The company · in order of appearance</p>
+          <h2 class="playbill__heading">The people behind the product.</h2>
+          <p class="playbill__standfirst">No stock photographs of strangers pointing at laptops. These are the people who actually answer the email, ship the fix, and pick up the phone — in the order they joined, with one line each in their own words.</p>
+        </div>
+        <span class="playbill__stamp" aria-label="Playbill for Acme, Inc.">Acme, Inc.</span>
+      </div>
+
+      <!-- The cast, in order of appearance -->
+      <ol class="playbill__cast">
+        <li>
+          <span class="playbill__num">01</span>
+          <span class="playbill__monogram" aria-hidden="true">AL</span>
+          <div class="playbill__person">
+            <p class="playbill__name">Ada Lovelace</p>
+            <p class="playbill__role"><span>Founder, engineering</span><span class="playbill__since">Since 2021</span></p>
+            <p class="playbill__line">“I write the code I wish I could have read when I started.”</p>
+          </div>
+        </li>
+        <li>
+          <span class="playbill__num">02</span>
+          <span class="playbill__monogram" aria-hidden="true">GH</span>
+          <div class="playbill__person">
+            <p class="playbill__name">Grace Hopper</p>
+            <p class="playbill__role"><span>Design lead</span><span class="playbill__since">Since 2022</span></p>
+            <p class="playbill__line">“A page should read like a person made it, on purpose.”</p>
+          </div>
+        </li>
+        <li>
+          <span class="playbill__num">03</span>
+          <span class="playbill__monogram" aria-hidden="true">AT</span>
+          <div class="playbill__person">
+            <p class="playbill__name">Alan Turing</p>
+            <p class="playbill__role"><span>Infrastructure</span><span class="playbill__since">Since 2023</span></p>
+            <p class="playbill__line">“If it falls over at 3 a.m., it was my pager. It rarely falls over.”</p>
+          </div>
+        </li>
+        <li>
+          <span class="playbill__num">04</span>
+          <span class="playbill__monogram" aria-hidden="true">KJ</span>
+          <div class="playbill__person">
+            <p class="playbill__name">Katherine Johnson</p>
+            <p class="playbill__role"><span>Customer support</span><span class="playbill__since">Since 2024</span></p>
+            <p class="playbill__line">“Most tickets are a question the page should have answered.”</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- Parts still to cast -->
+      <div class="playbill__open">
+        <p class="playbill__open-title">Parts still to cast</p>
+        <ul>
+          <li>
+            <span class="playbill__vacant">Vacant</span>
+            <a class="playbill__part" href="#jobs">Support engineer</a>
+            <span class="playbill__apply">Apply →</span>
+          </li>
+          <li>
+            <span class="playbill__vacant">Vacant</span>
+            <a class="playbill__part" href="#jobs">Technical writer</a>
+            <span class="playbill__apply">Apply →</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="playbill__smallprint">Portraits are initials, not photographs — swap in a real photo of the real person, or keep the initials. The line under each name is that person's own words; the samples here are placeholders to be replaced, not quotes to keep. A vacancy is printed as a vacancy, never as a person who does not exist.</p>
+    </div>
+  </section>
+</body>
+</html>
