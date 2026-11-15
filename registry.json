@@ -767,6 +767,38 @@
         "company team section",
         "who we are page"
       ]
+    },
+    {
+      "description": "Status page as a weather forecast: every service is a region with a forecast \u2014 Sunny, Cloudy, Overcast, Storm \u2014 a 90-day bar strip and uptime printed to two decimals and never rounded up to 100%; the incident log is plain-language updates, appended never edited, and planned work is printed as the forecast for tomorrow.",
+      "intents": [
+        "status page",
+        "system status",
+        "uptime",
+        "service health",
+        "incident history",
+        "uptime page",
+        "is it down",
+        "service status",
+        "operational status",
+        "status dashboard",
+        "system health"
+      ],
+      "name": "status-page",
+      "notFor": [
+        "analytics dashboard",
+        "monitoring alerts",
+        "admin panel",
+        "changelog",
+        "roadmap"
+      ],
+      "title": "The Weather Report",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/status-page.json",
+      "useCases": [
+        "status page for a SaaS product",
+        "uptime and incident history page",
+        "service health page",
+        "public status page"
+      ]
     }
   ],
   "name": "unslop"

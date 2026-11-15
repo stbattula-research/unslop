@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Weather Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="status-page.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · status-page</p>
+
+  <!-- The component -->
+  <section class="weather" role="region" aria-label="Service status">
+    <div class="weather__inner">
+      <!-- Forecast header -->
+      <div class="weather__head">
+        <p class="weather__kicker">Status · updated hourly, written by a human</p>
+        <h2 class="weather__heading">The weather, for the machines.</h2>
+        <p class="weather__standfirst">Every service gets a forecast, not a green dot. Sunny means it worked. Cloudy means it worked slowly. A storm means it didn&rsquo;t — and the log below says when, for how long, and what we did about it.</p>
+      </div>
+
+      <!-- The overall forecast -->
+      <div class="weather__forecast">
+        <p class="weather__forecast-line"><span class="weather__forecast-label">Forecast</span><span>CLOUDY IN PLACES — 3 of 4 services sunny, 1 cloudy. No storms today.</span></p>
+        <p class="weather__forecast-meta">Issued 15 November 2026, 09:52 CST · Next update within the hour, sooner if the sky changes</p>
+      </div>
+
+      <!-- The regions -->
+      <ul class="weather__services">
+        <li>
+          <div class="weather__service-head">
+            <span class="weather__glyph" aria-hidden="true">☀</span>
+            <p class="weather__service-name">API</p>
+            <p class="weather__region">US-East</p>
+            <p class="weather__status">Sunny</p>
+          </div>
+          <div class="weather__figures">
+            <span>Uptime, 90 days: <strong>99.97%</strong></span>
+            <span>Median latency: <strong>142ms</strong></span>
+          </div>
+          <div class="weather__history" role="img" aria-label="90-day history for API: 99.97% uptime">
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-degraded weather__bar--degraded" title="Degraded"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-outage weather__bar--outage" title="Outage"></span>
+              <span class="weather__bar h-outage weather__bar--outage" title="Outage"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-degraded weather__bar--degraded" title="Degraded"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-nodata weather__bar--nodata" title="No data"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+          </div>
+          <p class="weather__legend"><span class="weather__legend--up">■ Up</span> · <span class="weather__legend--degraded">■ Degraded</span> · <span class="weather__legend--outage">■ Outage</span> · <span>■ No data</span> — 90 days, oldest first</p>
+        </li>
+        <li>
+          <div class="weather__service-head">
+            <span class="weather__glyph" aria-hidden="true">☀</span>
+            <p class="weather__service-name">Web app</p>
+            <p class="weather__region">US-East</p>
+            <p class="weather__status">Sunny</p>
+          </div>
+          <div class="weather__figures">
+            <span>Uptime, 90 days: <strong>99.95%</strong></span>
+            <span>Median latency: <strong>210ms</strong></span>
+          </div>
+          <div class="weather__history" role="img" aria-label="90-day history for Web app: 99.95% uptime">
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-degraded weather__bar--degraded" title="Degraded"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-degraded weather__bar--degraded" title="Degraded"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+          </div>
+          <p class="weather__legend"><span class="weather__legend--up">■ Up</span> · <span class="weather__legend--degraded">■ Degraded</span> · <span class="weather__legend--outage">■ Outage</span> · <span>■ No data</span> — 90 days, oldest first</p>
+        </li>
+        <li>
+          <div class="weather__service-head">
+            <span class="weather__glyph" aria-hidden="true">⛅</span>
+            <p class="weather__service-name">Background jobs</p>
+            <p class="weather__region">EU-West</p>
+            <p class="weather__status">Cloudy</p>
+          </div>
+          <div class="weather__figures">
+            <span>Uptime, 90 days: <strong>99.82%</strong></span>
+            <span>Median latency: <strong>480ms</strong></span>
+          </div>
+          <div class="weather__history" role="img" aria-label="90-day history for Background jobs: 99.82% uptime">
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-degraded weather__bar--degraded" title="Degraded"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-degraded weather__bar--degraded" title="Degraded"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+          </div>
+          <p class="weather__legend"><span class="weather__legend--up">■ Up</span> · <span class="weather__legend--degraded">■ Degraded</span> · <span class="weather__legend--outage">■ Outage</span> · <span>■ No data</span> — 90 days, oldest first</p>
+        </li>
+        <li>
+          <div class="weather__service-head">
+            <span class="weather__glyph" aria-hidden="true">☀</span>
+            <p class="weather__service-name">Email delivery</p>
+            <p class="weather__region">Global</p>
+            <p class="weather__status">Sunny</p>
+          </div>
+          <div class="weather__figures">
+            <span>Uptime, 90 days: <strong>99.99%</strong></span>
+            <span>Median latency: <strong>95ms</strong></span>
+          </div>
+          <div class="weather__history" role="img" aria-label="90-day history for Email delivery: 99.99% uptime">
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-nodata weather__bar--nodata" title="No data"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+              <span class="weather__bar h-up weather__bar--up" title="Up"></span>
+          </div>
+          <p class="weather__legend"><span class="weather__legend--up">■ Up</span> · <span class="weather__legend--degraded">■ Degraded</span> · <span class="weather__legend--outage">■ Outage</span> · <span>■ No data</span> — 90 days, oldest first</p>
+        </li>
+      </ul>
+
+      <!-- The incident log -->
+      <div class="weather__log">
+        <p class="weather__section-title">The log — what happened, in plain language</p>
+        <ol class="weather__incidents">
+          <li>
+            <p class="weather__incident-head">
+              <span class="weather__incident-date">2026-11-09</span>
+              <span class="weather__incident-title">API responses slow in US-East</span>
+              <span class="weather__incident-stamp">Resolved</span>
+            </p>
+            <ul class="weather__updates">
+              <li>09:12 — Investigating elevated latency on API requests.</li>
+              <li>09:40 — Identified: a queue backing up behind a deploy.</li>
+              <li>10:05 — Resolved: queue drained, latency back under 200ms.</li>
+            </ul>
+          </li>
+          <li>
+            <p class="weather__incident-head">
+              <span class="weather__incident-date">2026-10-28</span>
+              <span class="weather__incident-title">Background jobs delayed</span>
+              <span class="weather__incident-stamp">Resolved</span>
+            </p>
+            <ul class="weather__updates">
+              <li>14:20 — Investigating jobs running behind schedule.</li>
+              <li>15:02 — Resolved: a stuck worker restarted, backlog cleared.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Forecast for tomorrow -->
+      <div class="weather__maintenance">
+        <p class="weather__section-title">Forecast for tomorrow — planned work, announced in advance</p>
+        <ul class="weather__maintenance-list">
+          <li>
+            <span class="weather__maintenance-date">2026-11-22</span>
+            <span class="weather__maintenance-title">Database maintenance — expect brief read-only windows</span>
+            <span class="weather__maintenance-window">02:00–04:00 UTC</span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="weather__smallprint">Uptime is printed to two decimals and never rounded up to 100%. A page that claims 100% forever is lying, or not looking. Grey bars are days we have no data for — a gap in the record, not a green day. The incident log is never edited after the fact, only appended to.</p>
+    </div>
+  </section>
+</body>
+</html>

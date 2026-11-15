@@ -1,0 +1,373 @@
+/* The Weather Report — a status page as a weather forecast.
+   A forecast is printed: pale sky paper in both modes, no dark variant.
+   Flat color, ink and sky blue, serif forecast, mono region labels.
+   The history strip is one bar per day — green up, amber degraded,
+   red outage, grey no data. Static, no JavaScript needed. */
+
+body {
+  margin: 0;
+  background: #e9eff1;
+  color: #1c1917;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.demo-note {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.demo-note a {
+  color: #0c4a6e;
+}
+
+.weather__inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 2.5rem;
+}
+
+.weather__head {
+  min-width: 0;
+}
+
+.weather__kicker {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0c4a6e;
+}
+
+.weather__heading {
+  margin: 0.5rem 0 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  overflow-wrap: break-word;
+}
+
+.weather__standfirst {
+  margin: 0.5rem 0 0;
+  max-width: 36rem;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(28, 25, 23, 0.7);
+  overflow-wrap: break-word;
+}
+
+.weather__forecast {
+  margin-top: 1.5rem;
+  border: 2px solid #1c1917;
+  background: #dce7ea;
+  padding: 0.75rem 1rem;
+}
+
+.weather__forecast-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.6;
+}
+
+.weather__forecast-label {
+  flex-shrink: 0;
+}
+
+.weather__forecast-line span:last-child {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.weather__forecast-meta {
+  margin: 0.25rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: rgba(28, 25, 23, 0.5);
+  overflow-wrap: break-word;
+}
+
+.weather__services {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid #1c1917;
+}
+
+.weather__services > li {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.weather__service-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  min-width: 0;
+}
+
+.weather__glyph {
+  flex-shrink: 0;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.weather__service-name {
+  margin: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+.weather__region {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.weather__status {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #0c4a6e;
+}
+
+.weather__figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-top: 0.75rem;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: rgba(28, 25, 23, 0.7);
+}
+
+.weather__figures span {
+  overflow-wrap: break-word;
+}
+
+.weather__figures strong {
+  color: #1c1917;
+}
+
+.weather__history {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 2rem;
+  margin-top: 0.75rem;
+}
+
+.weather__bar {
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+.weather__bar--up { background: #059669; }
+.weather__bar--degraded { background: #d97706; }
+.weather__bar--outage { background: #b91c1c; }
+.weather__bar--nodata { background: rgba(120, 113, 108, 0.4); }
+
+.h-up { height: 0.75rem; }
+.h-degraded { height: 1.25rem; }
+.h-outage { height: 2rem; }
+.h-nodata { height: 0.75rem; }
+
+.weather__legend {
+  margin: 0.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  color: rgba(28, 25, 23, 0.5);
+  overflow-wrap: break-word;
+}
+
+.weather__legend--up { color: #047857; }
+.weather__legend--degraded { color: #b45309; }
+.weather__legend--outage { color: #b91c1c; }
+
+.weather__log,
+.weather__maintenance {
+  margin-top: 2rem;
+}
+
+.weather__section-title {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0c4a6e;
+}
+
+.weather__incidents {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.weather__incidents > li {
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.weather__incident-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.weather__incident-date {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.weather__incident-title {
+  min-width: 0;
+  flex: 1 1 auto;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: break-word;
+}
+
+.weather__incident-stamp {
+  flex-shrink: 0;
+  border: 1px solid #1c1917;
+  padding: 0.125rem 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.weather__updates {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.weather__updates li {
+  margin: 0.25rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(28, 25, 23, 0.7);
+  overflow-wrap: break-word;
+}
+
+.weather__maintenance-list {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(28, 25, 23, 0.15);
+}
+
+.weather__maintenance-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  min-width: 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed rgba(28, 25, 23, 0.15);
+}
+
+.weather__maintenance-date {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.weather__maintenance-title {
+  min-width: 0;
+  flex: 1 1 auto;
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+.weather__maintenance-window {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  color: rgba(28, 25, 23, 0.5);
+}
+
+.weather__smallprint {
+  margin: 2rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.7;
+  color: rgba(28, 25, 23, 0.5);
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .weather__heading {
+    font-size: 1.75rem;
+  }
+
+  .weather__service-name {
+    font-size: 1.375rem;
+  }
+}
