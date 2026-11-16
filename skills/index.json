@@ -473,6 +473,87 @@
       ]
     },
     {
+      "name": "community-animejs",
+      "title": "Anime.js (community)",
+      "path": "skills/community/animejs/SKILL.md",
+      "description": "Third-party animation engine guide (Anime.js, MIT): timelines, SVG line drawing and morphing, and object tweens for plain HTML/CSS and vanilla JavaScript projects with no React. Unslop-authored reference on the community shelf, with MOTION.md restraint rules baked in.",
+      "intents": [
+        "animejs",
+        "anime.js",
+        "animate an svg",
+        "svg animation",
+        "svg line drawing",
+        "plain html animation",
+        "vanilla javascript animation",
+        "no react animation",
+        "animate without react",
+        "motion path"
+      ],
+      "useCases": [
+        "animate an SVG in plain HTML",
+        "add motion to a vanilla JavaScript page",
+        "tween numbers and objects without a framework",
+        "sequence steps with a timeline"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-kokonutui",
+      "title": "Kokonut UI (community)",
+      "path": "skills/community/kokonutui/SKILL.md",
+      "description": "Third-party registry guide (Kokonut UI, free set MIT): AI-product components \u2014 tool calls, tool approval, model selector, AI chat inputs, diff review \u2014 installed via the @kokonutui shadcn registry, curated to Unslop tokens. Unslop-authored reference on the community shelf; Pro is commercial and excluded.",
+      "intents": [
+        "kokonut ui",
+        "kokonutui",
+        "ai chat",
+        "tool approval",
+        "ai tool approval card",
+        "tool calls",
+        "model selector",
+        "ai chat input",
+        "ai product ui",
+        "diff review"
+      ],
+      "useCases": [
+        "build AI chat and tool-approval UI",
+        "add a model selector or AI chat input",
+        "find animated AI-product components"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
+      "name": "community-bklit",
+      "title": "Bklit UI Charts (community)",
+      "path": "skills/community/bklit/SKILL.md",
+      "description": "Third-party chart library guide (Bklit UI, MIT charts): composable line, bar, candlestick, pie, sankey and sparkline charts for dashboards and data visualization, installed via the @bklit shadcn registry and themed to one accent. Unslop-authored reference on the community shelf; Bklit Studio is proprietary and excluded.",
+      "intents": [
+        "bklit",
+        "bklit ui",
+        "charts",
+        "data visualization",
+        "dashboard chart",
+        "candlestick chart",
+        "line chart",
+        "bar chart",
+        "chart for a dashboard"
+      ],
+      "useCases": [
+        "add a line chart to a dashboard",
+        "build dashboard charts and KPI sparklines",
+        "show financial data with a candlestick chart"
+      ],
+      "notFor": [
+        "install a component",
+        "unslop's own design rules"
+      ]
+    },
+    {
       "name": "community-component-discovery",
       "title": "Component Discovery (community)",
       "path": "skills/community/component-discovery/shadcn-component-discovery/SKILL.md",

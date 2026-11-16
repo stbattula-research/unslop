@@ -35,6 +35,17 @@ reach for it. Read the `ATTRIBUTION.md` in each folder before reusing.
 | `bento/` | [bergside/awesome-design-skills](https://github.com/bergside/awesome-design-skills) | bergside | MIT |
 | `gradient/` | [bergside/awesome-design-skills](https://github.com/bergside/awesome-design-skills) | bergside | MIT |
 
+## Unslop-authored guides to third-party libraries
+
+Original Unslop writing about a library — the library itself is not
+vendored; it installs into the user's project, where its license applies.
+
+| Skill | Library | License scope |
+|---|---|---|
+| `animejs/` | [Anime.js](https://github.com/juliangarnier/anime) — vanilla-JS animation engine for plain HTML/CSS and SVG work | Library MIT; guide is Unslop's own |
+| `kokonutui/` | [Kokonut UI](https://github.com/kokonut-labs/kokonutui) — shadcn registry of animated React components, strong on AI-product UI | Free set MIT; **Pro is commercial and excluded** |
+| `bklit/` | [Bklit UI](https://github.com/bklit/bklit-ui) — shadcn registry of composable chart components | Chart components MIT; **Studio is proprietary and excluded** |
+
 ## Linked (not vendored)
 
 | Skill | Why linked, not vendored |
@@ -82,3 +93,14 @@ registry, MIT). Link-only: `animate-skill.md`, `animejs.md` (no license files).
 Skipped: AnayDhawan/Components (overlaps discovery), Owl-Listener
 (design-ops, not components), qiaomu-design (Chinese-first, 19MB),
 xntj-ai/ppvi (license unverifiable).
+
+Skills expansion 2026-11-16 (from a Facebook reel, "5 great websites to use
+with AI"): of the five sites, Motion and shadcn/ui were already on the shelf
+(`motion-dev/`, linked `shadcn`). The other three became Unslop-authored
+guides (see the table above): `animejs/` (vanilla/SVG animation, with
+MOTION.md restraint rules overriding the library's playful defaults),
+`kokonutui/` (AI-product registry routing; free set MIT, Pro excluded),
+`bklit/` (charts — the shelf's first data-viz entry; Studio excluded).
+No components were copied into Unslop's own registry. `motion-dev/` also
+gained a 2026 refresh: the `motion/react` import rename and Motion's free
+MCP server. Plan: `SKILLS-EXPANSION-PLAN.md` (repo root).

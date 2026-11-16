@@ -1,6 +1,6 @@
 # Community Shelf Playbook — my own synthesis
 
-The shelf now holds 24 skills. This playbook maps common goals to the exact
+The shelf now holds 27 skills. This playbook maps common goals to the exact
 skill combinations to reach for, in order. (Unslop's router also scores these
 automatically via `skills/index.json` — this is the human-readable version.)
 
@@ -29,7 +29,16 @@ automatically via `skills/index.json` — this is the human-readable version.)
 
 1. `component-discovery` — search 1,500+ across 30+ animated registries
 2. `magic-ui` — the animated component authority (marquee, bento, blur-fade)
-3. `taste` — sanity-check the pick doesn't read as generic
+3. `kokonutui` — AI-product UI (tool approval, model selector, chat inputs)
+4. `taste` — sanity-check the pick doesn't read as generic
+
+## "Charts and data visualization"
+
+1. `bklit` — pick the chart by the story, install via `@bklit`, theme to one accent
+
+## "Animate without React (plain HTML / SVG)"
+
+1. `animejs` — timelines and SVG work in vanilla JS, under MOTION.md restraint
 
 ## "Design a logo / brand mark"
 

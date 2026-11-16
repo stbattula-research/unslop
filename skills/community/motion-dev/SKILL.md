@@ -189,6 +189,16 @@ npm install motion
 npm install motion-v
 ```
 
+## 2026 notes
+
+- **Framer Motion is now Motion.** Import from `motion/react`, not
+  `framer-motion` — the old package name is legacy. **Motion+** is the
+  separate paid tier; the core library covered here stays free and MIT.
+- **Free MCP server:** Motion runs an MCP server at
+  `https://mcp.motion.dev` that searches Motion's docs and examples —
+  free, no account needed. Point Claude Code / Cursor at it when a
+  pattern needs checking against the current docs.
+
 ## Common Patterns (Copy-Paste Ready)
 
 ### Pattern 1: Fade Up Entrance

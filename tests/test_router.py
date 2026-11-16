@@ -101,6 +101,30 @@ def test_bento_query_routes_to_community_bento():
     assert matches[0][1] > 0
 
 
+def test_animejs_query_routes_to_community_animejs():
+    matches = unslop.find_skill_matches("animate an SVG in plain HTML without React", top=3)
+    assert matches[0][0]["name"] == "community-animejs"
+    assert matches[0][1] > 0
+
+
+def test_kokonutui_query_routes_to_community_kokonutui():
+    matches = unslop.find_skill_matches("AI chat tool approval card", top=3)
+    assert matches[0][0]["name"] == "community-kokonutui"
+    assert matches[0][1] > 0
+
+
+def test_bklit_candlestick_query_routes_to_community_bklit():
+    matches = unslop.find_skill_matches("dashboard candlestick chart", top=3)
+    assert matches[0][0]["name"] == "community-bklit"
+    assert matches[0][1] > 0
+
+
+def test_bklit_line_chart_query_routes_to_community_bklit():
+    matches = unslop.find_skill_matches("line chart for a dashboard", top=3)
+    assert matches[0][0]["name"] == "community-bklit"
+    assert matches[0][1] > 0
+
+
 # --- scoring: component queries still rank components first ---
 
 
@@ -265,7 +289,8 @@ def test_skill_list_lists_all_skills():
                  "community-ilm-aesthetics", "community-liquid-glass", "community-ckw-design",
                  "community-magic-ui", "community-component-discovery",
                  "community-appllama-mobile", "community-design-database",
-                 "community-glassmorphism", "community-bento", "community-gradient"):
+                 "community-glassmorphism", "community-bento", "community-gradient",
+                 "community-animejs", "community-kokonutui", "community-bklit"):
         assert name in r.stdout
 
 
