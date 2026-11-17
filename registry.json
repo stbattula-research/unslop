@@ -799,6 +799,37 @@
         "service health page",
         "public status page"
       ]
+    },
+    {
+      "description": "Blog index as a library card catalog: every article is a catalog card with a call number, author, date, and an honest reading time, filed under topic drawers \u2014 no thumbnails pretending to be the article, no unverifiable trending counts, and the count line says exactly how many cards are in the drawer you opened.",
+      "intents": [
+        "blog index",
+        "article listing",
+        "blog listing",
+        "blog list",
+        "article index",
+        "blog archive",
+        "blog hub",
+        "articles page",
+        "blog page",
+        "news listing",
+        "posts listing"
+      ],
+      "name": "blog-index",
+      "notFor": [
+        "single article page",
+        "newsletter signup",
+        "changelog",
+        "search results"
+      ],
+      "title": "The Card Catalog",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/blog-index.json",
+      "useCases": [
+        "blog index page listing articles",
+        "article archive with topic filters",
+        "blog hub with reading times",
+        "news or journal listing page"
+      ]
     }
   ],
   "name": "unslop"

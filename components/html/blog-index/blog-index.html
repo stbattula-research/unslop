@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Card Catalog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="blog-index.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · blog-index</p>
+
+  <!-- The component -->
+  <section class="catalog" role="region" aria-label="Article index">
+    <div class="catalog__inner">
+      <!-- Catalog header -->
+      <div class="catalog__head">
+        <p class="catalog__kicker">The library · open to readers</p>
+        <h2 class="catalog__heading">Every article, filed where you can find it.</h2>
+        <p class="catalog__standfirst">No thumbnails pretending to be the article, no &lsquo;trending&rsquo; counts nobody can check. Each card says what the piece is, who wrote it, when, and how long it takes to read — then gets out of the way.</p>
+        <p class="catalog__library">The Unslop Library · 5 cards on file</p>
+      </div>
+
+      <!-- The drawers -->
+      <div class="catalog__drawers" role="group" aria-label="Filter by topic">
+        <p class="catalog__drawers-label">Open a drawer</p>
+        <div class="catalog__tabs" id="drawer-tabs">
+          <button type="button" class="catalog__tab catalog__tab--active" data-topic="All" aria-pressed="true">All · 5</button>
+          <button type="button" class="catalog__tab" data-topic="Design" aria-pressed="false">Design · 2</button>
+          <button type="button" class="catalog__tab" data-topic="Engineering" aria-pressed="false">Engineering · 2</button>
+          <button type="button" class="catalog__tab" data-topic="Notes" aria-pressed="false">Notes · 1</button>
+        </div>
+        <p class="catalog__count" id="drawer-count" aria-live="polite">5 of 5 cards in this drawer</p>
+      </div>
+
+      <!-- The cards -->
+      <div class="catalog__cards" id="cards">
+        <article class="catalog__featured" data-topic="Design">
+          <p class="catalog__featured-top">
+            <span class="catalog__new">New arrival</span>
+            <span class="catalog__call">Call no. 741.6 DES</span>
+          </p>
+          <h3 class="catalog__featured-title"><a href="/blog/hero-lying">Why your hero section is lying to you</a></h3>
+          <p class="catalog__summary">A centered pill badge, a gradient wash, and three identical cards is not a hero — it is a confession. What to put there instead.</p>
+          <p class="catalog__meta">
+            <span>By <strong>Sai Teja Battula</strong></span>
+            <span>2026-11-10</span>
+            <span>6 min read</span>
+            <span class="catalog__filed">Filed under Design</span>
+          </p>
+        </article>
+
+        <ul class="catalog__list">
+          <li data-topic="Engineering">
+            <p class="catalog__row-top">
+              <span class="catalog__call">005.1 ENG</span>
+              <span class="catalog__title"><a href="/blog/router-minds">The router that reads minds (badly)</a></span>
+              <span class="catalog__stamp">Engineering</span>
+            </p>
+            <p class="catalog__summary">Intent scoring over a component registry, the confidence floor that keeps vague asks honest, and the one bug that matched the word &lsquo;me&rsquo;.</p>
+            <p class="catalog__meta">
+              <span>By <strong>Sai Teja Battula</strong></span>
+              <span>2026-11-03</span>
+              <span>8 min read</span>
+            </p>
+          </li>
+          <li data-topic="Design">
+            <p class="catalog__row-top">
+              <span class="catalog__call">741.6 DES</span>
+              <span class="catalog__title"><a href="/blog/pricing-menu">A pricing page is a menu, not a table</a></span>
+              <span class="catalog__stamp">Design</span>
+            </p>
+            <p class="catalog__summary">The glowing middle tier is a trick everyone has seen. Set the prices like a bistro sets its menu — and stamp the house special.</p>
+            <p class="catalog__meta">
+              <span>By <strong>Sai Teja Battula</strong></span>
+              <span>2026-10-27</span>
+              <span>5 min read</span>
+            </p>
+          </li>
+          <li data-topic="Notes">
+            <p class="catalog__row-top">
+              <span class="catalog__call">001.4 NOT</span>
+              <span class="catalog__title"><a href="/blog/dead-letter-notes">Notes from the dead-letter office</a></span>
+              <span class="catalog__stamp">Notes</span>
+            </p>
+            <p class="catalog__summary">Every 404 we shipped this year, what each one got wrong, and why the honest answer is &lsquo;we don&rsquo;t know where it went&rsquo;.</p>
+            <p class="catalog__meta">
+              <span>By <strong>Sai Teja Battula</strong></span>
+              <span>2026-10-19</span>
+              <span>4 min read</span>
+            </p>
+          </li>
+          <li data-topic="Engineering">
+            <p class="catalog__row-top">
+              <span class="catalog__call">005.1 ENG</span>
+              <span class="catalog__title"><a href="/blog/static-by-default">Static by default, animated on purpose</a></span>
+              <span class="catalog__stamp">Engineering</span>
+            </p>
+            <p class="catalog__summary">Everything fading up on scroll is a site performing enthusiasm it doesn&rsquo;t feel. One interaction, one motion — or none at all.</p>
+            <p class="catalog__meta">
+              <span>By <strong>Sai Teja Battula</strong></span>
+              <span>2026-10-12</span>
+              <span>7 min read</span>
+            </p>
+          </li>
+        </ul>
+        <p class="catalog__empty" id="drawer-empty" hidden>No cards in this drawer yet. The drawer is empty, not broken — file the first article here and it will show up.</p>
+      </div>
+
+      <p class="catalog__smallprint">Reading times are counted from the article itself, not estimated from the headline. Dates are the day the piece was filed, not the day it was last polished. The sample cards above are placeholders — replace them with your own articles; a card with no summary should say so, not invent one.</p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var tabs = document.querySelectorAll("#drawer-tabs .catalog__tab");
+      var featured = document.querySelector(".catalog__featured");
+      var rows = document.querySelectorAll(".catalog__list > li");
+      var count = document.getElementById("drawer-count");
+      var empty = document.getElementById("drawer-empty");
+      var total = 1 + rows.length;
+
+      function openDrawer(topic) {
+        var shown = 0;
+        tabs.forEach(function (tab) {
+          var active = tab.getAttribute("data-topic") === topic;
+          tab.classList.toggle("catalog__tab--active", active);
+          tab.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        if (featured) {
+          var showFeatured = topic === "All" || featured.getAttribute("data-topic") === topic;
+          featured.hidden = !showFeatured;
+          if (showFeatured) shown += 1;
+        }
+        rows.forEach(function (row) {
+          var show = topic === "All" || row.getAttribute("data-topic") === topic;
+          row.hidden = !show;
+          if (show) shown += 1;
+        });
+        empty.hidden = shown !== 0;
+        count.textContent =
+          shown + " of " + total + " cards in this drawer" +
+          (topic !== "All" ? " — filed under " + topic : "");
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          openDrawer(tab.getAttribute("data-topic"));
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

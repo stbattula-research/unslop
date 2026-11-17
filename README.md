@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Components](https://img.shields.io/badge/components-26%20%C3%97%202-blue.svg)](#component-catalog)
+[![Components](https://img.shields.io/badge/components-27%20%C3%97%202-blue.svg)](#component-catalog)
 
 AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
 
@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 26 components
+./unslop list                                      # list all 27 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 26 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 27 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -134,6 +134,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 24 | The Departures Board | Product roadmap as a railway departures board: each feature is a departure, the time column is a horizon (Now / Next / Later — never a date), statuses read BOARDING / ON TIME / DELAYED / NO DATE PROMISED, delays name their reason, and shipped work leaves the board for a Recently departed strip with real ship dates | [`r/roadmap.json`](r/roadmap.json) | [`components/html/roadmap/`](components/html/roadmap/) |
 | 25 | The Playbill | Team section as a theatre playbill: the team is the cast, in order of appearance, with typographic monogram portraits instead of stock photographs, roles in mono caps, the year each person joined, and one line each in their own words; open roles are printed as parts still to cast, never as people who do not exist | [`r/team.json`](r/team.json) | [`components/html/team/`](components/html/team/) |
 | 26 | The Weather Report | Status page as a weather forecast: every service is a region with a forecast — Sunny, Cloudy, Overcast, Storm — a 90-day bar strip and uptime printed to two decimals and never rounded up to 100%; the incident log is plain-language updates, appended never edited, and planned work is printed as the forecast for tomorrow | [`r/status-page.json`](r/status-page.json) | [`components/html/status-page/`](components/html/status-page/) |
+| 27 | The Card Catalog | Blog index as a library card catalog: every article is a catalog card with a call number, author, date, and an honest reading time, filed under topic drawers — no thumbnails pretending to be the article, no unverifiable trending counts, and the count line says exactly how many cards are in the drawer you opened | [`r/blog-index.json`](r/blog-index.json) | [`components/html/blog-index/`](components/html/blog-index/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 
