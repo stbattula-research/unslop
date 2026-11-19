@@ -830,6 +830,37 @@
         "blog hub with reading times",
         "news or journal listing page"
       ]
+    },
+    {
+      "description": "Invoice/receipt as a restaurant check: every charge is a line on the check with a plain-English reason, credits are their own lines never silently netted, tax is its own line with its rate, and the total is the sum of the lines above it \u2014 no unexplained fees, no \u2018miscellaneous\u2019.",
+      "intents": [
+        "invoice",
+        "receipt",
+        "billing invoice",
+        "invoice page",
+        "receipt page",
+        "billing history",
+        "invoice template",
+        "payment receipt",
+        "what was i charged",
+        "invoice detail",
+        "billing receipt"
+      ],
+      "name": "invoice",
+      "notFor": [
+        "pricing page",
+        "pricing tiers",
+        "checkout form",
+        "payment method form"
+      ],
+      "title": "The Check",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/invoice.json",
+      "useCases": [
+        "invoice or receipt page showing line items",
+        "billing history detail view",
+        "subscription renewal receipt",
+        "expense reimbursement receipt"
+      ]
     }
   ],
   "name": "unslop"

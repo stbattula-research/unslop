@@ -233,6 +233,12 @@ def test_blog_index_query_ranks_card_catalog_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_invoice_query_ranks_the_check_first():
+    matches = unslop.find_matches("invoice receipt page showing what I was charged with line items", top=3)
+    assert matches[0][0]["name"] == "invoice"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_announcement_query_ranks_towncrier_first():
     matches = unslop.find_matches("announcement bar notice at the top of my site for a sale", top=3)
     assert matches[0][0]["name"] == "announcement-bar"

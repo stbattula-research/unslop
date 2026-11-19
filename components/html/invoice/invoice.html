@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Check</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="invoice.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · invoice</p>
+
+  <!-- The component -->
+  <section class="check" role="region" aria-label="Invoice">
+    <div class="check__inner">
+      <!-- Check header -->
+      <div class="check__head">
+        <p class="check__kicker">Billing · one check, every line named</p>
+        <h2 class="check__heading">Here is what you were charged, and why.</h2>
+        <p class="check__standfirst">No &lsquo;miscellaneous&rsquo;, no service fee with no explanation. Every line says what it is for, credits are printed as their own lines instead of quietly netted, and the total is the sum of the lines above it — add it up yourself.</p>
+        <p class="check__merchant"><span>Unslop Studio</span> <span>12 Paper Street, Austin TX 78701</span></p>
+      </div>
+
+      <!-- The check -->
+      <div class="check__paper">
+        <p class="check__top">
+          <span>Check INV-2026-1147</span>
+          <span>Nov 1 – Nov 30, 2026</span>
+        </p>
+        <p class="check__meta">
+          <span>Issued <strong>2026-11-19</strong></span>
+          <span>Due <strong>2026-12-03</strong></span>
+          <span>Billed to <strong>Sai Teja Battula</strong></span>
+          <span>stbattula@gmail.com</span>
+        </p>
+
+        <!-- The stamp -->
+        <p class="check__stamp" aria-label="Status: PAID">PAID</p>
+
+        <!-- Line items -->
+        <ul class="check__lines">
+          <li>
+            <p class="check__line-top">
+              <span class="check__line-name">Pro plan — 3 seats</span>
+              <span class="check__line-amount">$72.00</span>
+            </p>
+            <p class="check__line-detail">Three seats on the Pro plan, Nov 1 – Nov 30.</p>
+            <p class="check__line-qty">3 × $24.00</p>
+          </li>
+          <li>
+            <p class="check__line-top">
+              <span class="check__line-name">Extra builds — 204 over the limit</span>
+              <span class="check__line-amount">$10.20</span>
+            </p>
+            <p class="check__line-detail">204 builds past the 1,000 included in Pro, at 5¢ each.</p>
+            <p class="check__line-qty">204 × $0.05</p>
+          </li>
+          <li>
+            <p class="check__line-top">
+              <span class="check__line-name">Annual prepay credit</span>
+              <span class="check__line-amount check__line-amount--credit">credit −$18.00</span>
+            </p>
+            <p class="check__line-detail">You paid a year up front in January; this month&rsquo;s share of that credit.</p>
+          </li>
+        </ul>
+
+        <!-- Totals — computed from the lines above, never typed in -->
+        <div class="check__totals">
+          <p><span>Subtotal — the lines above, added up</span><span class="check__totals-amount">$64.20</span></p>
+          <p><span>Sales tax (TX 8.25%)</span><span class="check__totals-amount">$5.30</span></p>
+          <p class="check__totals-total"><span>Total due</span><span class="check__totals-grand">$69.50</span></p>
+          <p><span>Paid (Visa •••• 4242)</span><span class="check__totals-amount">$69.50</span></p>
+          <p><span>Balance due</span><span class="check__totals-amount">$0.00</span></p>
+        </div>
+
+        <p class="check__changes">What changed since last month: one seat added on Nov 12 (+$24), and the annual-prepay credit is $2 smaller because the plan price rose in October — that rise is on the October check, not hidden here.</p>
+
+        <p class="check__links">
+          <a href="/invoices/INV-2026-1147.pdf">Download PDF</a>
+          <a href="/support/billing">Ask about a line</a>
+          <button type="button" id="print-check">Print this check</button>
+        </p>
+      </div>
+
+      <!-- Tear-off stub -->
+      <div class="check__stub">
+        <p class="check__stub-label">Keep this stub</p>
+        <p class="check__stub-line">
+          <span>Check <strong>INV-2026-1147</strong></span>
+          <span>Total <strong>$69.50</strong></span>
+          <span>Paid <strong>$69.50 · Visa •••• 4242</strong></span>
+          <span>Balance <strong>$0.00</strong></span>
+        </p>
+      </div>
+
+      <p class="check__smallprint">If a line on this check doesn&rsquo;t make sense to you, the line is wrong, not you — write to us and we&rsquo;ll explain it or take it off. The amounts above are samples — replace them with your real invoice; a total that doesn&rsquo;t add up from its own lines should never ship.</p>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById("print-check").addEventListener("click", function () {
+      window.print();
+    });
+  </script>
+</body>
+</html>
