@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Guest Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · signup</p>
+
+  <!-- The component -->
+  <section class="guest-book">
+    <div class="guest-book__inner">
+      <p class="guest-book__kicker">The guest book · rooms from check-in</p>
+
+      <div class="guest-book__grid">
+        <!-- The innkeeper's welcome: what a room gets you -->
+        <div class="welcome">
+          <h2 class="welcome__heading">Sign the register.</h2>
+          <p class="welcome__standfirst">Three lines, that's all. A name, an email, and a password — and the room is yours. We don't ask for your phone number, your company, or your life story at the door.</p>
+
+          <p class="welcome__label">The house, in three lines</p>
+          <ul class="welcome__lines">
+            <li><span class="line__num">01</span><span class="line__text">A room of your own, not a tracking pixel</span></li>
+            <li><span class="line__num">02</span><span class="line__text">One key, handed over at the desk — never emailed around</span></li>
+            <li><span class="line__num">03</span><span class="line__text">Leave whenever you like. The door locks from the inside</span></li>
+          </ul>
+        </div>
+
+        <!-- The register book -->
+        <div class="register-wrap">
+          <div class="register">
+            <div class="register__head">
+              <span class="register__inn">The Unslop Inn · Guest register</span>
+              <span class="register__open">Desk open</span>
+            </div>
+            <div class="register__body">
+              <p class="register__label" id="room-label">Your room</p>
+              <p class="register__number">Nº 214</p>
+
+              <form class="register__form" id="guest-form">
+                <div id="name-field">
+                  <label for="guest-name">Name, as it goes in the book</label>
+                  <input id="guest-name" type="text" required autocomplete="name" placeholder="Ada Lovelace">
+                </div>
+                <label for="guest-email">Email, for the key</label>
+                <input id="guest-email" type="email" required autocomplete="email" placeholder="you@example.com">
+                <label for="guest-password">Password — eight characters, that's the whole rule</label>
+                <div class="password-row">
+                  <input id="guest-password" type="password" required minlength="8" autocomplete="new-password" placeholder="••••••••">
+                  <button type="button" id="show-password" aria-pressed="false">Show</button>
+                </div>
+                <button type="submit" id="submit-button">Sign the register →</button>
+              </form>
+              <div class="register__checked-in" id="checked-in" hidden role="status">
+                <p id="checked-in-text">Room Nº 214 is yours. The key is at the desk — and the register never leaves the building.</p>
+                <p class="checked-in__stamp">Checked in</p>
+              </div>
+
+              <p class="register__smallprint">Three fields, no pre-ticked boxes, no social sign-in that hands you to a third party. This register is a demo — point the form at your real backend.</p>
+
+              <button type="button" class="register__switch" id="switch-mode">Already a guest? Sign in instead.</button>
+            </div>
+          </div>
+          <p class="register__aside">A sign-up that asks for what it needs, and nothing it doesn't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Demo only: write the guest in place. Nothing is sent anywhere.
+    (function () {
+      var mode = 'signup';
+      var form = document.getElementById('guest-form');
+      var nameField = document.getElementById('name-field');
+      var nameInput = document.getElementById('guest-name');
+      var emailInput = document.getElementById('guest-email');
+      var passwordInput = document.getElementById('guest-password');
+      var showBtn = document.getElementById('show-password');
+      var submitBtn = document.getElementById('submit-button');
+      var roomLabel = document.getElementById('room-label');
+      var checkedIn = document.getElementById('checked-in');
+      var checkedInText = document.getElementById('checked-in-text');
+      var switchBtn = document.getElementById('switch-mode');
+
+      showBtn.addEventListener('click', function () {
+        var showing = passwordInput.type === 'text';
+        passwordInput.type = showing ? 'password' : 'text';
+        showBtn.textContent = showing ? 'Show' : 'Hide';
+        showBtn.setAttribute('aria-pressed', String(!showing));
+      });
+
+      switchBtn.addEventListener('click', function () {
+        mode = mode === 'signup' ? 'signin' : 'signup';
+        form.hidden = false;
+        checkedIn.hidden = true;
+        if (mode === 'signin') {
+          nameField.hidden = true;
+          nameInput.required = false;
+          passwordInput.autocomplete = 'current-password';
+          submitBtn.textContent = 'Take the key →';
+          roomLabel.textContent = 'Your room, again';
+          switchBtn.textContent = 'New here? Sign the register instead.';
+        } else {
+          nameField.hidden = false;
+          nameInput.required = true;
+          passwordInput.autocomplete = 'new-password';
+          submitBtn.textContent = 'Sign the register →';
+          roomLabel.textContent = 'Your room';
+          switchBtn.textContent = 'Already a guest? Sign in instead.';
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = nameInput.value.trim();
+        if (mode === 'signup' && !name) return;
+        if (!emailInput.value.trim() || !passwordInput.value) return;
+        checkedInText.textContent = mode === 'signup'
+          ? 'Room Nº 214 is yours' + (name ? ', ' + name : '') + '. The key is at the desk — and the register never leaves the building.'
+          : 'Welcome back' + (name ? ', ' + name : '') + '. Room Nº 214 is yours again — the key is at the desk.';
+        form.hidden = true;
+        checkedIn.hidden = false;
+      });
+    })();
+  </script>
+</body>
+</html>

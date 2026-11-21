@@ -861,6 +861,38 @@
         "subscription renewal receipt",
         "expense reimbursement receipt"
       ]
+    },
+    {
+      "description": "Sign-up / sign-in form as a hotel guest register: the pitch as the innkeeper's welcome, the form as a ruled ledger book with three fields, a mono room number, a show-password toggle, a returning-guest switch, and a CHECKED IN stamp \u2014 no phone number harvested, no pre-ticked boxes, no social sign-in.",
+      "intents": [
+        "sign-up form",
+        "signup form",
+        "sign up",
+        "create account",
+        "register account",
+        "registration form",
+        "sign-in form",
+        "login form",
+        "log in",
+        "join form",
+        "auth form",
+        "account signup"
+      ],
+      "name": "signup",
+      "notFor": [
+        "waitlist signup",
+        "newsletter signup",
+        "contact form",
+        "checkout form"
+      ],
+      "title": "The Guest Book",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/signup.json",
+      "useCases": [
+        "SaaS sign-up page",
+        "account creation",
+        "member registration",
+        "sign-in page"
+      ]
     }
   ],
   "name": "unslop"

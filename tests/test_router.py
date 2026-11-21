@@ -244,6 +244,12 @@ def test_announcement_query_ranks_towncrier_first():
     assert matches[0][0]["name"] == "announcement-bar"
 
 
+def test_signup_query_ranks_guest_book_first():
+    matches = unslop.find_matches("sign up form to create an account for my app", top=3)
+    assert matches[0][0]["name"] == "signup"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_waitlist_query_ranks_ticketwindow_first():
     matches = unslop.find_matches("waitlist signup early access join the waitlist for my launch", top=3)
     assert matches[0][0]["name"] == "waitlist"
