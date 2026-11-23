@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Till</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · checkout</p>
+
+  <!-- The component -->
+  <section class="till">
+    <div class="till__inner">
+      <p class="till__kicker">The till · one page, no surprises</p>
+
+      <div class="till__grid">
+        <!-- The till tape: the order, priced line by line -->
+        <div class="pitch">
+          <h2 class="pitch__heading">Pay for what's on the tape.</h2>
+          <p class="pitch__standfirst">The total above is the total you pay. No fee appears at the last step, no account is required, and the form asks for seven fields — everything it needs to send the order, nothing it doesn't.</p>
+
+          <p class="pitch__label">The tape, in three steps</p>
+          <ol class="pitch__steps">
+            <li><span class="step__num">01</span><span class="step__text"><span class="step__name">Contact</span><span class="step__what">Where the receipt goes</span></span></li>
+            <li><span class="step__num">02</span><span class="step__text"><span class="step__name">Shipping</span><span class="step__what">Where the parcel goes</span></span></li>
+            <li><span class="step__num">03</span><span class="step__text"><span class="step__name">Payment</span><span class="step__what">The card, and nothing else</span></span></li>
+          </ol>
+
+          <p class="pitch__aside">One page, start to finish. The steps are labels, not a maze — nothing hides behind a &ldquo;next&rdquo; button.</p>
+        </div>
+
+        <!-- The till -->
+        <div class="till-wrap">
+          <div class="till-box">
+            <div class="till-box__head">
+              <span class="till-box__shop">The Unslop General Store · Till Nº 1</span>
+              <span class="till-box__open">Open</span>
+            </div>
+            <div class="till-box__body">
+              <p class="till-box__label">Order Nº 1042 · arrives Thursday, November 26</p>
+              <ul class="tape" id="tape">
+                <li><span class="tape__line"><span class="tape__name">Field notebook, dot grid</span><span class="tape__detail">A6 · 96 pages · paper that takes ink</span></span><span class="tape__amount" data-line="24.00">$24.00</span></li>
+                <li><span class="tape__line"><span class="tape__name">Brass paper clips × 2</span><span class="tape__detail">Box of 100 · they do not rust</span></span><span class="tape__amount" data-line="19.00">$19.00</span></li>
+                <li><span class="tape__line"><span class="tape__name">Shipping · Standard, tracked</span></span><span class="tape__amount" data-line="6.95">$6.95</span></li>
+                <li id="wrap-line" hidden><span class="tape__line"><span class="tape__name">Gift wrap</span></span><span class="tape__amount" data-line="4.00">$4.00</span></li>
+                <li><span class="tape__line"><span class="tape__name">Sales tax (8.25%)</span></span><span class="tape__amount" id="tax-amount">$3.55</span></li>
+              </ul>
+              <p class="till-box__total"><span>Total due</span><span class="till-box__total-amount" id="total-amount">$53.50</span></p>
+              <p class="till-box__total-note">This total is the sum of the lines above it. Nothing is added after you press pay.</p>
+
+              <form class="till-box__form" id="till-form">
+                <p class="till-box__step">1 · Contact</p>
+                <label for="till-email">Email, for the receipt</label>
+                <input id="till-email" type="email" required autocomplete="email" placeholder="you@example.com">
+
+                <p class="till-box__step">2 · Shipping</p>
+                <label for="till-name">Full name</label>
+                <input id="till-name" type="text" required autocomplete="name" placeholder="Ada Lovelace">
+                <div class="address-row">
+                  <div class="address-row__street">
+                    <label for="till-street">Street</label>
+                    <input id="till-street" type="text" required autocomplete="street-address" placeholder="12 Paper Lane">
+                  </div>
+                  <div class="address-row__cityzip">
+                    <div>
+                      <label for="till-city">City</label>
+                      <input id="till-city" type="text" required autocomplete="address-level2" placeholder="Dallas">
+                    </div>
+                    <div>
+                      <label for="till-zip">ZIP</label>
+                      <input id="till-zip" type="text" required inputmode="numeric" autocomplete="postal-code" placeholder="75243">
+                    </div>
+                  </div>
+                </div>
+
+                <p class="till-box__step">3 · Payment</p>
+                <label for="till-card-name">Name on card</label>
+                <input id="till-card-name" type="text" required autocomplete="cc-name" placeholder="Ada Lovelace">
+                <label for="till-card-number">Card number</label>
+                <input id="till-card-number" type="text" required inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242">
+                <div class="card-row">
+                  <div>
+                    <label for="till-expiry">Expiry</label>
+                    <input id="till-expiry" type="text" required inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY">
+                  </div>
+                  <div>
+                    <label for="till-cvc">CVC</label>
+                    <input id="till-cvc" type="text" required inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123">
+                  </div>
+                </div>
+
+                <label class="till-box__check"><input type="checkbox" id="billing-same" checked> <span>Billing address is the same as shipping — the usual case, so it is checked. Untick it and we will ask.</span></label>
+                <label class="till-box__check"><input type="checkbox" id="gift-wrap"> <span>Add gift wrap ($4.00) — unticked until you say so. Ticking it re-adds the line above.</span></label>
+
+                <button type="submit" id="pay-button">Pay $53.50 →</button>
+              </form>
+              <div class="till-box__paid" id="paid" hidden role="status">
+                <p id="paid-text">Paid $53.50, order Nº 1042. The receipt is on its way to your inbox — and if you want an account, make it after, when all it takes is a password.</p>
+                <p class="paid__stamp">Paid</p>
+              </div>
+
+              <p class="till-box__smallprint">No account, no pre-ticked extras, no fee at the last step. This till is a demo — point the form at your real payment processor. No card is charged here, and no number leaves this page.</p>
+            </div>
+          </div>
+          <p class="till-box__aside">A checkout that shows its working, then asks for the card.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Demo only: print the receipt in place. Nothing is sent anywhere.
+    // Totals are computed from the tape, never typed in.
+    (function () {
+      var form = document.getElementById('till-form');
+      var paid = document.getElementById('paid');
+      var paidText = document.getElementById('paid-text');
+      var payButton = document.getElementById('pay-button');
+      var totalAmount = document.getElementById('total-amount');
+      var taxAmount = document.getElementById('tax-amount');
+      var wrapLine = document.getElementById('wrap-line');
+      var wrapBox = document.getElementById('gift-wrap');
+      var cardNumber = document.getElementById('till-card-number');
+      var expiry = document.getElementById('till-expiry');
+      var cvc = document.getElementById('till-cvc');
+      var emailInput = document.getElementById('till-email');
+      var nameInput = document.getElementById('till-name');
+
+      var SHIPPING = 6.95;
+      var TAX_RATE = 0.0825;
+      var WRAP = 4.00;
+      var GOODS = 43.00; // $24.00 + 2 x $9.50, the two item lines
+
+      function money(n) { return '$' + n.toFixed(2); }
+
+      function recompute() {
+        var wrap = wrapBox.checked ? WRAP : 0;
+        var tax = Math.round((GOODS + wrap) * TAX_RATE * 100) / 100;
+        var total = GOODS + SHIPPING + wrap + tax;
+        wrapLine.hidden = !wrapBox.checked;
+        taxAmount.textContent = money(tax);
+        totalAmount.textContent = money(total);
+        payButton.textContent = 'Pay ' + money(total) + ' →';
+        return total;
+      }
+
+      wrapBox.addEventListener('change', recompute);
+
+      cardNumber.addEventListener('input', function () {
+        var digits = cardNumber.value.replace(/\D/g, '').slice(0, 16);
+        cardNumber.value = digits.replace(/(\d{4})(?=\d)/g, '$1 ');
+      });
+
+      expiry.addEventListener('input', function () {
+        var digits = expiry.value.replace(/\D/g, '').slice(0, 4);
+        expiry.value = digits.length > 2 ? digits.slice(0, 2) + '/' + digits.slice(2) : digits;
+      });
+
+      cvc.addEventListener('input', function () {
+        cvc.value = cvc.value.replace(/\D/g, '').slice(0, 4);
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!emailInput.value.trim() || !nameInput.value.trim()) return;
+        if (!cardNumber.value.replace(/\D/g, '')) return;
+        var total = recompute();
+        paidText.textContent = 'Paid ' + money(total) + ', order Nº 1042. The receipt is on its way to ' + emailInput.value.trim() + ' — and if you want an account, make it after, when all it takes is a password.';
+        form.hidden = true;
+        paid.hidden = false;
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -893,6 +893,39 @@
         "member registration",
         "sign-in page"
       ]
+    },
+    {
+      "description": "Checkout form as a shop till: the order summary is the till tape \u2014 every line item, shipping, and tax with the total computed from the visible lines, never changed at the last step \u2014 and the payment form is one page in three numbered steps with guest checkout by default, no pre-ticked extras, and a PAID stamp on submit.",
+      "intents": [
+        "checkout form",
+        "checkout page",
+        "payment form",
+        "pay for order",
+        "ecommerce checkout",
+        "online checkout",
+        "card payment form",
+        "place order",
+        "buy now",
+        "complete purchase",
+        "checkout with card",
+        "pay at checkout"
+      ],
+      "name": "checkout",
+      "notFor": [
+        "invoice",
+        "sign-up form",
+        "pricing",
+        "waitlist signup",
+        "newsletter signup",
+        "contact form"
+      ],
+      "title": "The Till",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/checkout.json",
+      "useCases": [
+        "ecommerce checkout",
+        "single-page checkout",
+        "card payment"
+      ]
     }
   ],
   "name": "unslop"

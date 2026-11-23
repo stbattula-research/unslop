@@ -1,0 +1,421 @@
+/* The Till — a checkout form staged as a shop till.
+   Flat paper + ink + till red, typography as the ornament, static except
+   for the form itself. The tape prices every line and the total is computed
+   from those lines — never typed in, never changed at the last step. Guest
+   checkout by default, no pre-ticked extras, billing defaults to shipping.
+   The till stays paper in both modes — a receipt is printed. */
+
+.demo-note {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.8rem;
+  color: #6b7280;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  background: #fff;
+}
+
+.demo-note a { color: #6b7280; }
+
+.till {
+  background: #f6f1e7;
+  color: #1c1917;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.till__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+.till__kicker {
+  margin: 0;
+  border-top: 1px solid rgba(28, 25, 23, 0.2);
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  padding: 0.375rem 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+.till__grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .till__grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+
+.pitch { min-width: 0; }
+
+.pitch__heading {
+  margin: 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+.pitch__standfirst {
+  margin: 1rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #57534e;
+}
+
+.pitch__label {
+  margin: 2.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #991b1b;
+}
+
+.pitch__steps {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  border-top: 2px solid #1c1917;
+}
+
+.pitch__steps li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.2);
+  min-width: 0;
+}
+
+.step__num {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #991b1b;
+  flex-shrink: 0;
+}
+
+.step__text { min-width: 0; }
+
+.step__name {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.step__what {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #57534e;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.pitch__aside {
+  margin: 2rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #57534e;
+  line-height: 1.6;
+}
+
+.till-wrap { min-width: 0; }
+
+.till-box {
+  border: 2px solid #1c1917;
+  background: #fff;
+  box-shadow: 8px 8px 0 0 #991b1b;
+}
+
+.till-box__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 1px dashed rgba(28, 25, 23, 0.4);
+  padding: 0.75rem 1.25rem;
+}
+
+.till-box__shop {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.till-box__open {
+  background: #991b1b;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.till-box__body { padding: 1.5rem 1.25rem; }
+
+.till-box__label {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #57534e;
+  overflow-wrap: break-word;
+}
+
+.tape {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  border-top: 1px solid rgba(28, 25, 23, 0.2);
+}
+
+.tape li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.1);
+  min-width: 0;
+}
+
+.tape__line { min-width: 0; }
+
+.tape__name {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.tape__detail {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #57534e;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.tape__amount {
+  flex-shrink: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.till-box__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  min-width: 0;
+}
+
+.till-box__total-amount {
+  font-size: 2.25rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: break-word;
+}
+
+.till-box__total-note {
+  margin: 0.25rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #57534e;
+  line-height: 1.6;
+}
+
+.till-box__form { margin-top: 2rem; }
+
+.till-box__step {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #991b1b;
+}
+
+.till-box__form label {
+  display: block;
+  margin-top: 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.till-box__form input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-top: 0.5rem;
+  border: 2px solid #1c1917;
+  background: #f6f1e7;
+  padding: 0.75rem 1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  color: #1c1917;
+}
+
+.till-box__form input:focus { outline: none; box-shadow: 0 0 0 2px #991b1b; }
+
+.till-box__form input[type="checkbox"] {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.25rem;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: #991b1b;
+}
+
+.address-row,
+.card-row {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.address-row__street { min-width: 0; }
+
+.address-row__cityzip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.address-row__cityzip > div { min-width: 0; }
+
+.card-row { grid-template-columns: 1fr 1fr; }
+
+.card-row > div { min-width: 0; }
+
+.till-box__check {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.till-box__check span {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.till-box__form button[type="submit"] {
+  width: 100%;
+  margin-top: 1.5rem;
+  border: none;
+  background: #1c1917;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+}
+
+.till-box__form button[type="submit"]:hover { background: #991b1b; }
+
+.till-box__paid {
+  position: relative;
+  margin-top: 2rem;
+  border-top: 1px dashed rgba(28, 25, 23, 0.4);
+  padding-top: 1.5rem;
+}
+
+.till-box__paid p:first-child {
+  margin: 0;
+  border-left: 2px solid #991b1b;
+  padding-left: 1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.paid__stamp {
+  position: absolute;
+  right: -0.5rem;
+  top: -1rem;
+  transform: rotate(-8deg);
+  border: 2px solid #991b1b;
+  background: #fff;
+  padding: 0.25rem 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #991b1b;
+  margin: 0;
+  pointer-events: none;
+}
+
+.till-box__smallprint {
+  margin: 1.5rem 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  line-height: 1.8;
+  color: #57534e;
+}
+
+.till-box__aside {
+  margin: 1rem 0 0;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: #57534e;
+}

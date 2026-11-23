@@ -250,6 +250,12 @@ def test_signup_query_ranks_guest_book_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_checkout_query_ranks_the_till_first():
+    matches = unslop.find_matches("checkout form to pay for my order with a card", top=3)
+    assert matches[0][0]["name"] == "checkout"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_waitlist_query_ranks_ticketwindow_first():
     matches = unslop.find_matches("waitlist signup early access join the waitlist for my launch", top=3)
     assert matches[0][0]["name"] == "waitlist"
