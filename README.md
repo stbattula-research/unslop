@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-amber.svg)](LICENSE)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Components](https://img.shields.io/badge/components-30%20%C3%97%202-blue.svg)](#component-catalog)
+[![Components](https://img.shields.io/badge/components-31%20%C3%97%202-blue.svg)](#component-catalog)
 
 AI tools build websites fast. They also build websites that all look the same: the purple gradient, the centered pill-badge hero, the glassmorphism cards, the "revolutionize your workflow" copy. You can spot one in two seconds.
 
@@ -52,7 +52,7 @@ Other useful forms:
 
 ```bash
 ./unslop find "hero for my landing page" --top 2   # show only the top 2 matches
-./unslop list                                      # list all 30 components
+./unslop list                                      # list all 31 components
 ./unslop skill "critique my design"                # search the skill index
 ./unslop skill --list                              # list router, design-intel, prompt-shaper
 ```
@@ -93,7 +93,7 @@ Unslop is one kit for AI-built websites that don't look AI-built — components,
 
 | Piece | What it does | Start here |
 |---|---|---|
-| **Components** | 30 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
+| **Components** | 31 human-grade components × 2 stacks (React+Tailwind, HTML/CSS) | [catalog](#component-catalog) |
 | **Router** | `./unslop find "<need>"` scores intent → component, installs it; also routes to skills; suggests prompt-shaper when a query is too vague | [`skills/unslop-router/SKILL.md`](skills/unslop-router/SKILL.md) |
 | **MCP server** | `search_components` / `get_component` / `install_component` / `audit_site` / `shape_prompt` as native tool calls (stdio) — components + pre-launch audit + prompt shaping, same scoring as the router | [`servers/unslop-mcp/`](servers/unslop-mcp/) |
 | **Design Intel** | Senior-designer judgment as rules: type scale, spacing rhythm, ink/paper/accent discipline, genre-picked layouts, copy voice + a 15-question self-critique review | [`skills/design-intel/SKILL.md`](skills/design-intel/SKILL.md) |
@@ -138,6 +138,7 @@ Agent entry point: [`SKILL.md`](SKILL.md) — discovery, install, restyle rules,
 | 28 | The Check | Invoice/receipt as a restaurant check: every charge is a line on the check with a plain-English reason, credits are their own lines never silently netted, tax is its own line with its rate, and the total is the sum of the lines above it — no unexplained fees, no 'miscellaneous' | [`r/invoice.json`](r/invoice.json) | [`components/html/invoice/`](components/html/invoice/) |
 | 29 | The Guest Book | Sign-up / sign-in form as a hotel guest register: the pitch as the innkeeper's welcome, the form as a ruled ledger book with three fields, a mono room number, a show-password toggle, a returning-guest switch, and a CHECKED IN stamp — no phone number harvested, no pre-ticked boxes, no social sign-in | [`r/signup.json`](r/signup.json) | [`components/html/signup/`](components/html/signup/) |
 | 30 | The Till | Checkout form as a shop till: the order summary is the till tape — every line item, shipping, and tax with the total computed from the visible lines, never changed at the last step — and the payment form is one page in three numbered steps with guest checkout by default, no pre-ticked extras, and a PAID stamp on submit | [`r/checkout.json`](r/checkout.json) | [`components/html/checkout/`](components/html/checkout/) |
+| 31 | The Field Manual | Documentation page as a printed field manual: numbered chapters with honest reading times, a contents page that marks where you are and prints DRAFT on sections not yet written, copyable code blocks, field notes in the margin, and a real next step instead of a dead end | [`r/docs-page.json`](r/docs-page.json) | [`components/html/docs-page/`](components/html/docs-page/) |
 
 Preview every HTML component with no build step: open [`components/html/index.html`](components/html/index.html) in a browser.
 

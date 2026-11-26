@@ -926,6 +926,38 @@
         "single-page checkout",
         "card payment"
       ]
+    },
+    {
+      "description": "Documentation page as a printed field manual: numbered chapters with honest reading times, a contents page that marks where you are and prints DRAFT on sections not yet written, copyable code blocks, field notes in the margin, and a real next step instead of a dead end.",
+      "intents": [
+        "documentation page",
+        "docs page",
+        "developer documentation",
+        "api documentation",
+        "docs site",
+        "docs sidebar",
+        "documentation layout",
+        "manual page",
+        "handbook page",
+        "getting started guide",
+        "reference docs",
+        "api docs"
+      ],
+      "name": "docs-page",
+      "notFor": [
+        "blog index",
+        "changelog",
+        "404 page",
+        "faq",
+        "landing page"
+      ],
+      "title": "The Field Manual",
+      "url": "https://raw.githubusercontent.com/stbattula-research/unslop/main/r/docs-page.json",
+      "useCases": [
+        "developer documentation",
+        "product manual",
+        "api reference layout"
+      ]
     }
   ],
   "name": "unslop"

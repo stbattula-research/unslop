@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unslop — The Field Manual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs-page.css">
+</head>
+<body>
+  <p class="demo-note"><a href="../index.html">← Unslop catalog</a> · docs-page</p>
+
+  <!-- The component -->
+  <section class="manual" aria-label="Documentation page">
+    <div class="manual__inner">
+      <!-- Manual cover line -->
+      <div class="manual__head">
+        <p class="manual__kicker">Field manual · read it before you build</p>
+        <h2 class="manual__heading">The manual, in the order it should be read.</h2>
+        <p class="manual__standfirst">Numbered chapters, honest reading times, and a contents page that says where you are. Sections still being written are marked DRAFT — a manual that hides its gaps is not a manual, it is a brochure.</p>
+        <p class="manual__meta"><span>The Unslop Field Manual</span><span>Second edition</span><span>v2.4.1</span><span>Revised November 25, 2026</span><span>7 sections · 22 min to read</span></p>
+      </div>
+
+      <div class="manual__grid">
+        <!-- The contents -->
+        <nav class="contents" aria-label="Contents">
+          <div class="contents__sticky">
+            <p class="contents__label">Contents</p>
+            <label class="contents__filter">
+              <span class="sr-only">Filter the contents</span>
+              <input type="search" id="contents-filter" placeholder="Find a section…" autocomplete="off">
+            </label>
+            <p class="contents__count" id="contents-count" aria-live="polite">7 sections, 22 minutes</p>
+
+            <ol class="contents__list" id="contents-list">
+              <li class="contents__chapter" data-chapter="First, the map">
+                <p class="contents__chapter-head"><span class="contents__chapter-num">1</span><span class="contents__chapter-title">First, the map</span></p>
+                <ul>
+                  <li><a href="#section-1-1" data-section="1.1" class="contents__link is-current"><span class="contents__num">▶ 1.1</span><span class="contents__name">What this manual covers</span><span class="contents__min">2 min</span></a></li>
+                  <li><a href="#section-1-2" data-section="1.2" class="contents__link"><span class="contents__num">1.2</span><span class="contents__name">Install it</span><span class="contents__min">3 min</span></a></li>
+                </ul>
+              </li>
+              <li class="contents__chapter" data-chapter="Asking the router">
+                <p class="contents__chapter-head"><span class="contents__chapter-num">2</span><span class="contents__chapter-title">Asking the router</span></p>
+                <ul>
+                  <li><a href="#section-2-1" data-section="2.1" class="contents__link"><span class="contents__num">2.1</span><span class="contents__name">Ask it a question</span><span class="contents__min">4 min</span></a></li>
+                  <li><a href="#section-2-2" data-section="2.2" class="contents__link"><span class="contents__num">2.2</span><span class="contents__name">When it says it doesn&rsquo;t know</span><span class="contents__min">3 min</span></a></li>
+                  <li><a href="#section-2-3" data-section="2.3" class="contents__link"><span class="contents__num">2.3</span><span class="contents__name">The confidence floor</span><span class="contents__min">2 min</span></a></li>
+                </ul>
+              </li>
+              <li class="contents__chapter" data-chapter="Making it yours">
+                <p class="contents__chapter-head"><span class="contents__chapter-num">3</span><span class="contents__chapter-title">Making it yours</span></p>
+                <ul>
+                  <li><a href="#section-3-1" data-section="3.1" class="contents__link"><span class="contents__num">3.1</span><span class="contents__name">Writing your own intents</span><span class="contents__draft">Draft</span></a></li>
+                  <li><a href="#section-3-2" data-section="3.2" class="contents__link"><span class="contents__num">3.2</span><span class="contents__name">Shipping the change</span><span class="contents__min">3 min</span></a></li>
+                </ul>
+              </li>
+            </ol>
+            <p class="contents__empty" id="contents-empty" hidden>No section by that name. The contents list what exists — try a shorter word, or read the chapter headings.</p>
+
+            <p class="contents__stamp">Read me first</p>
+          </div>
+        </nav>
+
+        <!-- The page -->
+        <div class="page">
+          <div class="page__chapter">
+            <p class="page__chapter-head"><span class="page__chapter-num">1</span><span class="page__chapter-title">First, the map</span></p>
+
+            <article class="page__section" id="section-1-1">
+              <h3 class="page__section-head"><span class="page__sec-num">§1.1</span><span class="page__sec-title">What this manual covers</span><span class="page__sec-min">2 min read</span></h3>
+              <p>This manual covers the router: the one command that reads a plain-language request and points at the component or skill that answers it. It does not cover the components themselves — each of those has its own page, filed under its own number.</p>
+              <p>If you are here because something broke, start at section 2.2. If you are here because you are new, read this chapter in order. It takes five minutes, and the rest of the manual assumes you have.</p>
+            </article>
+
+            <article class="page__section" id="section-1-2">
+              <h3 class="page__section-head"><span class="page__sec-num">§1.2</span><span class="page__sec-title">Install it</span><span class="page__sec-min">3 min read</span></h3>
+              <p>The router is one file. Copy it into your project and run it — there is nothing to configure before the first search, and no account to make.</p>
+              <figure class="code">
+                <figcaption><span class="code__label">Terminal — install and first search</span><button type="button" class="code__copy" data-copy="curl -O https://unslop.dev/unslop&#10;chmod +x unslop&#10;./unslop find &quot;hero for my landing page&quot;">Copy</button></figcaption>
+                <pre><code>curl -O https://unslop.dev/unslop
+chmod +x unslop
+./unslop find "hero for my landing page"</code></pre>
+              </figure>
+              <aside class="field-note"><p>Field note: if the first search returns nothing above the confidence floor, the router says so instead of guessing. That is the feature, not a failure.</p></aside>
+            </article>
+          </div>
+
+          <div class="page__chapter">
+            <p class="page__chapter-head"><span class="page__chapter-num">2</span><span class="page__chapter-title">Asking the router</span></p>
+
+            <article class="page__section" id="section-2-1">
+              <h3 class="page__section-head"><span class="page__sec-num">§2.1</span><span class="page__sec-title">Ask it a question</span><span class="page__sec-min">4 min read</span></h3>
+              <p>Ask in the words you would use to describe the section to a colleague: what it is for, who reads it, what it should do. The router scores your words against the intent tags in the registry and returns the best match with its score attached, so you can see how sure it is.</p>
+              <p>A question that names the job beats a question that names the component. &ldquo;Checkout form to pay for my order&rdquo; finds The Till; &ldquo;checkout component&rdquo; might not.</p>
+            </article>
+
+            <article class="page__section" id="section-2-2">
+              <h3 class="page__section-head"><span class="page__sec-num">§2.2</span><span class="page__sec-title">When it says it doesn&rsquo;t know</span><span class="page__sec-min">3 min read</span></h3>
+              <p>Below the confidence floor, the router stops and offers the prompt shaper instead of serving its best guess. A vague ask gets a sharper brief; a sharper brief gets a better component.</p>
+              <p>Do not work around this by rewording the same vague ask until something matches. The floor is the part of the router that keeps it honest.</p>
+              <aside class="field-note"><p>Field note: the floor is a number in the registry, not a mood. It is 3. Asks scoring below it are not answered, they are reshaped.</p></aside>
+            </article>
+
+            <article class="page__section" id="section-2-3">
+              <h3 class="page__section-head"><span class="page__sec-num">§2.3</span><span class="page__sec-title">The confidence floor</span><span class="page__sec-min">2 min read</span></h3>
+              <p>Every match carries a score, and the floor is the line below which the router refuses to pretend. The score is printed next to the result, so a weak match reads as a weak match.</p>
+              <figure class="code">
+                <figcaption><span class="code__label">Terminal — a scored result</span><button type="button" class="code__copy" data-copy="./unslop find &quot;pricing section for a coffee brand&quot;&#10;# 1. Menu Pricing — 65&#10;# 2. The Till — 11">Copy</button></figcaption>
+                <pre><code>./unslop find "pricing section for a coffee brand"
+# 1. Menu Pricing — 65
+# 2. The Till — 11</code></pre>
+              </figure>
+            </article>
+          </div>
+
+          <div class="page__chapter">
+            <p class="page__chapter-head"><span class="page__chapter-num">3</span><span class="page__chapter-title">Making it yours</span></p>
+
+            <article class="page__section" id="section-3-1">
+              <h3 class="page__section-head"><span class="page__sec-num">§3.1</span><span class="page__sec-title">Writing your own intents</span><span class="page__sec-draft">Draft — not written yet</span></h3>
+              <p>This section is not written yet. The intents live in registry.json, one entry per component, and the rules for writing them are the same rules as the rest of this manual — but the worked example is still being written, and this page says so instead of shipping a placeholder that reads like advice.</p>
+            </article>
+
+            <article class="page__section" id="section-3-2">
+              <h3 class="page__section-head"><span class="page__sec-num">§3.2</span><span class="page__sec-title">Shipping the change</span><span class="page__sec-min">3 min read</span></h3>
+              <p>Add the component, add its intents, add one routing test that asks for it in plain words and expects it first. Run the suite. If the new intents push a vague ask over the floor, the intents are too broad — narrow them, do not lower the floor.</p>
+            </article>
+          </div>
+
+          <!-- Read next — a page never ends in a dead end -->
+          <div class="page__next">
+            <p class="page__next-label">Read next</p>
+            <p class="page__next-title"><a href="/docs/router">The Router →</a></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="manual__smallprint">Reading times are counted from the words on the page, not from the headline. A section marked DRAFT is not written yet — it says so here, in the contents, and on the page itself. The version and revision date above are the version this manual describes; if yours is newer, this manual is out of date, and it says when it was last revised so you can tell. The sample sections above are placeholders — replace them with your own manual; a section with no body should say so, not invent one.</p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var filter = document.getElementById("contents-filter");
+      var list = document.getElementById("contents-list");
+      var count = document.getElementById("contents-count");
+      var empty = document.getElementById("contents-empty");
+      var links = Array.prototype.slice.call(list.querySelectorAll(".contents__link"));
+      var chapters = Array.prototype.slice.call(list.querySelectorAll(".contents__chapter"));
+      var TOTAL = links.length;
+
+      filter.addEventListener("input", function () {
+        var q = filter.value.trim().toLowerCase();
+        var visible = 0;
+        links.forEach(function (link) {
+          var text = link.textContent.toLowerCase();
+          var chapter = link.closest(".contents__chapter");
+          var chapterTitle = chapter ? chapter.getAttribute("data-chapter").toLowerCase() : "";
+          var show = q === "" || text.indexOf(q) !== -1 || chapterTitle.indexOf(q) !== -1;
+          link.parentElement.hidden = !show;
+          if (show) visible++;
+        });
+        chapters.forEach(function (chapter) {
+          var anyVisible = chapter.querySelectorAll("li:not([hidden])").length > 0;
+          chapter.hidden = !anyVisible;
+        });
+        empty.hidden = visible !== 0;
+        count.textContent = q === ""
+          ? TOTAL + " sections, 22 minutes"
+          : visible + " of " + TOTAL + " sections match \u201C" + filter.value.trim() + "\u201D";
+      });
+
+      links.forEach(function (link) {
+        link.addEventListener("click", function () {
+          links.forEach(function (l) {
+            l.classList.remove("is-current");
+            var num = l.querySelector(".contents__num");
+            if (num) num.textContent = num.textContent.replace("\u25B6 ", "");
+          });
+          link.classList.add("is-current");
+          var num = link.querySelector(".contents__num");
+          if (num && num.textContent.indexOf("\u25B6") !== 0) {
+            num.textContent = "\u25B6 " + num.textContent;
+          }
+        });
+      });
+
+      document.querySelectorAll(".code__copy").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var text = btn.getAttribute("data-copy") || "";
+          function done() {
+            btn.textContent = "Copied";
+            window.setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () { btn.textContent = "Copy"; });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

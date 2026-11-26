@@ -256,6 +256,12 @@ def test_checkout_query_ranks_the_till_first():
     assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
 
 
+def test_docs_query_ranks_the_field_manual_first():
+    matches = unslop.find_matches("documentation page for my api with sidebar contents and code examples", top=3)
+    assert matches[0][0]["name"] == "docs-page"
+    assert matches[0][1] >= unslop.CONFIDENCE_FLOOR
+
+
 def test_waitlist_query_ranks_ticketwindow_first():
     matches = unslop.find_matches("waitlist signup early access join the waitlist for my launch", top=3)
     assert matches[0][0]["name"] == "waitlist"
